@@ -4,6 +4,7 @@ from numpy import array
 
 from knn import *
 
+
 class TestKnn(unittest.TestCase):
     def setUp(self):
         self.x = array([[2, 0], [4, 1], [6, 0], [1, 4], [2, 4], [2, 5], [4, 4],
@@ -32,6 +33,7 @@ class TestKnn(unittest.TestCase):
         self.assertAlmostEqual(self.knn[3].classify(self.queries[1]), 1)
         self.assertAlmostEqual(self.knn[3].classify(self.queries[2]), 1)
         self.assertAlmostEqual(self.knn[3].classify(self.queries[3]), -1)
+
 
 if __name__ == '__main__':
     unittest.main()

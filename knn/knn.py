@@ -1,10 +1,8 @@
 import argparse
-from collections import Counter, defaultdict
+from collections import defaultdict
 
-import random
-import numpy
-from numpy import median
 from sklearn.neighbors import BallTree
+
 
 class Numbers:
     """
@@ -15,7 +13,8 @@ class Numbers:
         # You shouldn't have to modify this class, but you can if
         # you'd like.
 
-        import cPickle, gzip
+        import cPickle
+        import gzip
 
         # Load the dataset
         f = gzip.open(location, 'rb')
@@ -62,7 +61,24 @@ class Knearest:
         #
         # http://docs.scipy.org/doc/numpy/reference/generated/numpy.median.html
 
-        return self._y[item_indices[0]]
+        count = {}
+        for ii in item_indices:
+            y = self._y[ii]
+            count[y] = count.get(y, 0) + 1
+
+        major_labels, m = [], 0
+        for label, c in count.iteritems():
+            if c == m:
+                major_labels.append(label)
+            elif c > m:
+                major_labels, m = [label], c
+        lml = len(major_labels)
+        if lml == 1:  # only one majority
+            return major_labels[0]
+        elif lml > 1:  # deal with tie
+            return major_labels[lml / 2] if lml & 0x1 else (major_labels[lml / 2] + major_labels[lml / 2 - 1]) / 2
+        else:
+            return -1
 
     def classify(self, example):
         """
@@ -74,14 +90,13 @@ class Knearest:
 
         # Finish this function to find the k closest points, query the
         # majority function, and return the value.
-
-        return self.majority(list(random.randint(0, len(self._y)) \
-                                  for x in xrange(self._k)))
+        indices = self._kdtree.query(example, k=self._k)[1][0]
+        return self.majority(indices)
 
     def confusion_matrix(self, test_x, test_y):
         """
         Given a matrix of test examples and labels, compute the confusion
-        matrixfor the current classifier.  Should return a dictionary of
+        matrix for the current classifier. Should return a dictionary of
         dictionaries where d[ii][jj] is the number of times an example
         with true label ii was labeled as jj.
 
@@ -90,12 +105,14 @@ class Knearest:
         """
 
         # Finish this function to build a dictionary with the
-        # mislabeled examples.  You'll need to call the classify
+        # mislabeled examples. You'll need to call the classify
         # function for each example.
 
         d = defaultdict(dict)
         data_index = 0
-        for xx, yy in zip(test_x, test_y):
+        for example, answer in zip(test_x, test_y):
+            label = self.classify(example)
+            d[answer][label] = d[answer].get(label, 0) + 1
             data_index += 1
             if data_index % 100 == 0:
                 print("%i/%i for confusion matrix" % (data_index, len(test_x)))
@@ -135,8 +152,7 @@ if __name__ == "__main__":
 
     if args.limit > 0:
         print("Data limit: %i" % args.limit)
-        knn = Knearest(data.train_x[:args.limit], data.train_y[:args.limit],
-                       args.k)
+        knn = Knearest(data.train_x[:args.limit], data.train_y[:args.limit], args.k)
     else:
         knn = Knearest(data.train_x, data.train_y, args.k)
     print("Done loading data")
@@ -144,7 +160,6 @@ if __name__ == "__main__":
     confusion = knn.confusion_matrix(data.test_x, data.test_y)
     print("\t" + "\t".join(str(x) for x in xrange(10)))
     print("".join(["-"] * 90))
-    for ii in xrange(10):
-        print("%i:\t" % ii + "\t".join(str(confusion[ii].get(x, 0))
-                                       for x in xrange(10)))
+    for i in xrange(10):
+        print("%i:\t" % i + "\t".join(str(confusion[i].get(x, 0)) for x in xrange(10)))
     print("Accuracy: %f" % knn.acccuracy(confusion))
