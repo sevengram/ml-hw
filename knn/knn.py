@@ -114,8 +114,8 @@ class Knearest:
             label = self.classify(example)
             d[answer][label] = d[answer].get(label, 0) + 1
             data_index += 1
-            # if data_index % 100 == 0:
-            #     print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+            if data_index % 100 == 0:
+                print("%i/%i for confusion matrix" % (data_index, len(test_x)))
         return d
 
     @staticmethod
