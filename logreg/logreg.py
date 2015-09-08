@@ -1,7 +1,7 @@
 import random
+import argparse
 from math import exp, log
 from collections import defaultdict
-import argparse
 
 import numpy as np
 
@@ -50,7 +50,7 @@ class Example:
 
 
 class LogReg:
-    def __init__(self, num_features, mu, step=lambda x: 0.05):
+    def __init__(self, num_features, mu, step=lambda x: 0.05, lrate=1.0):
         """
         Create a logistic regression classifier
 
@@ -63,6 +63,7 @@ class LogReg:
         self.step = step
         self.last_update = defaultdict(int)
         self.marker = [0] * num_features
+        self.lrate = lrate
         assert self.mu >= 0, "Regularization parameter must be non-negative"
 
     def progress(self, examples):
@@ -76,7 +77,7 @@ class LogReg:
         logprob = 0.0
         num_right = 0
         for ii in examples:
-            p = sigmoid(self.beta.dot(ii.x))
+            p = sigmoid(np.dot(self.beta, ii.x))
             if ii.y == 1:
                 logprob += log(p)
             else:
@@ -88,7 +89,7 @@ class LogReg:
 
         return logprob, float(num_right) / float(len(examples))
 
-    def sg_update(self, train_example, iteration, use_tfidf=False, learning_rate=1.0):
+    def sg_update(self, train_example, iteration, use_tfidf=False):
         """
         Compute a stochastic gradient update to improve the log likelihood.
 
@@ -99,13 +100,24 @@ class LogReg:
         """
         h = lambda theta, x: sigmoid(np.dot(theta, x))
         delta = train_example.y - h(self.beta, train_example.x)
-        for ii in xrange(len(self.beta)):
-            if train_example.x[ii] != 0:
-                self.beta[ii] = (self.beta[ii] + learning_rate * delta * train_example.x[ii]) * \
-                                (1 - 2 * learning_rate * self.mu) ** (self.marker[ii] + 1)
-                self.marker[ii] = 0
-            else:
-                self.marker[ii] += 1
+        if self.mu == 0.0:
+            self.beta += self.lrate * delta * train_example.x
+        else:
+            for ii in xrange(len(self.beta)):
+                if train_example.x[ii] != 0:
+                    self.beta[ii] = (self.beta[ii] + self.lrate * delta * train_example.x[ii]) * \
+                                    (1 - 2 * self.lrate * self.mu) ** (self.marker[ii] + 1)
+                    self.marker[ii] = 0
+                else:
+                    self.marker[ii] += 1
+        return self.beta
+
+    def sg_update2(self, train_example, iteration, use_tfidf=False):
+        h = lambda theta, x: sigmoid(np.dot(theta, x))
+        delta = train_example.y - h(self.beta, train_example.x)
+        self.beta[0] += self.lrate * delta * train_example.x[0]
+        self.beta[1:] = \
+            (1 - self.lrate * self.mu) * self.beta[1:] + self.lrate * delta * train_example.x[1:]
         return self.beta
 
 
@@ -148,7 +160,7 @@ def step_update(iteration):
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("--lr", help="Learning Rate",
+    argparser.add_argument("--lrate", help="Learning Rate",
                            type=float, default=1.0, required=False)
     argparser.add_argument("--mu", help="Weight of L2 regression",
                            type=float, default=0.0, required=False)
@@ -169,15 +181,14 @@ if __name__ == "__main__":
     print("Read in %i train and %i test" % (len(train), len(test)))
 
     # Initialize model
-    lr = LogReg(len(vocab_list), args.mu, lambda x: args.step)
-
+    lr = LogReg(len(vocab_list), args.mu, lambda x: args.step, lrate=args.lrate)
     # Iterations
     update_number = 0
     for pp in xrange(args.passes):
+        random.shuffle(train)
         for i in train:
             update_number += 1
-            lr.sg_update(i, update_number, learning_rate=args.lr)
-
+            lr.sg_update2(i, update_number)
             if update_number % 5 == 1:
                 train_lp, train_acc = lr.progress(train)
                 ho_lp, ho_acc = lr.progress(test)
