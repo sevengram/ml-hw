@@ -1,9 +1,11 @@
+__author__ = 'Jianxiang Fan'
+
 import random
 import argparse
 from math import exp, log
 from collections import defaultdict
 
-import numpy as np
+import numpy
 
 kSEED = 1701
 kBIAS = "BIAS_CONSTANT"
@@ -19,7 +21,7 @@ def sigmoid(score, threshold=20.0):
     """
 
     if abs(score) > threshold:
-        score = threshold * np.sign(score)
+        score = threshold * numpy.sign(score)
 
     activation = exp(score)
     return activation / (1.0 + activation)
@@ -40,7 +42,7 @@ class Example:
         """
         self.nonzero = {}
         self.y = label
-        self.x = np.zeros(len(vocab))
+        self.x = numpy.zeros(len(vocab))
         for word, count in [x.split(":") for x in words]:
             if word in vocab:
                 assert word != kBIAS, "Bias can't actually appear in document"
@@ -50,7 +52,7 @@ class Example:
 
 
 class LogReg:
-    def __init__(self, num_features, mu, step=lambda x: 0.05, lrate=1.0):
+    def __init__(self, num_features, mu, step=lambda x: 0.05):
         """
         Create a logistic regression classifier
 
@@ -58,12 +60,11 @@ class LogReg:
         :param mu: Regularization parameter
         :param step: A function that takes the iteration as an argument (the default is a constant value)
         """
-        self.beta = np.zeros(num_features)
+        self.beta = numpy.zeros(num_features)
         self.mu = mu
         self.step = step
         self.last_update = defaultdict(int)
         self.marker = [0] * num_features
-        self.lrate = lrate
         assert self.mu >= 0, "Regularization parameter must be non-negative"
 
     def progress(self, examples):
@@ -77,7 +78,7 @@ class LogReg:
         logprob = 0.0
         num_right = 0
         for ii in examples:
-            p = sigmoid(np.dot(self.beta, ii.x))
+            p = sigmoid(numpy.dot(self.beta, ii.x))
             if ii.y == 1:
                 logprob += log(p)
             else:
@@ -98,27 +99,33 @@ class LogReg:
         :param use_tfidf: A boolean to switch between the raw data and the tfidf representation
         :return: Return the new value of the regression coefficients
         """
-        h = lambda theta, x: sigmoid(np.dot(theta, x))
+        h = lambda theta, x: sigmoid(numpy.dot(theta, x))
         delta = train_example.y - h(self.beta, train_example.x)
         if self.mu == 0.0:
-            self.beta += self.lrate * delta * train_example.x
+            self.beta += self.step(iteration) * delta * train_example.x
         else:
             for ii in xrange(len(self.beta)):
                 if train_example.x[ii] != 0:
-                    self.beta[ii] = (self.beta[ii] + self.lrate * delta * train_example.x[ii]) * \
-                                    (1 - 2 * self.lrate * self.mu) ** (self.marker[ii] + 1)
+                    self.beta[ii] = (self.beta[ii] + self.step(iteration) * delta * train_example.x[ii]) * \
+                                    (1 - 2 * self.step(iteration) * self.mu) ** (self.marker[ii] + 1)
                     self.marker[ii] = 0
                 else:
                     self.marker[ii] += 1
         return self.beta
 
     def sg_update2(self, train_example, iteration, use_tfidf=False):
-        h = lambda theta, x: sigmoid(np.dot(theta, x))
+        h = lambda theta, x: sigmoid(numpy.dot(theta, x))
         delta = train_example.y - h(self.beta, train_example.x)
-        self.beta[0] += self.lrate * delta * train_example.x[0]
+        self.beta[0] += self.step(iteration) * delta * train_example.x[0]
         self.beta[1:] = \
-            (1 - self.lrate * self.mu) * self.beta[1:] + self.lrate * delta * train_example.x[1:]
+            (1 - self.step(iteration) * self.mu) * self.beta[1:] + self.step(iteration) * delta * train_example.x[1:]
         return self.beta
+
+    def significant_features(self, count=20, postive=True):
+        return numpy.argsort(self.beta)[-count:] if postive else numpy.argsort(self.beta)[:count]
+
+    def nonsignificant_features(self, count=20):
+        return numpy.argsort(numpy.abs(self.beta))[:count]
 
 
 def read_dataset(positive, negative, vocab, test_proportion=.1):
@@ -153,15 +160,29 @@ def read_dataset(positive, negative, vocab, test_proportion=.1):
 
 
 def step_update(iteration):
-    # TODO (extra credit): Update this function to provide an
-    # effective iteration dependent step size
-    return 1.0
+    """
+    Provide an effective iteration dependent step size
+
+    :param iteration: The current iteration (an integer)
+    :return: Return the step size
+    """
+    return 0.1 / (1 + 0.1 * 0.05 * iteration)
+
+
+def step_update_build(initial_step, alpha):
+    """
+    Create a step update function based on parameters
+
+    :param initial_step: Initial SG step size
+    :param alpha: Parameter for step update
+    :return: Return the step update function
+    """
+
+    return lambda t: initial_step / (1 + initial_step * alpha * t)
 
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("--lrate", help="Learning Rate",
-                           type=float, default=1.0, required=False)
     argparser.add_argument("--mu", help="Weight of L2 regression",
                            type=float, default=0.0, required=False)
     argparser.add_argument("--step", help="Initial SG step size",
@@ -181,11 +202,10 @@ if __name__ == "__main__":
     print("Read in %i train and %i test" % (len(train), len(test)))
 
     # Initialize model
-    lr = LogReg(len(vocab_list), args.mu, lambda x: args.step, lrate=args.lrate)
+    lr = LogReg(len(vocab_list), args.mu, step_update_build(args.step, alpha=0.05))
     # Iterations
     update_number = 0
     for pp in xrange(args.passes):
-        random.shuffle(train)
         for i in train:
             update_number += 1
             lr.sg_update2(i, update_number)
@@ -194,3 +214,10 @@ if __name__ == "__main__":
                 ho_lp, ho_acc = lr.progress(test)
                 print("Update %i\tTP %f\tHP %f\tTA %f\tHA %f" %
                       (update_number, train_lp, ho_lp, train_acc, ho_acc))
+
+    postive_words = lr.significant_features(postive=True)
+    print([vocab_list[i] for i in postive_words])
+    negative_words = lr.significant_features(postive=False)
+    print([vocab_list[i] for i in negative_words])
+    nonsignificant_words = lr.nonsignificant_features()
+    print([vocab_list[i] for i in nonsignificant_words])
