@@ -1,13 +1,14 @@
 __author__ = 'Jianxiang Fan'
 
-import random
 import argparse
+import random
+import time
 from math import exp, log
 from collections import defaultdict
 
 import numpy
 
-kSEED = 1701
+kSEED = time.time()
 kBIAS = "BIAS_CONSTANT"
 
 random.seed(kSEED)
@@ -32,23 +33,32 @@ class Example:
     Class to represent a logistic regression example
     """
 
-    def __init__(self, label, words, vocab, df):
+    def __init__(self, label, words, vocab, idf):
         """
         Create a new example
 
         :param label: The label (0 / 1) of the example
         :param words: The words in a list of "word:count" format
         :param vocab: The vocabulary to use as features (list)
+        :param idf: Inverse document frequency of the words
         """
         self.nonzero = {}
         self.y = label
         self.x = numpy.zeros(len(vocab))
+        self.tfidf = numpy.zeros(len(vocab))
+        total_wc = 0
         for word, count in [x.split(":") for x in words]:
             if word in vocab:
                 assert word != kBIAS, "Bias can't actually appear in document"
                 self.x[vocab.index(word)] += float(count)
                 self.nonzero[vocab.index(word)] = word
+                total_wc += float(count)
         self.x[0] = 1
+        if idf:
+            for k, v in self.nonzero.iteritems():
+                tf = self.x[k] / total_wc
+                self.tfidf[k] = 100 * tf * idf[k]
+            self.tfidf[0] = 1
 
 
 class LogReg:
@@ -99,14 +109,15 @@ class LogReg:
         :param use_tfidf: A boolean to switch between the raw data and the tfidf representation
         :return: Return the new value of the regression coefficients
         """
-        h = lambda theta, x: sigmoid(numpy.dot(theta, x))
-        delta = train_example.y - h(self.beta, train_example.x)
+        x = train_example.x if not use_tfidf else train_example.tfidf
+        h = lambda theta, v: sigmoid(numpy.dot(theta, v))
+        delta = train_example.y - h(self.beta, x)
         if self.mu == 0.0:
-            self.beta += self.step(iteration) * delta * train_example.x
+            self.beta += self.step(iteration) * delta * x
         else:
             for ii in xrange(len(self.beta)):
-                if train_example.x[ii] != 0:
-                    self.beta[ii] = (self.beta[ii] + self.step(iteration) * delta * train_example.x[ii]) * \
+                if x[ii] != 0:
+                    self.beta[ii] = (self.beta[ii] + self.step(iteration) * delta * x[ii]) * \
                                     (1 - 2 * self.step(iteration) * self.mu) ** (self.marker[ii] + 1)
                     self.marker[ii] = 0
                 else:
@@ -114,11 +125,12 @@ class LogReg:
         return self.beta
 
     def sg_update2(self, train_example, iteration, use_tfidf=False):
-        h = lambda theta, x: sigmoid(numpy.dot(theta, x))
-        delta = train_example.y - h(self.beta, train_example.x)
-        self.beta[0] += self.step(iteration) * delta * train_example.x[0]
+        x = train_example.x if not use_tfidf else train_example.tfidf
+        h = lambda theta, v: sigmoid(numpy.dot(theta, v))
+        delta = train_example.y - h(self.beta, x)
+        self.beta[0] += self.step(iteration) * delta * x[0]
         self.beta[1:] = \
-            (1 - self.step(iteration) * self.mu) * self.beta[1:] + self.step(iteration) * delta * train_example.x[1:]
+            (1 - self.step(iteration) * self.mu) * self.beta[1:] + self.step(iteration) * delta * x[1:]
         return self.beta
 
     def significant_features(self, count=20, postive=True):
@@ -138,6 +150,7 @@ def read_dataset(positive, negative, vocab, test_proportion=.1):
     :param test_proportion: How much of the data should be reserved for test
     """
     df = [float(x.split("\t")[1]) for x in open(vocab, 'r') if '\t' in x]
+    idf = [log(1 + float(f) / (len(positive) + len(negative))) for f in df]
     vl = [x.split("\t")[0] for x in open(vocab, 'r') if '\t' in x]
     assert vl[0] == kBIAS, \
         "First vocab word must be bias term (was %s)" % vl[0]
@@ -146,7 +159,7 @@ def read_dataset(positive, negative, vocab, test_proportion=.1):
     test_set = []
     for label, filepath in [(1, positive), (0, negative)]:
         for line in open(filepath):
-            ex = Example(label, line.split(), vl, df)
+            ex = Example(label, line.split(), vl, idf)
             if random.random() <= test_proportion:
                 test_set.append(ex)
             else:
@@ -187,6 +200,8 @@ if __name__ == "__main__":
                            type=float, default=0.0, required=False)
     argparser.add_argument("--step", help="Initial SG step size",
                            type=float, default=0.1, required=False)
+    argparser.add_argument("--alpha", help="Parameter for step update",
+                           type=float, default=0.0, required=False)
     argparser.add_argument("--positive", help="Positive class",
                            type=str, default="../data/hockey_baseball/positive", required=False)
     argparser.add_argument("--negative", help="Negative class",
@@ -195,6 +210,7 @@ if __name__ == "__main__":
                            type=str, default="../data/hockey_baseball/vocab", required=False)
     argparser.add_argument("--passes", help="Number of passes through train",
                            type=int, default=1, required=False)
+    argparser.add_argument("--tfidf", help="Use tfidf", action='store_true')
 
     args = argparser.parse_args()
     train, test, vocab_list = read_dataset(args.positive, args.negative, args.vocab)
@@ -202,13 +218,14 @@ if __name__ == "__main__":
     print("Read in %i train and %i test" % (len(train), len(test)))
 
     # Initialize model
-    lr = LogReg(len(vocab_list), args.mu, step_update_build(args.step, alpha=0.05))
+    lr = LogReg(len(vocab_list), args.mu, step_update_build(args.step, args.alpha))
     # Iterations
     update_number = 0
     for pp in xrange(args.passes):
+        random.shuffle(train)
         for i in train:
             update_number += 1
-            lr.sg_update2(i, update_number)
+            lr.sg_update2(i, update_number, use_tfidf=args.tfidf)
             if update_number % 5 == 1:
                 train_lp, train_acc = lr.progress(train)
                 ho_lp, ho_acc = lr.progress(test)
