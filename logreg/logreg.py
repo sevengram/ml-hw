@@ -1,4 +1,5 @@
-__author__ = 'Jianxiang Fan'
+__author__ = "Jianxiang Fan"
+__email__ = "jianxiang.fan@colorado.edu"
 
 import argparse
 import random
@@ -57,7 +58,7 @@ class Example:
         if idf:
             for k, v in self.nonzero.iteritems():
                 tf = self.x[k] / total_wc
-                self.tfidf[k] = 100 * tf * idf[k]
+                self.tfidf[k] = tf * idf[k]
             self.tfidf[0] = 1
 
 
@@ -150,11 +151,14 @@ def read_dataset(positive, negative, vocab, test_proportion=.1):
     :param test_proportion: How much of the data should be reserved for test
     """
     df = [float(x.split("\t")[1]) for x in open(vocab, 'r') if '\t' in x]
-    idf = [log(1 + float(f) / (len(positive) + len(negative))) for f in df]
     vl = [x.split("\t")[0] for x in open(vocab, 'r') if '\t' in x]
     assert vl[0] == kBIAS, \
         "First vocab word must be bias term (was %s)" % vl[0]
 
+    doc_count = 0
+    for filepath in [positive, negative]:
+        doc_count += sum(1 for line in open(filepath))
+    idf = [log(float(doc_count) / (f + 1.0)) for f in df]
     train_set = []
     test_set = []
     for label, filepath in [(1, positive), (0, negative)]:
@@ -190,8 +194,7 @@ def step_update_build(initial_step, alpha):
     :param alpha: Parameter for step update
     :return: Return the step update function
     """
-
-    return lambda t: initial_step / (1 + initial_step * alpha * t)
+    return lambda itr: initial_step / (1 + initial_step * alpha * itr)
 
 
 if __name__ == "__main__":
@@ -200,8 +203,6 @@ if __name__ == "__main__":
                            type=float, default=0.0, required=False)
     argparser.add_argument("--step", help="Initial SG step size",
                            type=float, default=0.1, required=False)
-    argparser.add_argument("--alpha", help="Parameter for step update",
-                           type=float, default=0.0, required=False)
     argparser.add_argument("--positive", help="Positive class",
                            type=str, default="../data/hockey_baseball/positive", required=False)
     argparser.add_argument("--negative", help="Negative class",
@@ -210,22 +211,27 @@ if __name__ == "__main__":
                            type=str, default="../data/hockey_baseball/vocab", required=False)
     argparser.add_argument("--passes", help="Number of passes through train",
                            type=int, default=1, required=False)
-    argparser.add_argument("--tfidf", help="Use tfidf", action='store_true')
+
+    # Extra arguments
+    argparser.add_argument("--alpha", help="Parameter for step update",
+                           type=float, default=0.0, required=False)
+    argparser.add_argument("--tfidf", help="Use tf-idf", action='store_true')
 
     args = argparser.parse_args()
-    train, test, vocab_list = read_dataset(args.positive, args.negative, args.vocab)
 
+    train, test, vocab_list = read_dataset(args.positive, args.negative, args.vocab)
     print("Read in %i train and %i test" % (len(train), len(test)))
 
     # Initialize model
     lr = LogReg(len(vocab_list), args.mu, step_update_build(args.step, args.alpha))
+
     # Iterations
     update_number = 0
     for pp in xrange(args.passes):
         random.shuffle(train)
         for i in train:
             update_number += 1
-            lr.sg_update2(i, update_number, use_tfidf=args.tfidf)
+            lr.sg_update(i, update_number, use_tfidf=args.tfidf)
             if update_number % 5 == 1:
                 train_lp, train_acc = lr.progress(train)
                 ho_lp, ho_acc = lr.progress(test)
