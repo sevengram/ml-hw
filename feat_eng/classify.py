@@ -1,8 +1,6 @@
 from csv import DictReader, DictWriter
 
 import numpy as np
-from numpy import array
-
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import SGDClassifier
 
@@ -26,8 +24,8 @@ class Featurizer:
             top10 = np.argsort(classifier.coef_[i])[-10:]
             print("%s: %s" % (category, " ".join(feature_names[top10])))
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     # Cast to list to keep it all in memory
     train = list(DictReader(open("../data/spoilers/train.csv", 'r')))
     test = list(DictReader(open("../data/spoilers/test.csv", 'r')))
@@ -42,8 +40,7 @@ if __name__ == "__main__":
     x_train = feat.train_feature(x[kTEXT_FIELD] for x in train)
     x_test = feat.test_feature(x[kTEXT_FIELD] for x in test)
 
-    y_train = array(list(labels.index(x[kTARGET_FIELD])
-                         for x in train))
+    y_train = np.array(list(labels.index(x[kTARGET_FIELD]) for x in train))
 
     # Train classifier
     lr = SGDClassifier(loss='log', penalty='l2', shuffle=True)
