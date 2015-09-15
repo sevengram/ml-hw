@@ -4,6 +4,8 @@ __email__ = "jianxiang.fan@colorado.edu"
 import argparse
 from csv import DictReader, DictWriter
 
+import nltk
+
 import numpy as np
 from sklearn.cross_validation import cross_val_score
 from sklearn.feature_extraction.text import CountVectorizer
@@ -19,19 +21,20 @@ class DiscussVectorizer(CountVectorizer):
         Return a callable that handles preprocessing and tokenization
         """
         preprocess = self.build_preprocessor()
+        tokenize = self.build_tokenizer()
 
         if self.analyzer == 'word':
             stop_words = self.get_stop_words()
-            tokenize = self.build_tokenizer()
-            return lambda doc: self._word_ngrams(
-                tokenize(preprocess(self.decode(doc))), stop_words)
+            return lambda doc: self._word_ngrams(tokenize(preprocess(self.decode(doc))), stop_words)
+        elif self.analyzer == 'tag':
+            return lambda doc: self._word_ngrams([t[1] for t in nltk.pos_tag(tokenize(preprocess(self.decode(doc))))])
         else:
             raise ValueError('%s is not a valid tokenization scheme/analyzer' % self.analyzer)
 
 
 class Featurizer:
-    def __init__(self):
-        self.vectorizer = DiscussVectorizer(ngram_range=(1, 3))
+    def __init__(self, min_n, max_n):
+        self.vectorizer = DiscussVectorizer(ngram_range=(min_n, max_n), analyzer='tag')
 
     def train_feature(self, examples):
         return self.vectorizer.fit_transform(examples)
@@ -39,7 +42,7 @@ class Featurizer:
     def test_feature(self, examples):
         return self.vectorizer.transform(examples)
 
-    def show_top(self, classifier, categories, n=20):
+    def show_top(self, classifier, categories, n):
         feature_names = np.asarray(self.vectorizer.get_feature_names())
         if len(categories) == 2:
             top = np.argsort(classifier.coef_[0])[-n:]
@@ -65,6 +68,10 @@ if __name__ == '__main__':
                         type=str, default='../data/spoilers/train.csv', required=False)
     parser.add_argument('--test', help='Test set file',
                         type=str, default='../data/spoilers/test.csv', required=False)
+    parser.add_argument('--ngmin', help='The lower boundary of the range of n-values for n-grams',
+                        type=int, default=1, required=False)
+    parser.add_argument('--ngmax', help='The upper boundary of the range of n-values for n-grams',
+                        type=int, default=1, required=False)
     args = parser.parse_args()
 
     # Cast to list to keep it all in memory
@@ -75,10 +82,10 @@ if __name__ == '__main__':
         if not line[kTARGET_FIELD] in labels:
             labels.append(line[kTARGET_FIELD])
 
-    feat = Featurizer()
+    feat = Featurizer(args.ngmin, args.ngmax)
     print('Label set: %s' % str(labels))
-    x_train = feat.train_feature([x[kTEXT_FIELD] for x in train])
-    x_test = feat.test_feature([x[kTEXT_FIELD] for x in test])
+    x_train = feat.train_feature(x[kTEXT_FIELD] for x in train)
+    x_test = feat.test_feature(x[kTEXT_FIELD] for x in test)
     y_train = np.array(list(labels.index(x[kTARGET_FIELD]) for x in train))
 
     # Train classifier & make cross validation
