@@ -8,7 +8,7 @@ import nltk
 
 import numpy as np
 from sklearn.cross_validation import cross_val_score
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.linear_model import SGDClassifier
 
 kTARGET_FIELD = 'spoiler'
@@ -34,7 +34,7 @@ class DiscussVectorizer(CountVectorizer):
 
 class Featurizer:
     def __init__(self, min_n, max_n):
-        self.vectorizer = DiscussVectorizer(ngram_range=(min_n, max_n), analyzer='tag')
+        self.vectorizer = TfidfVectorizer(ngram_range=(min_n, max_n))
 
     def train_feature(self, examples):
         return self.vectorizer.fit_transform(examples)
@@ -85,17 +85,17 @@ if __name__ == '__main__':
     feat = Featurizer(args.ngmin, args.ngmax)
     print('Label set: %s' % str(labels))
     x_train = feat.train_feature(x[kTEXT_FIELD] for x in train)
-    x_test = feat.test_feature(x[kTEXT_FIELD] for x in test)
     y_train = np.array(list(labels.index(x[kTARGET_FIELD]) for x in train))
 
     # Train classifier & make cross validation
     lr = SGDClassifier(loss='log', penalty='l2', shuffle=True)
     if args.val:
-        scores = cross_val_score(lr, x_train, y_train, scoring='f1', cv=args.cv)
+        scores = cross_val_score(lr, x_train, y_train, cv=args.cv)
         print(scores)
         print(scores.mean())
         print(scores.std())
     else:
+        x_test = feat.test_feature(x[kTEXT_FIELD] for x in test)
         lr.fit(x_train, y_train)
         feat.show_top(lr, labels, args.top)
         predictions = lr.predict(x_test)
