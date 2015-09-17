@@ -8,7 +8,7 @@ import itertools
 import nltk
 import numpy as np
 from sklearn.cross_validation import cross_val_score
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, VectorizerMixin
 from sklearn.linear_model import SGDClassifier
 
 kTARGET_FIELD = 'spoiler'
@@ -19,7 +19,7 @@ first_person_words = ['i', 'we', 'you', 'us', 'my', 'mine', 'your', 'yours']
 third_person_words = ['he', 'she', 'they', 'their', 'his', 'him', 'her', 'theirs', 'hers']
 
 
-class DiscussVectorizer(CountVectorizer):
+class SentenceMixin(VectorizerMixin):
     def build_analyzer(self):
         """
         Return a callable that handles preprocessing and tokenization
@@ -41,17 +41,25 @@ class DiscussVectorizer(CountVectorizer):
 
         func_list = None
         if type(self.analyzer) is str:
-            func_list = [feature_map[flag.strip()] for flag in self.analyzer.split('|') if flag.strip() in feature_map]
+            func_list = [feature_map[flag.strip()] for flag in self.analyzer.split(':') if flag.strip() in feature_map]
         if not func_list:
             raise ValueError('%s is not a valid tokenization scheme/analyzer' % self.analyzer)
         else:
             return lambda doc: itertools.chain.from_iterable(f(doc) for f in func_list)
 
 
+class SentenceVectorizer(CountVectorizer, SentenceMixin):
+    pass
+
+
+class TfidfSentenceVectorizer(TfidfVectorizer, SentenceMixin):
+    pass
+
+
 class Featurizer:
-    def __init__(self, min_n, max_n):
-        self.vectorizer = DiscussVectorizer(analyzer="word|tag", ngram_range=(min_n, max_n))
-        # self.vectorizer = TfidfVectorizer(analyzer="word", ngram_range=(min_n, max_n))
+    def __init__(self, min_n, max_n, analyzer, use_tfidf=False):
+        self.vectorizer = SentenceVectorizer(analyzer=analyzer, ngram_range=(min_n, max_n)) if not use_tfidf \
+            else TfidfSentenceVectorizer(analyzer=analyzer, ngram_range=(min_n, max_n))
 
     def train_feature(self, examples):
         return self.vectorizer.fit_transform(examples)
@@ -76,7 +84,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--val', help='Run cross validation after training', action='store_true')
     parser.add_argument('--cv', help='Number of folds in cross validation',
-                        type=int, default=10, required=False)
+                        type=int, default=5, required=False)
     parser.add_argument('--top', help='Number of top features to show',
                         type=int, default=20, required=False)
     parser.add_argument('--output', help='Output file',
@@ -85,10 +93,13 @@ if __name__ == '__main__':
                         type=str, default='../data/spoilers/train.csv', required=False)
     parser.add_argument('--test', help='Test set file',
                         type=str, default='../data/spoilers/test.csv', required=False)
+    parser.add_argument('--feat', help='Features concat by :',
+                        type=str, default='word', required=False)
     parser.add_argument('--ngmin', help='The lower boundary of the range of n-values for n-grams',
                         type=int, default=1, required=False)
     parser.add_argument('--ngmax', help='The upper boundary of the range of n-values for n-grams',
                         type=int, default=1, required=False)
+    parser.add_argument("--tfidf", help="Use tf-idf", action='store_true')
     args = parser.parse_args()
 
     # Cast to list to keep it all in memory
@@ -99,7 +110,7 @@ if __name__ == '__main__':
         if not line[kTARGET_FIELD] in labels:
             labels.append(line[kTARGET_FIELD])
 
-    feat = Featurizer(args.ngmin, args.ngmax)
+    feat = Featurizer(args.ngmin, args.ngmax, args.feat, args.tfidf)
     print('Label set: %s' % str(labels))
     x_train = feat.train_feature(x[kTEXT_FIELD] for x in train)
     y_train = np.array(list(labels.index(x[kTARGET_FIELD]) for x in train))
