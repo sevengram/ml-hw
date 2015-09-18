@@ -1,20 +1,861 @@
 page,Country,Genre,Released,imdbRating,Runtime,Language,Type,imdbVotes
 AdamAdamantLives,UK,"Adventure, Sci-Fi",03 Jun 1966,6.8,50 min,English,series,116
-BarefootContessa,USA,Documentary,30 Nov 2002,6.7,30 min,English,series,380
-AForAndromeda,UK,"Drama, Sci-Fi, Thriller",27 Mar 2006,5.3,90 min,English,movie,421
-BombGirls,Canada,"Drama, War",11 Sep 2012,7.9,60 min,English,series,"2,856"
-CameraCafe,Poland,Comedy,01 Mar 2004,6.5,N/A,Polish,series,61
-FarOutSpaceNuts,USA,"Comedy, Family",06 Sep 1975,6.3,30 min,English,series,125
-Absolutely,UK,Comedy,23 May 1989,8.6,30 min,English,series,152
-BestLove,USA,"Short, Romance",02 Apr 2009,N/A,N/A,English,movie,N/A
-FallingSkies,"USA, Canada","Action, Sci-Fi, Thriller",19 Jun 2011,7.3,42 min,English,series,"67,100"
-EverybodyHatesChris,USA,Comedy,22 Sep 2005,7.3,22 min,English,series,"25,705"
-BeingHuman,"Canada, USA","Drama, Fantasy, Horror",17 Jan 2011,7.5,44 min,English,series,"20,269"
-AnimalPlanetHeroes,USA,Documentary,24 Nov 2005,8.2,N/A,English,movie,6
-DieWochenshow,Germany,Comedy,20 Apr 1996,7.0,45 min,German,series,359
-DrakeAndJosh,USA,"Adventure, Comedy, Crime",06 Jan 2006,6.9,120 min,English,movie,"2,265"
-AxMen,USA,"Documentary, Reality-TV",09 Mar 2008,5.5,N/A,English,series,953
-DreamHigh,South Korea,"Comedy, Music, Romance",31 Jul 2011,7.9,N/A,Korean,series,717
-DiplomaticImmunity,USA,"Action, Drama",07 Aug 1991,4.4,95 min,English,movie,241
-Botineras,Argentina,N/A,24 Nov 2009,6.6,60 min,Spanish,series,60
+Smallville,"USA, Canada","Adventure, Drama, Romance",16 Oct 2001,7.5,60 min,English,series,"89,719"
+TooCloseForComfort,USA,Comedy,11 Nov 1980,6.5,30 min,English,series,996
+JonathanCreek,UK,"Crime, Drama, Mystery",10 May 1997,8.2,120 min,English,series,"4,525"
+TheManyLovesOfDobieGillis,USA,"Comedy, Family",29 Sep 1959,7.9,30 min,English,series,883
+Noob,France,Comedy,07 Nov 2008,7.6,6 min,French,series,59
+WelcomeBackKotter,USA,Comedy,09 Sep 1975,7.2,30 min,English,series,"2,921"
+Brimstone,USA,"Fantasy, Horror, Mystery",23 Oct 1998,8.2,60 min,English,series,"1,252"
+TheNakedTruth,USA,Comedy,13 Sep 1995,7.1,30 min,English,series,525
+YoungHercules,USA,"Action, Family, Fantasy",12 Sep 1998,5.7,30 min,English,series,954
+LosUnicos,Argentina,"Action, Comedy, Romance",07 Feb 2011,6.2,60 min,Spanish,series,57
+MurdochMysteries,"Canada, UK","Crime, Drama, Mystery",06 Jun 2009,8.0,48 min,English,series,"4,516"
+Porridge,UK,Comedy,05 Sep 1974,8.3,45 min,English,series,"3,148"
+AlfredHitchcockPresents,USA,"Crime, Drama, Mystery",02 Oct 1955,8.7,25 min,English,series,"6,788"
+Combat,UK,"Short, Comedy, Drama",N/A,5.2,8 min,English,movie,149
+HarryHillsTVBurp,N/A,Comedy,30 Dec 2006,N/A,23 min,N/A,episode,N/A
+TheDresdenFiles,"Canada, USA","Action, Crime, Drama",21 Jan 2007,7.8,60 min,English,series,"7,055"
+MasterChef,Israel,Reality-TV,14 Oct 2010,7.7,N/A,Hebrew,series,106
+Parenthood,USA,"Comedy, Drama",02 Aug 1989,7.0,124 min,English,movie,"33,843"
+ImACelebrityGetMeOutOfHere,UK,"Adventure, Comedy, Reality-TV",25 Aug 2002,5.6,60 min,English,series,"1,219"
+WhoseLineIsItAnyway,"USA, UK","Comedy, Game-Show",05 Aug 1998,8.7,30 min,English,series,"25,661"
+ScarecrowAndMrsKing,USA,Adventure,03 Oct 1983,7.2,60 min,English,series,"1,241"
+PitBoss,USA,Reality-TV,16 Jan 2010,6.4,N/A,English,series,357
+BattlestarGalacticaReimagined,USA,"Action, Adventure, Drama",14 Jan 2005,8.8,44 min,English,series,"109,885"
 AroundTheHorn,USA,"Sport, Talk-Show",28 Oct 2002,7.7,30 min,English,series,616
+JohnAdams,USA,"Biography, Drama, History",16 Mar 2008,8.7,501 min,English,series,"16,574"
+HeartsAfire,USA,"Comedy, Romance",14 Sep 1992,7.2,30 min,English,series,177
+Room101,USA,Thriller,29 Mar 2002,6.8,112 min,English,movie,"191,438"
+TwentyFour,UK,"Comedy, Drama, Romance",01 May 1998,7.1,96 min,English,movie,"1,987"
+BronBroen,Sweden,Documentary,25 Apr 2014,N/A,56 min,Swedish,movie,N/A
+TheCrossWits,USA,Game-Show,15 Dec 1975,8.4,30 min,English,series,5
+ArthurOfTheBritons,UK,Adventure,06 Dec 1972,8.4,30 min,English,series,91
+Titus,"Italy, USA, UK","Drama, History, Thriller",11 Feb 2000,7.3,162 min,"English, Latin",movie,"16,637"
+Blade,USA,"Action, Horror",21 Aug 1998,7.1,120 min,"English, Russian",movie,"174,609"
+ThreesCompany,N/A,Reality-TV,06 Aug 2012,N/A,N/A,N/A,episode,N/A
+NightVisions,"Canada, USA","Fantasy, Horror, Mystery",12 Jul 2001,7.6,43 min,English,series,489
+GimmeGimmeGimme,UK,Comedy,08 Jan 1999,7.5,34 min,English,series,"1,219"
+HiDeHi,UK,Comedy,01 Jan 1980,6.8,60 min,English,series,496
+OpenAllHours,UK,Comedy,20 Feb 1976,7.7,30 min,English,series,"2,669"
+DontTrustTheBInApartment23,USA,Comedy,11 Apr 2012,7.2,22 min,English,series,"22,254"
+TheComicStripPresents,UK,Comedy,02 Nov 1982,8.1,N/A,English,series,675
+DangerMan,UK,"Action, Adventure, Crime",11 Sep 1960,8.1,24 min,English,series,488
+XenaWarriorPrincess,USA,"Documentary, Short",08 Mar 2005,8.9,31 min,English,movie,59
+Trollied,UK,Comedy,04 Aug 2011,7.4,26 min,English,series,"1,218"
+NewsRadio,USA,Talk-Show,01 Oct 2009,N/A,N/A,English,series,N/A
+VidasRobadas,Argentina,"Drama, Mystery, Romance",03 Mar 2008,7.9,60 min,Spanish,series,70
+LessThanPerfect,USA,Comedy,01 Oct 2002,7.1,30 min,English,series,"2,391"
+ModernFamily,USA,Comedy,23 Sep 2009,8.6,22 min,English,series,"208,346"
+SamanthaWho,USA,"Comedy, Mystery, Romance",15 Oct 2007,7.4,22 min,English,series,"8,243"
+TodaysSpecial,USA,Comedy,11 Nov 2009,6.9,99 min,English,movie,"1,661"
+FindersKeepers,USA,Thriller,18 Oct 2014,4.4,N/A,English,movie,"1,191"
+Chase,USA,"Action, Crime, Drama",20 Sep 2010,7.0,60 min,English,series,"2,737"
+Merlin,UK,"Adventure, Drama, Fantasy",21 Jun 2009,7.9,45 min,English,series,"51,711"
+PhoenixNights,UK,Comedy,14 Jan 2001,8.4,25 min,English,series,"3,300"
+TalesFromTheDarkside,USA,"Fantasy, Horror, Thriller",30 Sep 1984,7.7,30 min,English,series,"3,018"
+Rev,"Spain, South Korea, Vietnam","Short, Drama, Mystery",N/A,N/A,21 min,Spanish,movie,N/A
+TheFreshPrinceOfBelAir,USA,Comedy,10 Sep 1990,8.0,22 min,English,series,"81,396"
+AntiquesRoadShow,USA,N/A,09 Jan 1997,7.4,N/A,English,series,624
+AnimalPlanetHeroes,USA,Documentary,24 Nov 2005,8.2,N/A,English,movie,6
+ItsMeOrTheDog,N/A,Reality-TV,N/A,6.9,N/A,N/A,series,37
+GoodnightSweetheart,UK,"Comedy, Drama, Fantasy",18 Nov 1993,7.7,30 min,English,series,"1,209"
+Reno911,USA,Drama,01 Dec 1939,5.9,73 min,English,movie,61
+HimAndHer,South Korea,"Short, Drama",01 Apr 2013,N/A,8 min,Korean,movie,N/A
+FridayNightDinner,UK,Comedy,25 Feb 2011,8.0,24 min,English,series,"4,037"
+LifeWithDerek,Canada,"Comedy, Drama, Family",18 Sep 2005,7.6,22 min,"English, French, Spanish",series,"3,809"
+NoHeroics,UK,Comedy,18 Sep 2008,7.7,N/A,English,series,569
+TheStoryteller,UK,Fantasy,28 Apr 1989,8.9,225 min,English,series,"2,703"
+BlackAndWhiteTW,"Australia, UK",Drama,31 Oct 2002,6.7,99 min,English,movie,606
+JimRomeIsBurning,USA,"Sport, Talk-Show",06 May 2003,5.5,N/A,English,series,245
+ItTakesAThief,USA,"Adventure, Crime, Drama",09 Jan 1968,7.9,51 min,English,series,987
+Boomtown,USA,"Crime, Drama, Mystery",29 Sep 2002,8.1,45 min,English,series,"1,619"
+Tucker,USA,Comedy,02 Oct 2000,7.4,30 min,English,series,265
+TheSecretsOfIsis,USA,Thriller,N/A,N/A,N/A,English,movie,N/A
+ThatGirl,USA,Comedy,N/A,7.2,30 min,English,series,"1,124"
+TheThinBlueLine,USA,"Documentary, Crime, Mystery",25 Aug 1988,8.1,103 min,English,movie,"13,118"
+Raumpatrouille,West Germany,"Adventure, Sci-Fi",17 Sep 1966,8.3,60 min,German,series,578
+LambChopsPlayAlong,"Canada, USA",Family,10 Sep 1992,7.8,30 min,English,series,667
+Duel,USA,Thriller,13 Nov 1971,7.7,90 min,English,movie,"42,713"
+RutlandWeekendTelevision,UK,"Comedy, Music",12 May 1975,8.2,30 min,English,series,69
+UnhappilyEverAfter,USA,Comedy,11 Jan 1995,6.9,30 min,English,series,"1,988"
+OnceUponATime,USA,"Adventure, Fantasy, Romance",23 Oct 2011,8.0,44 min,English,series,"148,770"
+TheClass,France,Drama,13 Mar 2009,7.5,128 min,"French, Bambara, Spanish",movie,"27,681"
+Profiler,USA,"Crime, Drama, Thriller",21 Sep 1996,7.3,60 min,English,series,"2,299"
+MadMen,USA,Drama,19 Jul 2007,8.7,47 min,English,series,"126,612"
+Merlin-1998,UK,"Adventure, Drama, Fantasy",21 Jun 2009,7.9,45 min,English,series,"51,711"
+YouAreBeautiful,South Korea,"Comedy, Drama, Music",07 Oct 2009,8.1,N/A,Korean,series,"1,043"
+MyWifeAndKids,USA,Comedy,28 Mar 2001,6.8,30 min,English,series,"18,954"
+TheDrewCareyShow,USA,"Comedy, Drama",13 Sep 1995,6.9,30 min,English,series,"11,690"
+LoveKeepsGoing,Taiwan,Drama,05 Jun 2011,6.9,N/A,Mandarin,series,13
+TheChronicle,USA,"Comedy, Horror, Sci-Fi",14 Jul 2001,6.7,48 min,English,series,270
+SirArthurConanDoylesTheLostWorld,"Australia, Canada, New Zealand","Action, Sci-Fi, Adventure",02 Oct 1999,7.3,60 min,English,series,"2,209"
+Downfall,"Germany, Austria, Italy","Biography, Drama, War",08 Apr 2005,8.3,156 min,"German, Russian, Hungarian",movie,"225,919"
+Absolutely,UK,Comedy,23 May 1989,8.6,30 min,English,series,152
+NightCourt,USA,Comedy,04 Jan 1984,7.7,30 min,English,series,"5,866"
+TheGames,UK,"Drama, Sport",01 Aug 1970,6.2,100 min,English,movie,271
+FireballXL5,UK,"Family, Sci-Fi",05 Oct 1963,7.5,30 min,English,series,249
+ThePrisoner,UK,"Drama, Mystery, Sci-Fi",01 Jun 1968,8.7,50 min,"English, Russian, German, Romany, Spanish, French, Polish",series,"7,593"
+SherlockHolmes,"USA, Germany","Action, Adventure, Crime",25 Dec 2009,7.6,128 min,"English, French",movie,"431,839"
+WhatsMyLine,USA,"Comedy, Family, Game-Show",02 Feb 1950,8.6,30 min,English,series,788
+RippingYarns,UK,"Adventure, Comedy",07 Jan 1976,8.1,30 min,English,series,729
+CountdownWithKeithOlbermann,USA,"News, Talk-Show",N/A,6.8,60 min,English,series,755
+TheMagnificentSeven,USA,"Action, Adventure, Western",23 Oct 1960,7.8,128 min,"English, Spanish",movie,"59,470"
+TheInbetweeners,UK,Comedy,25 Jan 2010,8.5,25 min,English,series,"48,317"
+ArrestedDevelopment,USA,Comedy,02 Nov 2003,9.1,22 min,English,series,"191,302"
+SabrinaTheTeenageWitch,"USA, Canada","Comedy, Family, Fantasy",07 Apr 1996,6.2,91 min,English,movie,"4,268"
+Blossom,USA,"Comedy, Drama",03 Jan 1991,5.9,30 min,English,series,"4,494"
+OutOfJimmysHead,USA,"Animation, Comedy, Family",30 Sep 2007,2.4,30 min,English,series,424
+TheVoice,USA,"Game-Show, Music, Reality-TV",26 Apr 2011,6.6,60 min,English,series,"8,505"
+PrivateSchulz,UK,Comedy,06 May 1981,7.7,300 min,English,series,298
+TrueJacksonVP,USA,Comedy,08 Nov 2008,5.6,N/A,English,series,"2,018"
+AgainstTheWall,USA,"Action, Drama, Thriller",26 Mar 1994,6.7,111 min,English,movie,"1,683"
+TorchwoodChildrenOfEarth,"UK, Canada","Action, Drama, Sci-Fi",22 Oct 2006,7.8,50 min,English,series,"31,997"
+LaQueSeAvecina,Spain,Comedy,22 Apr 2007,7.3,75 min,Spanish,series,"1,388"
+MeerkatManor,UK,Documentary,N/A,8.3,26 min,English,series,860
+DearJohn,USA,"Drama, Romance, War",05 Feb 2010,6.3,108 min,English,movie,"91,372"
+TheAvengers,USA,"Action, Adventure, Sci-Fi",04 May 2012,8.1,143 min,"English, Russian",movie,"877,226"
+Neverland,UK,"Adventure, Fantasy",04 Dec 2011,6.5,180 min,English,series,"7,988"
+ZOOM,USA,Drama,28 Aug 2015,5.7,120 min,English,movie,"2,536"
+AbsolutelyFabulous,UK,Comedy,24 Jul 1994,8.1,45 min,"English, French",series,"12,585"
+MyPlace,Australia,"Drama, Family",N/A,7.3,30 min,English,series,51
+BigWaveDaves,USA,Comedy,09 Aug 1993,6.7,30 min,English,series,14
+BigTimeRush,USA,"Comedy, Musical",28 Nov 2009,6.1,25 min,English,series,"6,113"
+RussellHowardsGoodNews,UK,Comedy,22 Oct 2009,7.8,N/A,English,series,"1,300"
+Wilfred,USA,Comedy,23 Jun 2011,7.9,30 min,English,series,"33,955"
+MyPhoneGenie,"Ireland, Germany, UK",Comedy,01 Jan 2012,6.6,N/A,English,series,25
+ColgateComedyHour,USA,"Comedy, Romance",10 Sep 1950,7.4,60 min,English,series,350
+TheHoneymooners,"USA, Germany","Comedy, Drama, Family",10 Jun 2005,3.0,90 min,English,movie,"6,376"
+MissionImpossible,USA,"Short, Action",27 Jul 2009,N/A,N/A,N/A,movie,N/A
+SixteenAndPregnant,USA,Drama,19 Jan 1998,5.7,96 min,English,movie,"1,711"
+DreamHigh2,South Korea,"Comedy, Music, Romance",31 Jul 2011,7.9,N/A,Korean,series,717
+FifteenLove,USA,Reality-TV,01 Mar 2009,N/A,30 min,English,movie,N/A
+Cybill,USA,Comedy,02 Jan 1995,6.8,30 min,English,series,"2,138"
+WhoDoYouThinkYouAre,UK,"Animation, Comedy",24 Dec 2004,7.7,24 min,English,movie,10
+LeadBalloon,UK,Comedy,04 Oct 2006,7.9,N/A,English,series,992
+SosMiVida,Argentina,"Comedy, Romance, Sport",29 Apr 2009,6.9,60 min,Spanish,series,491
+TheFirm,USA,"Drama, Mystery, Thriller",30 Jun 1993,6.8,154 min,English,movie,"82,531"
+DeadGorgeous,UK,"Comedy, Crime, Drama",21 Oct 2002,7.1,120 min,English,movie,173
+PrettyLittleLiars,USA,"Drama, Mystery, Thriller",08 Jun 2010,7.9,60 min,English,series,"100,852"
+Woof,USA,Short,19 Jun 2004,5.6,6 min,English,movie,14
+ALF,USA,"Comedy, Drama, Family",22 Sep 1986,7.4,30 min,English,series,"21,289"
+SanfordAndSon,USA,Comedy,14 Jan 1972,7.9,30 min,English,series,"4,511"
+SportsNight,USA,"Comedy, Drama, Sport",22 Sep 1998,8.5,30 min,English,series,"5,227"
+HannahMontana,USA,"Comedy, Family, Music",24 Mar 2006,4.6,23 min,English,series,"26,885"
+TheGoodies,UK,Comedy,08 Nov 1970,7.9,30 min,English,series,720
+ImAlanPartridge,UK,Comedy,03 Nov 1997,8.6,29 min,"English, German, French",series,"10,406"
+AllCreaturesGreatAndSmall,UK,"Comedy, Drama",08 Jan 1978,8.4,50 min,English,series,"1,388"
+TheThickOfIt,UK,Comedy,19 May 2005,8.8,29 min,English,series,"10,219"
+LittleMosqueOnThePrairie,Canada,Comedy,09 Jan 2007,6.1,22 min,English,series,"1,970"
+Alcatraz,"USA, Canada","Action, Crime, Drama",16 Jan 2012,7.1,60 min,English,series,"34,050"
+TheITCrowd,UK,Comedy,03 Feb 2006,8.6,25 min,English,series,"78,895"
+StarTrekTheOriginalSeries,USA,"Action, Adventure, Mystery",08 Sep 1966,8.4,50 min,English,series,"42,634"
+TheCosbyShow,USA,"Comedy, Family, Romance",20 Sep 1984,7.5,30 min,English,series,"23,255"
+PetticoatJunction,USA,Comedy,24 Sep 1963,7.1,30 min,English,series,"1,266"
+RedDwarf,UK,"Comedy, Sci-Fi",29 Mar 1989,8.5,30 min,"English, Esperanto",series,"20,676"
+Wheaton,USA,"Comedy, Talk-Show",27 May 2014,6.4,N/A,English,series,532
+TheRedGreenShow,Canada,Comedy,04 Jan 1991,7.9,25 min,English,series,"1,540"
+DeathValley,USA,"Comedy, Horror",29 Aug 2011,7.9,N/A,English,series,"4,223"
+QueenOfSwords,"Spain, France, UK, Canada, USA","Action, Adventure, Western",02 Oct 2000,6.9,30 min,English,series,282
+FawltyTowers,UK,Comedy,19 Sep 1975,8.9,30 min,"English, Spanish",series,"47,798"
+WhatsHappening,USA,Comedy,05 Aug 1976,7.0,30 min,English,series,"1,529"
+DoctorWho,"UK, Canada","Adventure, Drama, Family",17 Mar 2006,8.9,45 min,English,series,"128,902"
+GreenAcres,USA,"Comedy, Family",15 Sep 1965,7.4,30 min,English,series,"3,123"
+FullHouse,USA,"Comedy, Drama, Family",22 Sep 1987,6.6,30 min,English,series,"35,883"
+Lawman,USA,Western,04 Aug 1971,7.0,99 min,English,movie,"2,438"
+PersonOfInterest,USA,"Action, Drama, Mystery",22 Sep 2011,8.5,43 min,English,series,"101,139"
+JurassicFightClub,USA,"Documentary, History",29 Jul 2008,7.0,N/A,English,series,301
+WillAndGrace,USA,Comedy,21 Sep 1998,7.2,22 min,English,series,"33,813"
+Beastmaster,"Australia, Canada, USA","Action, Adventure, Fantasy",09 Oct 1999,6.3,43 min,English,series,"1,267"
+TheOuterLimits,"Canada, USA","Drama, Fantasy, Horror",26 Mar 1995,7.8,44 min,English,series,"7,917"
+PerfectStrangers,USA,"Comedy, Family",25 Mar 1986,7.2,30 min,English,series,"5,516"
+TheGoodGuys,USA,"Action, Comedy",19 May 2010,8.1,60 min,English,series,"6,057"
+TheBernieMacShow,USA,"Comedy, Drama, Family",07 Nov 2001,6.9,30 min,English,series,"5,132"
+Miranda,UK,Comedy,09 Nov 2009,8.0,30 min,English,series,"7,613"
+GoldRush,USA,Game-Show,19 Sep 2006,7.2,N/A,English,series,18
+PrisonBreak,USA,"Action, Crime, Drama",29 Aug 2005,8.5,44 min,"English, Spanish",series,"278,467"
+WhatWouldYouDo,USA,"Short, Comedy",21 Feb 1911,N/A,N/A,English,movie,N/A
+Friends,USA,"Comedy, Romance",22 Sep 1994,9.0,22 min,English,series,"402,911"
+BeautifulPeople,South Africa,"Comedy, Documentary",01 Nov 1974,8.3,92 min,English,movie,"2,751"
+MrBrain,Japan,Drama,23 May 2009,7.5,58 min,Japanese,series,286
+TheDickVanDykeShow,USA,"Comedy, Family",03 Oct 1961,8.5,30 min,English,series,"4,774"
+TheJimHensonHour,USA,"Comedy, Family, Fantasy",14 Apr 1989,8.6,48 min,English,series,218
+Wallander,"UK, Sweden, USA, Germany","Crime, Thriller",10 May 2009,7.9,90 min,English,series,"6,445"
+MisterRogersNeighborhood,USA,"Family, Fantasy, Music",19 Feb 1968,8.5,30 min,English,series,"2,296"
+WMACMasters,USA,Sport,N/A,7.8,N/A,English,series,186
+CurbYourEnthusiasm,USA,Comedy,15 Oct 2000,8.7,28 min,English,series,"58,857"
+MadDogs,UK,"Comedy, Crime, Drama",10 Feb 2011,7.6,N/A,English,series,"3,496"
+AmericasMostWanted,N/A,"Documentary, Crime, Drama",09 Sep 2004,N/A,57 min,N/A,episode,N/A
+Roseanne,USA,"Comedy, Drama",18 Oct 1988,7.0,22 min,English,series,"25,563"
+TheThreeStooges,USA,Comedy,13 Apr 2012,5.1,92 min,English,movie,"24,382"
+TalesFromTheCrypt,USA,"Comedy, Crime, Horror",10 Jun 1989,8.0,25 min,English,series,"13,687"
+TheWildWildWest,USA,"Action, Adventure, Sci-Fi",17 Sep 1965,8.2,50 min,English,series,"2,403"
+TheJokersWild,USA,"Family, Game-Show",04 Sep 1972,7.0,30 min,English,series,84
+Joey,USA,"Comedy, Romance",09 Sep 2004,6.0,30 min,English,series,"34,876"
+Casanova,USA,"Adventure, Comedy, Drama",06 Jan 2006,6.5,112 min,English,movie,"41,831"
+SCTV,"Canada, USA",Comedy,01 Sep 1977,8.6,30 min,English,series,"1,147"
+CombatHospital,"Canada, UK","Drama, War",N/A,7.4,42 min,English,series,"1,764"
+Community,USA,Comedy,17 Sep 2009,8.6,22 min,English,series,"130,282"
+PeopleLikeUs,USA,Drama,29 Jun 2012,7.1,114 min,English,movie,"32,433"
+WithoutATrace,USA,"Crime, Drama, Mystery",26 Sep 2002,6.9,60 min,English,series,"13,688"
+Pizza,India,"Horror, Romance, Thriller",19 Oct 2012,8.1,127 min,Tamil,movie,"2,373"
+CharliesAngels,"USA, Germany","Action, Adventure, Comedy",03 Nov 2000,5.5,98 min,"English, German, Finnish, Japanese, Cantonese",movie,"136,579"
+CasadosConHijos,Argentina,Comedy,12 Apr 2005,8.0,30 min,Spanish,series,581
+Godivas,Canada,"Comedy, Drama",16 Mar 2005,7.7,60 min,English,series,81
+LetThemEatCake,UK,"Comedy, History",09 Sep 1999,8.2,30 min,English,series,456
+RulesOfEngagement,"UK, Germany, Canada, USA","Action, Drama, War",07 Apr 2000,6.4,128 min,"English, Arabic",movie,"35,946"
+Grimm,USA,"Drama, Fantasy, Horror",N/A,7.8,45 min,English,series,"71,444"
+Scrubs,USA,"Comedy, Drama",02 Oct 2001,8.5,22 min,"English, German, Spanish, American Sign Language",series,"173,804"
+Bottom,UK,"Comedy, Crime",23 Apr 1998,8.2,30 min,English,series,"8,265"
+Jeopardy,USA,"Crime, Drama, Film-Noir",15 Jun 1953,6.8,69 min,"English, Spanish",movie,"1,083"
+SonsOfGuns,USA,Reality-TV,12 Jan 2011,6.2,60 min,English,series,"1,420"
+InspectorGeorgeGently,UK,"Crime, Drama, Mystery",08 Apr 2007,7.9,89 min,English,series,"2,709"
+TheMiddle,USA,Comedy,30 Sep 2009,7.4,30 min,English,series,"28,423"
+GhostHunters,USA,Documentary,06 Oct 2004,6.6,60 min,English,series,"5,278"
+DevilBesideYou,Taiwan,"Comedy, Romance",25 Jun 2005,8.1,90 min,Mandarin,series,162
+Flashpoint,Canada,"Action, Crime, Drama",11 Jul 2008,7.7,41 min,English,series,"13,530"
+AuctionHunters,USA,Reality-TV,09 Nov 2010,6.1,30 min,English,series,"2,387"
+Jackass,USA,"Action, Comedy, Reality-TV",12 Apr 2000,7.2,535 min,English,series,"15,999"
+MyThreeSons,USA,"Comedy, Family",29 Sep 1960,7.1,30 min,English,series,"1,683"
+Pitfall,Japan,"Crime, Drama, Fantasy",06 Jun 1962,7.8,97 min,Japanese,movie,"2,135"
+WaitingForGod,UK,Comedy,28 Jun 1990,7.9,30 min,English,series,921
+Workaholics,USA,Comedy,06 Apr 2011,8.2,30 min,English,series,"33,439"
+CameraCafe,Poland,Comedy,01 Mar 2004,6.5,N/A,Polish,series,61
+BritainsGotTalent,UK,Reality-TV,N/A,6.0,N/A,English,series,"2,047"
+Wipeout2008,USA,"Comedy, Game-Show, Reality-TV",24 Jun 2008,6.7,42 min,English,series,"5,792"
+StarTrekDeepSpaceNine,USA,"Action, Adventure, Drama",03 Jan 1993,7.9,45 min,"English, Klingon",series,"29,716"
+OnlyFoolsAndHorses,UK,Comedy,08 Sep 1981,8.9,95 min,English,series,"24,145"
+PrimeSuspectUS,UK,"Crime, Drama, Mystery",23 Jan 1992,8.5,207 min,English,series,"3,773"
+Columbo,USA,"Crime, Drama, Mystery",01 Mar 1971,8.2,100 min,English,series,"17,419"
+Whitney,USA,Comedy,N/A,5.5,30 min,English,series,"11,077"
+Vintergatan,Sweden,N/A,06 Apr 1962,N/A,N/A,Swedish,movie,N/A
+TheHollowmen,Australia,"Comedy, Drama",09 Jul 2008,8.4,27 min,English,series,372
+Naeturvaktin,Iceland,"Comedy, Drama",16 Sep 2007,8.3,28 min,Icelandic,series,508
+LittleHouseOnThePrairie,USA,"Drama, Family, Romance",11 Sep 1974,7.3,60 min,English,series,"10,793"
+BitchinKitchen,Canada,N/A,27 Oct 2010,6.8,30 min,English,series,248
+YesDear,USA,"Animation, Short, Comedy",12 Dec 1920,6.2,N/A,N/A,movie,12
+TheMysticKnightsOfTirNaNog,"France, USA","Action, Adventure, Drama",12 Sep 1998,7.1,30 min,English,series,344
+Alphas,USA,"Action, Drama, Sci-Fi",11 Jul 2011,7.3,44 min,"English, Persian",series,"21,927"
+TheColbertReport,USA,"Comedy, News, Talk-Show",17 Oct 2005,8.7,30 min,English,series,"25,357"
+Survivor,USA,"Adventure, Game-Show, Reality-TV",31 May 2000,6.9,60 min,English,series,"16,131"
+Rush,"UK, Germany, USA","Action, Biography, Drama",27 Sep 2013,8.2,123 min,"English, German, Italian, French, Spanish",movie,"263,143"
+BeakmansWorld,USA,"Comedy, Family",18 Sep 1993,8.6,30 min,English,series,"1,589"
+Fringe,"USA, Canada","Drama, Mystery, Sci-Fi",09 Sep 2008,8.5,60 min,English,series,"163,399"
+TeenWolf,USA,"Comedy, Drama, Horror",05 Jun 2011,7.8,41 min,English,series,"73,297"
+Rome,"UK, USA","Action, Drama, History",28 Aug 2005,8.9,90 min,English,series,"98,031"
+DeadSet,UK,"Comedy, Drama, Horror",27 Oct 2008,7.9,141 min,English,series,"13,470"
+Animorphs,"Canada, USA",Sci-Fi,04 Sep 1998,6.8,30 min,English,series,862
+Hornblower,UK,"Action, Adventure, Drama",10 Apr 1951,7.5,117 min,"English, French, Spanish",movie,"4,623"
+Webster,USA,"Comedy, Family",16 Sep 1983,5.5,30 min,English,series,"1,194"
+Mythbusters,USA,"Documentary, Mystery",03 Oct 2003,8.4,44 min,English,series,"37,096"
+ItsAlwaysSunnyInPhiladelphia,USA,Comedy,04 Aug 2005,8.8,22 min,English,series,"117,479"
+TheJury,UK,Drama,17 Feb 2002,8.1,300 min,English,series,516
+TheSuiteLifeOfZackAndCody,USA,"Comedy, Family",18 Mar 2005,6.1,30 min,English,series,"21,968"
+LawAndOrder,USA,Western,13 May 1953,5.8,80 min,English,movie,387
+FallingSkies,"USA, Canada","Action, Sci-Fi, Thriller",19 Jun 2011,7.3,42 min,English,series,"67,100"
+SplitSecond,UK,"Action, Crime, Horror",01 May 1992,6.2,90 min,English,movie,"7,676"
+TenPointFive,USA,"Animation, Short",05 Nov 2003,8.2,7 min,English,movie,23
+Conan,USA,"Comedy, Music, Talk-Show",08 Nov 2010,8.2,60 min,English,series,"14,742"
+EvasiveInquiryAgency,South Korea,Comedy,N/A,7.6,N/A,Korean,series,5
+ThePalace,UK,Drama,14 Jan 2008,7.1,N/A,English,series,342
+BlackMirror,UK,"Drama, Sci-Fi, Thriller",04 Dec 2011,8.8,60 min,English,series,"37,300"
+LifesTooShort,UK,Comedy,01 Feb 2012,7.5,30 min,English,series,"9,302"
+VengeanceUnlimited,USA,"Crime, Drama",29 Sep 1998,8.9,60 min,English,series,787
+DrakeAndJosh,USA,"Adventure, Comedy, Crime",06 Jan 2006,6.9,120 min,English,movie,"2,265"
+DropTheDeadDonkey,UK,Comedy,09 Aug 1990,8.2,N/A,English,series,708
+DinosaurRevolution,USA,Documentary,04 Sep 2011,6.4,N/A,English,series,102
+MysteriousWays,"Canada, USA","Drama, Fantasy, Sci-Fi",24 Jul 2000,7.9,60 min,English,series,646
+GreysAnatomy,USA,"Drama, Romance",27 Mar 2005,7.7,41 min,English,series,"141,822"
+GroundedForLife,USA,Comedy,10 Jan 2001,7.5,30 min,English,series,"11,868"
+KeepingUpAppearances,UK,Comedy,29 Oct 1990,7.7,60 min,English,series,"8,862"
+Nikita,USA,"Action, Crime, Drama",09 Sep 2010,7.7,60 min,English,series,"40,111"
+Dateline,Australia,News,N/A,5.7,60 min,English,series,17
+AfterMASH,USA,Comedy,26 Sep 1983,5.7,30 min,English,series,320
+TheMostExtreme,"New Zealand, USA",Documentary,07 Jul 2002,8.2,60 min,English,series,153
+AllyMcBeal,USA,"Comedy, Drama, Fantasy",08 Sep 1997,6.8,45 min,English,series,"21,485"
+OneFootInTheGrave,UK,Comedy,04 Jan 1990,8.0,90 min,English,series,"3,253"
+TheLibrarians,USA,Adventure,07 Dec 2014,7.2,42 min,English,series,"8,241"
+SonicTheHedgehog,USA,"Animation, Action, Adventure",18 Sep 1993,7.1,30 min,English,series,"2,819"
+YoungBlades,"USA, Canada","Action, Adventure, Comedy",23 Jan 2005,6.1,60 min,English,series,230
+Borgen,Denmark,Drama,29 Oct 2011,8.5,58 min,Danish,series,"9,013"
+KaizokuSentaiGokaiger,Japan,Adventure,21 Jan 2012,7.2,64 min,Japanese,movie,44
+BoyMeetsWorld,USA,"Comedy, Drama, Family",24 Sep 1993,8.1,30 min,English,series,"30,215"
+SportsNation,USA,"Sport, Talk-Show",06 Jul 2009,7.1,60 min,English,series,329
+GrowingPains,USA,"Comedy, Family",24 Sep 1985,6.6,30 min,English,series,"9,052"
+SevenPeriodsWithMrGormsby,New Zealand,Comedy,06 May 2005,8.7,30 min,English,series,263
+BeautyAndTheBeast,USA,"Animation, Family, Fantasy",22 Nov 1991,8.0,84 min,"English, French",movie,"272,279"
+LifeAfterDinosaurs,"France, Japan, USA",Documentary,18 Jul 2010,6.0,N/A,English,series,8
+HomicideLifeOnTheStreet,USA,"Crime, Drama, Mystery",31 Jan 1993,8.6,60 min,English,series,"7,818"
+TheCape,USA,"Action, Drama",09 Jan 2011,5.8,60 min,English,series,"7,444"
+DreamHigh,South Korea,"Comedy, Music, Romance",31 Jul 2011,7.9,N/A,Korean,series,717
+TheVicarOfDibley,UK,Comedy,10 Nov 1994,8.0,60 min,English,series,"7,136"
+HappyDays,USA,"Comedy, Family, Music",15 Jan 1974,7.5,30 min,English,series,"10,061"
+GlasgowKiss,UK,N/A,25 Jul 2000,8.7,50 min,English,series,70
+ILoveLucy,USA,"Comedy, Family",15 Oct 1951,8.5,30 min,"English, Spanish",series,"14,137"
+KirRoyal,West Germany,Comedy,22 Sep 1986,8.3,60 min,German,series,423
+Blackadder,UK,"Comedy, War",28 Sep 1989,8.9,175 min,English,series,"25,622"
+CSI,USA,"Action, Crime, Drama",23 Sep 2002,6.4,43 min,"English, Spanish, Greek",series,"40,908"
+ChildsPlay,UK,"Documentary, Short, Comedy",N/A,5.3,3 min,English,movie,6
+ThankGodYoureHere,Australia,"Comedy, Game-Show",05 Apr 2006,8.2,60 min,English,series,700
+SlingsAndArrows,Canada,Comedy,03 Nov 2003,8.9,60 min,English,series,"1,932"
+Botineras,Argentina,N/A,24 Nov 2009,6.6,60 min,Spanish,series,60
+DinoLab,Georgia,"Short, Drama",N/A,7.3,15 min,Georgian,movie,12
+PJKatiesFarm,N/A,"Animation, Adventure, Comedy, Family, Fantasy",N/A,7.8,N/A,N/A,episode,14
+Caprica,"Canada, USA","Action, Drama, Sci-Fi",22 Jan 2010,7.1,60 min,"English, Greek",series,"19,385"
+CrashCourse,USA,Comedy,17 Jan 1988,5.3,95 min,English,movie,316
+FamilyMatters,USA,"Comedy, Drama, Family",22 Sep 1989,6.5,30 min,English,series,"16,517"
+AmericasFunniestHomeVideos,USA,"Comedy, Family, Reality-TV",26 Nov 1989,6.3,30 min,English,series,"3,293"
+PardonTheInterruption,USA,"Sport, Talk-Show",22 Oct 2001,8.7,30 min,English,series,"1,166"
+TheApprentice,USA,"Game-Show, Reality-TV",08 Jan 2004,5.5,60 min,English,series,"5,626"
+Raines,USA,"Crime, Drama",15 Mar 2007,7.9,45 min,English,series,"1,803"
+TheMaryTylerMooreShow,USA,"Comedy, Documentary",24 Sep 2002,7.7,88 min,English,movie,23
+Alias,USA,"Action, Drama, Mystery",30 Sep 2001,7.6,42 min,"English, Bulgarian, Arabic, Cantonese, French, German, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Portuguese, Romanian, Russian, Spanish, Thai, Ukrainian, Uzbek, Dutch",series,"35,354"
+JamesMaysManLab,UK,Documentary,31 Oct 2010,7.8,60 min,English,series,567
+BandOfBrothers,"UK, USA","Action, Drama, History",09 Sep 2001,9.6,705 min,"English, Dutch, French, German, Lithuanian",series,"183,802"
+TheAdventuresOfRobinHood,USA,"Action, Adventure, Romance",14 May 1938,8.0,102 min,English,movie,"36,789"
+HouseOfLies,USA,"Comedy, Drama",08 Jan 2012,7.4,28 min,English,series,"18,172"
+RiverMonsters,USA,Documentary,05 Apr 2009,8.2,N/A,English,series,"2,851"
+ThisHourHas22Minutes,Canada,Comedy,N/A,6.5,N/A,English,series,546
+Touch,USA,"Drama, Mystery, Sci-Fi",25 Jan 2012,7.4,43 min,English,series,"36,470"
+TheLikelyLads,UK,Comedy,02 Apr 1976,6.7,90 min,English,movie,609
+WKRPInCincinnati,USA,Comedy,18 Sep 1978,8.1,30 min,English,series,"4,419"
+DiffrentStrokes,USA,"Comedy, Drama, Family",03 Nov 1978,6.7,30 min,English,series,"5,921"
+GrangeHill,UK,"Comedy, Drama, Family",08 Feb 1978,7.2,30 min,English,series,559
+DeathInParadise,"UK, France","Crime, Drama, Mystery",N/A,8.0,60 min,English,series,"4,950"
+SoRandom,USA,"Comedy, Drama, Musical",05 Jun 2011,4.7,22 min,English,series,"1,613"
+EverybodyLovesRaymond,USA,Comedy,13 Sep 1996,7.1,22 min,English,series,"46,694"
+SavedByTheBell,USA,Comedy,20 Aug 1989,7.0,30 min,English,series,"23,414"
+Whammy,USA,"Comedy, Crime, Drama",03 Aug 2001,5.7,93 min,English,movie,"3,001"
+TheFades,UK,"Fantasy, Horror",21 Sep 2011,7.9,55 min,English,series,"4,650"
+TrueLife,USA,Documentary,31 Mar 1998,7.7,60 min,English,series,856
+Arliss,USA,Family,N/A,N/A,N/A,English,movie,N/A
+Stingray,UK,"Family, Sci-Fi",02 Jan 1965,7.6,30 min,English,series,473
+RestaurantImpossible,USA,Reality-TV,19 Jan 2011,7.1,60 min,English,series,"1,043"
+MASH,USA,"Comedy, Drama, War",17 Sep 1972,8.5,25 min,English,series,"29,916"
+FatherTed,UK,Comedy,21 Apr 1995,8.7,25 min,English,series,"22,257"
+Boris,Italy,Comedy,16 Apr 2007,8.6,23 min,Italian,series,"1,058"
+AttackOfTheShow,USA,News,28 Mar 2005,7.7,60 min,English,series,"1,923"
+Jeremiah,"USA, Canada","Action, Drama, Sci-Fi",03 Mar 2002,6.9,45 min,English,series,"3,572"
+TheArsenioHallShow,USA,"Comedy, Family, Music",03 Jan 1989,6.2,60 min,English,series,567
+DickAndDomInDaBungalow,UK,"Comedy, Family, Game-Show",31 Aug 2002,7.2,120 min,English,series,172
+Cheers,USA,"Comedy, Drama",30 Sep 1982,7.8,22 min,English,series,"30,909"
+DirkGently,UK,"Comedy, Crime, Sci-Fi",05 Mar 2012,7.8,58 min,English,series,"1,268"
+EinHerzUndEineSeele,West Germany,Comedy,15 Jan 1973,8.8,45 min,German,series,448
+SecondChance,USA,"Crime, Drama, Film-Noir",18 Jul 1953,6.1,82 min,"English, Spanish",movie,582
+Wings,USA,"Drama, Romance, War",05 Jan 1929,7.8,144 min,English,movie,"7,196"
+KnightRider,USA,"Action, Crime, Sci-Fi",26 Sep 1982,6.9,46 min,English,series,"18,686"
+Smash,USA,"Drama, Musical",06 Feb 2012,7.6,44 min,English,series,"14,177"
+MonstersResurrected,USA,Documentary,03 Dec 2009,5.8,N/A,English,series,39
+TheHitchhikersGuideToTheGalaxy,"USA, UK","Adventure, Comedy, Sci-Fi",29 Apr 2005,6.8,109 min,English,movie,"145,140"
+TheGame,USA,"Drama, Mystery, Thriller",12 Sep 1997,7.8,129 min,"English, Cantonese, German",movie,"237,963"
+NewGirl,USA,Comedy,20 Sep 2011,7.8,30 min,English,series,"120,840"
+Roar,USA,"Action, Adventure, Fantasy",14 Jul 1997,7.5,60 min,English,series,886
+TerraNova,"Australia, USA","Adventure, Mystery, Sci-Fi",26 Sep 2011,6.8,46 min,English,series,"65,598"
+TheBigBangTheory,USA,Comedy,24 Sep 2007,8.5,22 min,"English, Hindi, Italian, Russian, Mandarin, Klingon",series,"470,073"
+Danger5,USA,"Action, Crime, Drama",03 Aug 1994,6.9,141 min,English,movie,"64,538"
+WildBoys,Australia,"Adventure, Drama, Western",04 Sep 2011,7.3,60 min,English,series,322
+Spaced,UK,Comedy,24 Sep 1999,8.7,25 min,English,series,"36,292"
+TheFactsOfLife,USA,Comedy,24 Aug 1979,6.7,30 min,English,series,"3,551"
+Taxi,France,"Action, Comedy, Crime",20 Nov 1998,6.9,86 min,"French, German, Korean, Portuguese",movie,"57,413"
+YouHaveBeenWatching,UK,"Comedy, Game-Show",07 Jul 2009,7.7,37 min,English,series,387
+ManAboutTheHouse,UK,Comedy,15 Aug 1973,7.4,30 min,English,series,534
+Mastermind,UK,Game-Show,11 Sep 1972,6.7,30 min,English,series,141
+FridayNightLights,USA,"Action, Drama, Sport",08 Oct 2004,7.3,118 min,English,movie,"43,243"
+Mawang,South Korea,"Drama, Mystery, Thriller",21 Mar 2007,8.4,70 min,Korean,series,44
+InspectorLynley,UK,"Crime, Drama, Mystery",12 Mar 2001,7.4,90 min,English,series,"2,505"
+FairlyLegal,USA,"Comedy, Drama",20 Jan 2011,7.3,41 min,English,series,"6,737"
+WhaleWars,USA,"Documentary, Reality-TV",07 Nov 2008,6.0,60 min,English,series,"1,956"
+RobotWars,USA,"Action, Sci-Fi",28 Apr 1993,4.0,69 min,English,movie,662
+TheFlash,USA,"Action, Adventure, Drama",07 Oct 2014,8.3,43 min,English,series,"108,861"
+Frontline,USA,Documentary,17 Jan 1983,8.6,60 min,English,series,774
+YoSoyBettyLaFea,Colombia,"Comedy, Drama",25 Oct 1999,8.0,30 min,Spanish,series,"1,124"
+ArmyWives,USA,Drama,01 Mar 2007,7.2,60 min,English,series,"5,180"
+StormChasers,USA,"Documentary, Reality-TV",17 Oct 2007,7.4,N/A,English,series,677
+TheMightyBoosh,UK,"Comedy, Fantasy, Musical",18 May 2004,8.4,30 min,English,series,"14,753"
+Highlander,UK,"Action, Adventure, Fantasy",07 Mar 1986,7.2,116 min,English,movie,"91,766"
+FamilyAffair,USA,"Comedy, Family",12 Sep 1966,6.8,30 min,English,series,"1,186"
+AfterschoolSpecial,USA,"Short, Drama",N/A,N/A,12 min,English,movie,N/A
+Newhart,USA,Comedy,25 Oct 1982,7.8,30 min,English,series,"3,026"
+SeventhHeaven,USA,"Drama, Romance",25 Mar 1937,6.9,102 min,English,movie,386
+ArchieBunkersPlace,USA,Comedy,23 Sep 1979,6.3,60 min,English,series,488
+GarthMarenghisDarkplace,UK,"Comedy, Horror",29 Jan 2004,8.6,30 min,English,series,"10,386"
+DirtyJobs,USA,Reality-TV,19 Jul 2005,7.9,60 min,English,series,"6,317"
+LoisAndClark,USA,Short,07 Jun 2005,N/A,26 min,English,movie,N/A
+ShadowChasers,USA,"Fantasy, Mystery",14 Nov 1985,7.7,60 min,English,series,43
+BombGirls,Canada,"Drama, War",11 Sep 2012,7.9,60 min,English,series,"2,856"
+Desmonds,UK,Comedy,05 Jan 1989,7.8,50 min,English,series,367
+Batman,"USA, UK","Action, Adventure",23 Jun 1989,7.6,126 min,"English, French",movie,"246,305"
+ImInTheBand,USA,Comedy,01 Oct 2009,6.6,30 min,English,series,"1,240"
+Clue,USA,"Comedy, Crime, Mystery",13 Dec 1985,7.3,94 min,"English, French",movie,"53,057"
+LieToMe,USA,"Crime, Drama, Mystery",21 Jan 2009,8.0,43 min,English,series,"81,155"
+QuantumLeap,USA,"Action, Adventure, Drama",26 Mar 1989,8.1,60 min,English,series,"18,876"
+Whites,UK,Comedy,28 Sep 2010,7.7,30 min,English,series,"1,048"
+AllInTheFamily,USA,"Comedy, Drama",12 Jan 1971,8.4,30 min,English,series,"8,239"
+TheListener,Canada,"Crime, Drama, Fantasy",04 Jun 2009,6.8,42 min,English,series,"6,232"
+Suburgatory,USA,Comedy,28 Sep 2011,7.3,22 min,English,series,"25,088"
+MaxHeadroom,USA,"Comedy, Sci-Fi",31 Mar 1987,7.4,60 min,English,series,"1,539"
+StargateAtlantis,"Canada, USA","Action, Drama, Sci-Fi",16 Jul 2004,8.1,44 min,"English, Czech",series,"44,804"
+Terriers,USA,"Crime, Drama, Mystery",08 Sep 2010,8.6,N/A,"English, Spanish",series,"7,531"
+AlloAllo,UK,"Comedy, War",30 Dec 1982,8.4,45 min,English,series,"15,734"
+Titanic,USA,"Drama, Romance",19 Dec 1997,7.7,194 min,"English, French, German, Swedish, Italian, Russian",movie,"716,392"
+DaVincisInquest,Canada,"Crime, Mystery, Drama",07 Oct 1998,8.1,44 min,English,series,832
+FranklinAndBash,USA,"Comedy, Crime",01 Jun 2011,7.7,60 min,English,series,"11,501"
+TheCollector,USA,"Horror, Thriller",31 Jul 2009,6.4,90 min,English,movie,"39,506"
+FearItself,"Canada, USA",Horror,05 Jun 2008,7.0,43 min,English,series,"3,308"
+Becker,USA,Comedy,02 Nov 1998,7.3,30 min,English,series,"8,955"
+ParkerLewisCantLose,USA,Comedy,02 Sep 1990,8.0,30 min,English,series,"3,466"
+HeilHoneyImHome,UK,Comedy,30 Sep 1990,5.5,30 min,English,series,218
+ConnorUndercover,Canada,Family,N/A,6.5,N/A,English,series,106
+Sanctuary,Canada,"Drama, Fantasy, Mystery",03 Oct 2008,7.4,44 min,English,series,"13,752"
+Zen,"UK, Italy, Germany","Crime, Drama, Mystery",17 Jul 2011,7.9,270 min,English,series,"2,346"
+BaitCar,USA,"Crime, Reality-TV",01 Aug 2009,5.9,30 min,English,series,140
+Chef,USA,"Adventure, Comedy, Drama",30 May 2014,7.3,114 min,"English, Spanish",movie,"114,046"
+MamasFamily,USA,Comedy,22 Jan 1983,7.2,30 min,English,series,"2,643"
+HardyBoysNancyDrewMysteries,USA,"Family, Mystery",30 Jan 1977,7.5,60 min,English,series,805
+Extras,"UK, USA","Comedy, Drama",25 Sep 2005,8.5,30 min,English,series,"35,533"
+HorribleHistories,UK,"Comedy, Family, History",01 Apr 2009,8.8,N/A,English,series,"1,781"
+TheLeagueOfGentlemen,UK,"Comedy, Horror",19 Jun 2000,8.5,60 min,English,series,"5,144"
+TheOldGuys,UK,Comedy,N/A,7.2,N/A,English,series,243
+BizarreDinosaurs,USA,Documentary,11 Oct 2009,6.5,N/A,English,movie,42
+LostInSpace,USA,"Action, Adventure, Family",03 Apr 1998,5.1,130 min,English,movie,"55,703"
+OffCentre,USA,Comedy,14 Oct 2001,8.0,30 min,English,series,"1,715"
+NedsDeclassifiedSchoolSurvivalGuide,"USA, Germany","Comedy, Family",12 Sep 2004,7.4,22 min,"English, Spanish, Dutch, Portuguese",series,"10,595"
+LandOfTheLost,USA,"Adventure, Comedy, Sci-Fi",05 Jun 2009,5.3,102 min,English,movie,"49,013"
+AnnaUndDieLiebe,Germany,"Drama, Romance",25 Aug 2008,2.7,22 min,German,series,175
+Suits,USA,"Comedy, Drama",23 Jun 2011,8.8,44 min,English,series,"200,153"
+TheAndyGriffithShow,USA,"Comedy, Family",03 Oct 1960,8.3,30 min,English,series,"7,269"
+ItsGarryShandlingsShow,USA,Comedy,10 Sep 1986,7.7,30 min,English,series,606
+TakeshisCastle,"Japan, UK","Comedy, Family, Game-Show",09 Nov 2002,8.1,N/A,"English, Japanese",series,908
+Portlandia,USA,Comedy,21 Jan 2011,7.8,22 min,English,series,"11,369"
+TheMunsters,USA,"Comedy, Family, Fantasy",24 Sep 1964,8.0,30 min,English,series,"6,547"
+CanadasWorstDriver,Canada,"Documentary, Comedy",01 Sep 2005,7.9,46 min,English,series,208
+TheAdventuresOfSuperboy,USA,"Action, Short",N/A,7.7,26 min,English,movie,82
+ZekeAndLuther,USA,"Action, Adventure, Comedy",15 Jun 2009,6.2,30 min,English,series,"1,459"
+Kingdom,USA,Drama,N/A,8.4,43 min,English,series,"3,040"
+Storylords,USA,Family,N/A,N/A,15 min,English,movie,N/A
+TokumeiSentaiGoBusters,Japan,"Action, Adventure, Drama",26 Feb 2012,7.8,25 min,Japanese,series,44
+LuckyLouie,USA,Comedy,11 Jun 2006,8.1,30 min,English,series,"7,221"
+StarTrekEnterprise,USA,"Action, Adventure, Drama",26 Sep 2001,7.5,60 min,"English, Klingon",series,"26,900"
+TilDeath,USA,Horror,01 Jan 2014,N/A,N/A,English,movie,N/A
+Awake,USA,"Crime, Mystery, Thriller",30 Nov 2007,6.5,84 min,"English, Japanese",movie,"60,057"
+TheSarahJaneAdventures,UK,"Drama, Family, Sci-Fi",01 Jan 2007,7.6,60 min,English,series,"2,886"
+TinMan,USA,"Adventure, Fantasy, Sci-Fi",02 Dec 2007,7.2,270 min,English,series,"11,134"
+Stromberg,Germany,Comedy,11 Oct 2004,8.4,N/A,German,series,"4,544"
+WinBenSteinsMoney,USA,"Comedy, Game-Show",30 Jul 1997,6.9,30 min,English,series,599
+YouCantDoThatOnTelevision,Canada,"Family, Comedy",03 Feb 1979,8.2,30 min,English,series,"1,014"
+Campion,UK,"Adventure, Crime, Drama",12 Oct 1989,7.7,50 min,English,series,422
+Luther,UK,"Crime, Drama, Mystery",17 Oct 2010,8.6,60 min,English,series,"53,740"
+TorchwoodMiracleDay,"UK, Canada","Action, Drama, Sci-Fi",22 Oct 2006,7.8,50 min,English,series,"31,997"
+TheGirlFromUNCLE,USA,"Action, Adventure",13 Sep 1966,7.0,60 min,English,series,258
+Pramface,UK,Comedy,23 Feb 2012,7.8,N/A,English,series,"1,604"
+Tatort,"West Germany, Austria","Crime, Drama",29 Nov 1970,7.3,90 min,German,series,"1,466"
+BeingHuman,"Canada, USA","Drama, Fantasy, Horror",17 Jan 2011,7.5,44 min,English,series,"20,269"
+WarOfTheWorlds,USA,"Adventure, Sci-Fi, Thriller",29 Jun 2005,6.5,116 min,English,movie,"308,049"
+Malparida,Argentina,N/A,20 Apr 2010,5.1,N/A,Spanish,series,32
+Scattergories,USA,"Family, Game-Show",18 Jan 1993,N/A,30 min,N/A,series,N/A
+TheNormShow,USA,Comedy,24 Mar 1999,8.0,30 min,English,series,"1,154"
+Torchwood,"UK, Canada","Action, Drama, Sci-Fi",22 Oct 2006,7.8,50 min,English,series,"31,997"
+NightGallery,USA,"Drama, Fantasy, Horror",16 Dec 1970,8.1,50 min,English,series,"2,734"
+DadsArmy,UK,Comedy,05 Feb 2016,N/A,N/A,English,movie,N/A
+RandallAndHopkirkDeceased,UK,"Comedy, Crime, Fantasy",18 Mar 2000,6.7,50 min,English,series,404
+SweetGenius,USA,Reality-TV,22 Sep 2011,6.9,60 min,English,series,134
+DiagnosisMurder,USA,"Crime, Mystery, Drama",29 Oct 1993,6.8,60 min,English,series,"3,903"
+AfterLately,USA,Comedy,06 Mar 2011,7.0,N/A,English,series,445
+EverybodyHatesChris,USA,Comedy,22 Sep 2005,7.3,22 min,English,series,"25,705"
+SeeingThings,Canada,"Comedy, Mystery",15 Sep 1981,8.1,N/A,English,series,100
+TopGearUS,UK,"Comedy, Talk-Show",20 Oct 2002,8.9,60 min,English,series,"63,122"
+Seinfeld,USA,Comedy,31 May 1990,8.9,22 min,English,series,"148,645"
+ShakeItUp,USA,"Short, Comedy",N/A,N/A,N/A,English,movie,N/A
+ChrisRyansStrikeBack,UK,"Action, Drama, Thriller",N/A,8.3,45 min,English,series,"18,870"
+MrsBrownsBoys,"UK, Ireland",Comedy,01 Jan 2011,7.5,25 min,English,series,"4,978"
+AsTimeGoesBy,UK,"Comedy, Romance",12 Jan 1992,8.3,60 min,English,series,"2,485"
+JackOfAllTrades,"USA, New Zealand","Adventure, Action, Comedy",17 Jan 2000,7.9,30 min,English,series,"1,998"
+HotPotato,Italy,Comedy,16 Nov 1979,6.2,99 min,Italian,movie,328
+IClaudius,UK,Documentary,N/A,7.7,75 min,English,movie,27
+LaverneAndShirley,USA,N/A,07 May 2002,8.0,60 min,English,movie,12
+KamenRiderFourze,Japan,Sci-Fi,04 Sep 2011,7.9,25 min,Japanese,series,102
+TheFinder,USA,"Comedy, Crime, Drama",N/A,7.7,44 min,English,series,"11,509"
+IDreamOfJeannie,USA,"Comedy, Family, Fantasy",18 Sep 1965,7.5,30 min,English,series,"7,234"
+Glee,USA,"Comedy, Drama, Music",19 May 2009,6.8,44 min,English,series,"112,511"
+CaptainBluebear,USA,"Short, Musical",N/A,N/A,N/A,English,movie,N/A
+MacGyver,"USA, Canada","Action, Adventure, Crime",06 Oct 1985,7.7,48 min,English,series,"24,616"
+ThePuzzlePlace,USA,"Family, Fantasy",15 Sep 1994,8.8,30 min,English,series,168
+StarTrekVoyager,USA,"Action, Adventure, Sci-Fi",01 Sep 2000,8.2,N/A,English,game,347
+PartyDown,USA,Comedy,20 Mar 2009,8.3,30 min,English,series,"22,595"
+WasGuckstDu,Germany,Comedy,N/A,4.9,25 min,German,series,171
+DrunkenToLoveYou,Taiwan,"Comedy, Drama, Romance",17 Apr 2011,7.3,N/A,Mandarin,series,19
+AmericanHorrorStory,USA,"Drama, Horror, Thriller",05 Oct 2011,8.3,60 min,English,series,"167,120"
+LivingSingle,USA,Comedy,22 Aug 1993,7.2,30 min,English,series,"2,377"
+ShootingStars,France,"Comedy, Sport",24 Apr 2002,4.3,98 min,French,movie,924
+Jonas,USA,"Comedy, Family, Music",02 May 2009,4.5,25 min,English,series,"4,707"
+HoratioHornblower,UK,"Action, Adventure, Drama",10 Apr 1951,7.5,117 min,"English, French, Spanish",movie,"4,623"
+TheManFromUNCLE,"USA, UK","Action, Adventure, Comedy",14 Aug 2015,7.6,116 min,"English, Russian, German, Italian",movie,"22,676"
+DrQuinnMedicineWoman,USA,"Drama, Family, Western",01 Jan 1993,6.6,60 min,English,series,"6,688"
+StrangersWithCandy,USA,Comedy,21 Jul 2006,6.0,97 min,English,movie,"6,737"
+GameOfThrones,USA,"Adventure, Drama, Fantasy",17 Apr 2011,9.5,55 min,English,series,"838,065"
+Monopoly,South Korea,"Crime, Mystery, Thriller",01 Jun 2006,5.6,91 min,Korean,movie,163
+ElChapulinColorado,Mexico,"Adventure, Comedy, Crime",N/A,8.7,N/A,Spanish,series,"1,490"
+Eagleheart,USA,"Action, Comedy",N/A,7.5,N/A,English,series,"1,309"
+ThePeoplesCourt,USA,"Crime, Reality-TV",N/A,6.4,60 min,English,series,436
+AmericasGotTalent,USA,"Game-Show, Music, Reality-TV",21 Jun 2006,5.5,60 min,English,series,"6,083"
+TheOReillyFactor,USA,Talk-Show,07 Oct 1996,3.3,60 min,English,series,"3,089"
+RemingtonSteele,USA,"Adventure, Comedy, Crime",01 Oct 1982,7.3,60 min,English,series,"4,437"
+DinoGangs,UK,Documentary,N/A,6.0,100 min,English,movie,19
+CanadasWorstHandyman,Canada,Reality-TV,13 Mar 2006,7.7,60 min,English,series,72
+MayToDecember,UK,Comedy,02 Apr 1989,7.2,30 min,English,series,197
+MonarchOfTheGlen,UK,"Comedy, Drama, Romance",01 Jan 2001,7.7,60 min,English,series,"1,739"
+WhatILikeAboutYou,USA,"Comedy, Drama",20 Sep 2002,6.6,30 min,English,series,"10,732"
+WinterSonata,South Korea,Romance,N/A,8.2,60 min,Korean,series,563
+TheHardTimesOfRJBerger,USA,Comedy,06 Jun 2010,7.5,N/A,English,series,"4,968"
+TheGreatOutdoors,USA,Comedy,17 Jun 1988,6.6,91 min,English,movie,"25,477"
+BlankCheck,USA,"Comedy, Family",11 Feb 1994,5.1,93 min,English,movie,"12,983"
+ThirdRockFromTheSun,USA,"Comedy, Sci-Fi",09 Jan 1996,7.8,60 min,English,series,"35,225"
+AsTheWorldTurns,USA,"Drama, Romance",02 Apr 1956,6.1,60 min,English,series,"1,377"
+MANTIS,UK,"Adventure, Drama, Fantasy",23 Nov 2013,6.7,45 min,English,series,"7,889"
+StargateUniverse,"Canada, USA","Drama, Sci-Fi",02 Oct 2009,7.7,43 min,English,series,"35,824"
+Sherlock,"UK, USA","Crime, Drama, Mystery",24 Oct 2010,9.3,88 min,English,series,"413,454"
+HausmeisterKrause,Germany,Comedy,18 Jan 1999,5.5,25 min,German,series,498
+SmartGuy,USA,"Comedy, Drama, Family",02 Apr 1997,7.5,30 min,English,series,"3,177"
+YoureSkittingMe,Australia,Comedy,29 Feb 2012,7.4,N/A,N/A,series,71
+TheFallAndRiseOfReginaldPerrin,UK,Comedy,08 Sep 1976,8.1,30 min,English,series,918
+ParksAndRecreation,USA,Comedy,09 Apr 2009,8.6,22 min,English,series,"96,510"
+LawAndOrderLA,USA,Western,13 May 1953,5.8,80 min,English,movie,387
+MyFamily,UK,Comedy,19 Sep 2000,7.7,50 min,English,series,"6,203"
+TheLegendOfDickAndDom,UK,"Comedy, Drama",02 Jan 2009,7.2,30 min,English,series,98
+GoldenPalace,USA,Comedy,18 Sep 1992,7.1,30 min,English,series,528
+RaisingHope,USA,"Comedy, Family",01 Sep 2010,8.0,22 min,English,series,"28,828"
+TheKingOfQueens,USA,"Comedy, Romance",21 Sep 1998,7.4,22 min,English,series,"55,231"
+Girls,USA,"Comedy, Drama",23 Jul 2012,7.4,30 min,English,series,"43,432"
+GoodTimes,USA,Comedy,08 Feb 1974,7.3,30 min,English,series,"3,406"
+DownWithLove,"USA, Germany","Comedy, Romance",16 May 2003,6.3,101 min,English,movie,"31,672"
+TheAdventuresOfShirleyHolmes,Canada,"Mystery, Family",07 May 1997,7.6,24 min,English,series,251
+TheDailyShow,Georgia,Talk-Show,18 Aug 2010,9.0,N/A,N/A,series,5
+TheAdventuresOfSuperman,USA,Sci-Fi,15 Jul 1948,7.2,244 min,English,movie,538
+DragonsDen,UK,Reality-TV,04 Jan 2005,7.5,60 min,English,series,741
+TheNamesTheSame,USA,"Family, Game-Show",05 Dec 1951,7.7,30 min,English,series,63
+Studio3,USA,"Action, Comedy, Crime",05 Apr 2007,6.4,108 min,English,movie,25
+PuppyBowl,USA,Game-Show,04 Feb 2007,8.6,N/A,English,movie,44
+TheAdventuresOfLanoAndWoodley,Australia,Comedy,01 Sep 1997,8.9,30 min,English,series,513
+Benidorm,UK,Comedy,01 Feb 2007,7.4,30 min,English,series,"1,831"
+NecessaryRoughness,USA,"Comedy, Sport",27 Sep 1991,6.0,108 min,English,movie,"7,826"
+Alice1976,USA,"Comedy, Fantasy, Romance",10 Jan 1991,6.6,102 min,"English, Cantonese",movie,"9,823"
+TheIncreasinglyPoorDecisionsOfToddMargaret,"USA, UK",Comedy,01 Oct 2010,7.7,25 min,English,series,"4,344"
+HamishMacbeth,UK,"Comedy, Drama",05 Apr 1998,7.8,60 min,"English, Scottish Gaelic",series,885
+CodeNameEternity,"Canada, USA, France","Action, Adventure, Sci-Fi",09 Jan 2004,7.1,N/A,English,series,163
+TheMole,USA,"Adventure, Game-Show, Mystery",28 Sep 2001,7.4,60 min,English,series,838
+HomeImprovement,USA,"Comedy, Family",17 Sep 1991,7.2,30 min,English,series,"28,030"
+KungFu,USA,"Adventure, Drama, Western",14 Oct 1972,7.8,60 min,English,series,"3,363"
+CheapSeats,USA,"Short, Comedy",22 Mar 2005,6.4,5 min,English,movie,19
+Identity,USA,"Mystery, Thriller",25 Apr 2003,7.3,90 min,English,movie,"164,712"
+Benson,USA,"Comedy, Family",13 Sep 1979,7.1,30 min,English,series,"1,738"
+DiplomaticImmunity,USA,"Action, Drama",07 Aug 1991,4.4,95 min,English,movie,241
+TheNewStatesman,UK,Comedy,13 Sep 1987,7.9,70 min,English,series,"1,481"
+TheChasersWarOnEverything,Australia,Comedy,17 Feb 2006,8.8,26 min,English,series,"2,148"
+TheWarNextDoor,USA,"Action, Comedy",23 Jul 2000,7.8,30 min,English,series,70
+Switch,USA,"Comedy, Fantasy",10 May 1991,5.7,103 min,English,movie,"6,276"
+Reaper,"USA, Canada","Adventure, Comedy, Drama",25 Sep 2007,7.9,45 min,English,series,"19,928"
+TheATeam,UK,Documentary,31 Jul 2010,N/A,N/A,English,movie,N/A
+Bewitched,USA,"Comedy, Fantasy, Romance",24 Jun 2005,4.8,102 min,"English, Spanish",movie,"56,066"
+PhoneShop,UK,Comedy,07 Oct 2010,7.8,30 min,English,series,"1,418"
+AreYouBeingServed,UK,Comedy,08 Sep 1972,8.1,28 min,English,series,"4,400"
+RedCap,UK,"Crime, Drama",07 Jan 2003,7.8,60 min,"English, German",series,171
+BreakTheBank1985,USA,Game-Show,12 Apr 1976,N/A,30 min,English,series,N/A
+RussianRoulette,"Canada, UK","Crime, Drama, Thriller",20 Aug 1975,5.5,93 min,English,movie,166
+JustCause,USA,"Action, Crime, Drama",17 Feb 1995,6.4,102 min,English,movie,"18,440"
+FlashGordon,"UK, USA","Action, Adventure, Sci-Fi",05 Dec 1980,6.4,111 min,English,movie,"34,416"
+TheSecretCircle,"USA, Canada","Drama, Fantasy, Horror",15 Sep 2011,7.5,45 min,English,series,"36,227"
+ColdCase,USA,"Crime, Drama, Mystery",28 Sep 2003,7.6,60 min,English,series,"17,601"
+StarTrekTheNextGeneration,USA,"Action, Adventure, Mystery",26 Sep 1987,8.7,44 min,"English, Klingon, French",series,"55,346"
+ArabianNights,"Italy, France","Comedy, Drama, Fantasy",20 Jun 1974,6.9,130 min,Italian,movie,"4,548"
+Haven,"Canada, USA","Crime, Drama, Fantasy",09 Jul 2010,7.6,60 min,English,series,"25,940"
+AnimalArmageddon,USA,"Documentary, Animation, History",01 Mar 2009,7.7,N/A,English,series,130
+Crusade,USA,"Action, Drama, Sci-Fi",09 Jun 1999,6.8,44 min,English,series,"3,505"
+AdventuresInWonderland,USA,"Comedy, Family, Fantasy",N/A,8.3,30 min,English,series,382
+CaitlinsWay,"Canada, USA",N/A,11 Mar 2000,7.8,N/A,English,series,349
+SpinCity,USA,Comedy,17 Sep 1996,7.4,30 min,English,series,"20,066"
+GoodLuckCharlie,USA,"Comedy, Drama, Family",04 Apr 2010,7.1,22 min,English,series,"12,083"
+TheWeirdAlShow,USA,"Family, Comedy, Musical",13 Aug 1997,7.8,30 min,English,series,388
+AmericanChopper,USA,"Comedy, Reality-TV, Sport",31 Mar 2003,6.4,60 min,English,series,"2,593"
+TheBrittasEmpire,UK,Comedy,03 Jan 1991,7.4,30 min,English,series,"1,273"
+HowIMetYourMother,USA,"Comedy, Romance",19 Sep 2005,8.4,22 min,English,series,"402,854"
+CriminalMindsSuspectBehavior,USA,"Crime, Drama, Mystery",N/A,6.3,42 min,English,series,"3,449"
+MrSunshine,USA,Comedy,09 Feb 2011,6.9,N/A,English,series,"5,615"
+LevelUp,"USA, Canada",Comedy,01 Jan 2012,3.2,30 min,English,series,643
+LifeSupport,USA,Drama,07 Feb 2008,6.9,87 min,English,movie,934
+PleaseSir,UK,Comedy,10 Sep 1971,5.8,100 min,English,movie,422
+TheYoungOnes,UK,Comedy,11 Nov 1982,8.2,410 min,English,series,"9,800"
+Oddities,USA,Reality-TV,04 Nov 2010,7.8,22 min,English,series,517
+BurnNotice,USA,"Action, Crime, Drama",28 Jun 2007,8.0,44 min,English,series,"56,202"
+DoogieHowserMD,USA,"Comedy, Drama, Family",19 Sep 1989,6.6,30 min,English,series,"5,758"
+DeadRingers,"Canada, USA","Drama, Thriller",23 Sep 1988,7.3,116 min,English,movie,"26,887"
+Dinnerladies,UK,Comedy,12 Dec 1999,7.8,34 min,English,series,824
+AccordingToJim,USA,Comedy,03 Oct 2001,6.4,30 min,English,series,"26,736"
+RunningWilde,USA,Comedy,21 Sep 2010,7.0,30 min,English,series,"2,679"
+HowNotToLiveYourLife,UK,Comedy,27 Sep 2007,8.4,N/A,English,series,"4,436"
+MalcolmInTheMiddle,USA,Comedy,09 Jan 2000,8.0,30 min,English,series,"88,052"
+TheParkers,USA,Comedy,30 Aug 1999,6.9,20 min,English,series,"1,037"
+TheHeartSheHoller,USA,"Comedy, Horror",06 Nov 2011,6.9,11 min,English,series,713
+Revenge,USA,"Drama, Mystery, Thriller",21 Sep 2011,8.0,44 min,English,series,"92,911"
+FraggleRock,"Canada, Norway, Denmark, UK, USA","Animation, Adventure, Comedy",10 Jan 1983,8.0,30 min,"English, Danish, Norwegian",series,"3,635"
+Ironside,USA,"Crime, Drama, Mystery",14 Sep 1967,7.1,60 min,English,series,"1,530"
+WildRomance,Netherlands,"Biography, Drama, Music",09 Nov 2006,6.5,103 min,"Dutch, English",movie,312
+SoLittleTime,USA,"Comedy, Family",01 Jun 2001,6.1,30 min,English,series,"1,351"
+TheMonkees,USA,"Comedy, Music",12 Sep 1966,7.6,30 min,English,series,"2,154"
+HerederosDeUnaVenganza,Argentina,Drama,17 Jan 2011,6.2,60 min,Spanish,series,30
+TheAtheistExperience,USA,Talk-Show,19 Oct 1997,9.0,N/A,English,series,48
+TwoPintsOfLagerAndAPacketOfCrisps,UK,Comedy,26 Feb 2001,7.0,26 min,English,series,"2,604"
+RockyJonesSpaceRanger,USA,"Family, Sci-Fi",27 Feb 1954,5.5,26 min,English,series,102
+BoredToDeath,USA,"Comedy, Crime, Mystery",20 Sep 2009,7.9,30 min,English,series,"26,653"
+BlakesSeven,USA,"Comedy, Crime, Drama",18 Jan 2011,8.6,40 min,English,episode,351
+WhosTheBoss,USA,"Short, Comedy, Music",08 Jan 2007,N/A,2 min,English,movie,N/A
+Renegade,"France, Mexico, UK","Adventure, Western",11 Feb 2004,5.2,124 min,"English, Athapascan languages, German, French, Spanish, Apache languages",movie,"8,962"
+ImTelling,USA,Game-Show,12 Sep 1987,7.3,30 min,English,series,30
+StepByStep,USA,Comedy,20 Sep 1991,6.4,30 min,English,series,"7,764"
+Kikaider,Japan,"Animation, Sci-Fi, Adventure",09 Jun 2003,7.7,N/A,Japanese,series,113
+BetweenTheLines,USA,"Comedy, Drama, Romance",27 Apr 1977,6.9,101 min,English,movie,384
+SonOfTheBeach,USA,Comedy,13 Mar 2000,7.0,22 min,English,series,"1,971"
+LeaveItToBeaver,USA,"Comedy, Family",04 Oct 1957,7.7,30 min,English,series,"4,011"
+BlackBooks,UK,Comedy,09 Dec 2001,8.6,25 min,English,series,"34,302"
+RowanAndMartinsLaughIn,USA,"Comedy, Music, Musical",09 Sep 1967,8.0,60 min,English,series,"1,237"
+Dagvaktin,Iceland,"Comedy, Drama",21 Sep 2008,8.0,30 min,Icelandic,series,202
+Outnumbered,UK,"Comedy, Drama",N/A,8.2,30 min,English,series,"5,142"
+LieToMeSK,USA,"Crime, Drama, Mystery",21 Jan 2009,8.0,43 min,English,series,"81,155"
+TwoBrokeGirls,USA,Comedy,19 Sep 2011,6.9,22 min,English,series,"63,046"
+GrandmasHouse,UK,Comedy,09 Aug 2010,8.0,30 min,English,series,755
+TheInvisibleMan,USA,"Drama, Horror, Sci-Fi",13 Nov 1933,7.7,71 min,English,movie,"18,840"
+DieWochenshow,Germany,Comedy,20 Apr 1996,7.0,45 min,German,series,359
+HumanTarget,USA,"Action, Adventure, Crime",17 Jan 2010,7.8,60 min,English,series,"14,833"
+AquiNoHayQuienViva,Spain,Comedy,07 Sep 2003,8.0,60 min,Spanish,series,"1,869"
+Psych,USA,"Comedy, Crime, Mystery",07 Jul 2006,8.4,44 min,English,series,"62,677"
+TheOsbournes,USA,"Comedy, Music, Reality-TV",05 Mar 2002,5.5,22 min,English,series,"2,499"
+WizardsAndWarriors,USA,Adventure,26 Feb 1983,7.7,60 min,English,series,168
+SingleFather,UK,Drama,N/A,7.9,60 min,English,series,979
+WheelOfFortune,USA,"Family, Game-Show",19 Sep 1983,6.8,30 min,English,series,"1,379"
+TheWalkingDead,USA,"Drama, Horror",31 Oct 2010,8.6,44 min,English,series,"540,493"
+NCIS,USA,"Action, Comedy, Crime",23 Sep 2003,8.0,60 min,English,series,"75,265"
+HalloSpencer,"West Germany, Germany",Family,27 Dec 1979,7.1,N/A,German,series,121
+Sirens,"Australia, UK","Comedy, Drama, Romance",03 Nov 1994,5.8,98 min,English,movie,"8,066"
+DawsonsCreek,USA,Drama,20 Jan 1998,6.5,60 min,English,series,"25,455"
+KamenRider,Japan,"Action, Adventure, Drama",03 Apr 1971,7.8,30 min,Japanese,series,92
+RobinHood,"USA, UK","Action, Adventure, Drama",14 May 2010,6.7,140 min,"English, French",movie,"197,688"
+SpartacusBloodAndSand,USA,Animation,29 Dec 2009,7.6,N/A,English,series,304
+Cupid,USA,Comedy,31 Mar 2009,7.4,30 min,English,series,977
+WhiteChristmas,USA,"Comedy, Musical, Romance",14 Oct 1954,7.6,120 min,English,movie,"19,108"
+TheAddamsFamily,USA,"Comedy, Fantasy",22 Nov 1991,6.8,99 min,English,movie,"87,966"
+StrikeBack,UK,"Action, Drama, Thriller",N/A,8.3,45 min,English,series,"18,870"
+Pets,USA,Drama,01 Feb 1974,6.0,103 min,English,movie,150
+WeirdScience,USA,"Comedy, Fantasy, Romance",02 Aug 1985,6.6,94 min,English,movie,"54,898"
+Taken,France,"Action, Thriller",30 Jan 2009,7.9,93 min,"English, French, Albanian, Arabic",movie,"450,397"
+VoyageToTheBottomOfTheSea,USA,"Action, Adventure, Sci-Fi",12 Jul 1961,6.1,105 min,"English, French",movie,"3,833"
+StillStanding,USA,"Comedy, Romance",30 Sep 2002,7.6,30 min,English,series,"5,781"
+Maverick,USA,"Action, Adventure, Comedy",20 May 1994,7.0,127 min,English,movie,"76,472"
+TheRottenTomatoesShow,USA,Comedy,05 Mar 2009,7.9,30 min,English,series,184
+Frasier,USA,Comedy,16 Sep 1993,8.0,30 min,English,series,"51,399"
+TheWanderer,France,"Drama, Romance",09 Apr 1969,6.8,103 min,French,movie,196
+Jackpot,Norway,"Action, Comedy, Crime",27 Jun 2014,6.6,90 min,"Norwegian, Swedish",movie,"2,159"
+BloodTies,"France, USA","Crime, Drama, Thriller",30 Oct 2013,6.5,127 min,"English, Italian, Spanish",movie,"12,368"
+Baywatch,USA,"Action, Drama",22 Sep 1989,5.0,60 min,English,series,"17,085"
+BodyLanguage,Netherlands,"Drama, Music",06 Oct 2011,4.2,N/A,"Dutch, English",movie,576
+TheRoyleFamily,UK,Comedy,14 Sep 1998,8.0,45 min,English,series,"3,811"
+Bedlam,USA,"Drama, Horror, Thriller",10 May 1946,6.9,79 min,English,movie,"2,326"
+ClashOfTheDinosaurs,UK,"Documentary, History",06 Dec 2009,6.3,50 min,English,series,114
+TopChef,USA,"Game-Show, Reality-TV",15 Feb 2006,7.6,60 min,English,series,"4,247"
+JohnnyBago,USA,"Comedy, Drama",25 Jun 1993,7.8,60 min,English,series,72
+AaronStone,Canada,"Adventure, Family, Sci-Fi",01 Feb 2009,7.1,N/A,English,series,578
+Mongrels,UK,Comedy,22 Jun 2010,8.3,30 min,English,series,879
+TheRatPatrol,USA,"Action, Drama, Adventure",12 Sep 1966,7.6,30 min,English,series,729
+TheWaltons,USA,"Drama, Family, Romance",14 Sep 1972,7.6,60 min,English,series,"3,448"
+RabCNesbitt,UK,Comedy,27 Sep 1990,7.7,50 min,English,series,711
+MysteryScienceTheater3000,USA,"Comedy, Sci-Fi",24 Nov 1988,8.7,97 min,English,series,"15,135"
+TheKing2Hearts,South Korea,"Action, Drama, Romance",21 Mar 2012,8.1,N/A,Korean,series,311
+GilligansIsland,USA,"Comedy, Family",26 Sep 1964,7.5,30 min,English,series,"7,880"
+Monk,USA,"Comedy, Crime, Drama",12 Jul 2002,8.0,47 min,English,series,"47,722"
+HoneyIShrunkTheKids,USA,"Adventure, Comedy, Family",23 Jun 1989,6.2,93 min,English,movie,"95,448"
+GuidingLight,USA,Drama,30 Jun 1952,6.4,60 min,English,series,"1,029"
+MaidMarianAndHerMerryMen,UK,"Adventure, Comedy, Family",16 Nov 1989,8.2,25 min,English,series,554
+DinosaurPlanet,USA,"Documentary, Animation, Family",14 Dec 2003,7.8,50 min,English,series,305
+SummersDesire,USA,Romance,N/A,4.8,85 min,English,movie,16
+NotGoingOut,UK,Comedy,25 Sep 2006,7.9,30 min,English,series,"3,474"
+BarneyMiller,USA,"Comedy, Drama",23 Jan 1975,8.1,30 min,English,series,"2,810"
+TheOffice,USA,Comedy,24 Mar 2005,8.8,22 min,English,series,"170,856"
+TheOthers,"USA, Spain, France, Italy","Horror, Thriller",10 Aug 2001,7.6,104 min,"English, French",movie,"249,506"
+DrewCareysImprovAGanza,USA,Comedy,11 Apr 2011,8.5,30 min,English,series,883
+NinjaTurtlesTheNextMutation,"Canada, USA","Action, Adventure, Comedy",12 Sep 1997,4.6,20 min,English,series,827
+Bones,USA,"Comedy, Crime, Drama",13 Sep 2005,8.0,40 min,"English, Spanish",series,"98,608"
+BeingHumanRemake,"Canada, USA","Drama, Fantasy, Horror",17 Jan 2011,7.5,44 min,English,series,"20,269"
+Alice2009,USA,"Comedy, Fantasy, Romance",10 Jan 1991,6.6,102 min,"English, Cantonese",movie,"9,823"
+GetSmart,USA,"Action, Adventure, Comedy",20 Jun 2008,6.5,110 min,"English, Russian, Panjabi, Arabic",movie,"159,052"
+BodyOfProof,USA,"Crime, Drama",25 Jan 2011,7.0,60 min,English,series,"10,908"
+Awkward,Canada,"Short, Comedy",20 Sep 2008,6.0,7 min,English,movie,21
+YouRangMLord,UK,Comedy,29 Dec 1988,8.9,50 min,English,series,"1,649"
+TimAndEricAwesomeShowGreatJob,USA,"Comedy, Music",11 Feb 2007,7.2,11 min,English,series,"7,842"
+IveGotASecret,USA,"Family, Game-Show",19 Jun 1952,8.1,30 min,English,series,241
+AceOfCakes,USA,Reality-TV,17 Aug 2006,7.2,21 min,English,series,"1,042"
+Amazing,USA,"Action, Adventure, Fantasy",03 Jul 2012,7.1,136 min,English,movie,"408,170"
+TheX-Files,"USA, Canada","Drama, Mystery, Sci-Fi",10 Sep 1993,8.7,44 min,English,series,"115,282"
+SkippyTheBushKangaroo,Australia,"Adventure, Family",03 Dec 1967,6.3,25 min,English,series,593
+YoungIndianaJones,USA,"Action, Adventure, Family",04 Mar 1992,7.3,45 min,English,series,"5,227"
+Mars,USA,"Action, Sci-Fi",10 Mar 1998,3.6,91 min,English,movie,358
+AxMen,USA,"Documentary, Reality-TV",09 Mar 2008,5.5,N/A,English,series,953
+SuddenlySusan,USA,Comedy,19 Sep 1996,5.7,30 min,English,series,"1,695"
+DreamHouse,"USA, Canada","Drama, Mystery, Thriller",30 Sep 2011,5.9,92 min,English,movie,"42,302"
+CrankYankers,USA,"Animation, Comedy",02 Jun 2002,6.2,30 min,English,series,"1,848"
+HowToRock,USA,"Comedy, Musical",04 Feb 2012,5.3,24 min,English,series,"1,128"
+Firefly,USA,"Adventure, Drama, Sci-Fi",20 Sep 2002,9.1,44 min,"English, Mandarin",series,"167,312"
+CrimeStory,Hong Kong,"Action, Crime, Drama",24 Jun 1993,6.9,103 min,"Cantonese, Mandarin, Hokkien",movie,"3,741"
+BetterOffTed,USA,Comedy,18 Mar 2009,8.2,30 min,English,series,"20,905"
+LeCoeurASesRaisons,Canada,"Comedy, Romance",03 Feb 2005,8.6,30 min,French,series,381
+TheFugitive,USA,"Action, Adventure, Crime",06 Aug 1993,7.8,130 min,"English, Polish, Spanish",movie,"199,000"
+TheSentinel,USA,"Action, Crime, Thriller",21 Apr 2006,6.1,108 min,English,movie,"40,954"
+MontyPythonsFlyingCircus,UK,"Comedy, Music",05 Oct 1969,9.0,30 min,"English, Arabic, French, German, Italian, Mandarin, Spanish",series,"37,711"
+FarOutSpaceNuts,USA,"Comedy, Family",06 Sep 1975,6.3,30 min,English,series,125
+TheJeffFoxworthyShow,USA,"Comedy, Family",16 Sep 1995,5.2,30 min,English,series,449
+TheAdventuresOfSinbad,Canada,"Fantasy, Action, Adventure",N/A,7.2,60 min,English,series,"1,034"
+PeepShow,UK,Comedy,19 Sep 2003,8.7,25 min,English,series,"28,893"
+ThatsSoRaven,USA,"Comedy, Family, Fantasy",17 Jan 2003,6.4,30 min,English,series,"11,884"
+FTroop,USA,"Comedy, War, Western",08 Sep 1965,7.5,30 min,English,series,"1,397"
+PunkyBrewster,USA,"Family, Comedy",16 Sep 1984,6.4,30 min,English,series,"2,755"
+LizzieMcGuire,USA,"Comedy, Drama, Family",12 Jan 2001,6.5,30 min,English,series,"12,641"
+TheIncredibleHulk,USA,"Action, Adventure, Sci-Fi",13 Jun 2008,6.9,112 min,"English, Portuguese, Spanish",movie,"301,837"
+Up,USA,"Animation, Adventure, Comedy",29 May 2009,8.3,96 min,English,movie,"575,622"
+AthenaGoddessOfWar,South Korea,"Action, Romance, Thriller",13 Dec 2010,6.8,N/A,"Korean, English, Italian, Japanese",series,253
+TheBorgias,"Hungary, Ireland, Canada, USA","Crime, Drama, History",03 Apr 2011,8.0,50 min,English,series,"36,148"
+HeyDad,USA,"Animation, Short",28 Oct 2011,N/A,1 min,English,movie,N/A
+PowerRangersRPM,USA,"Action, Adventure, Comedy",07 Mar 2009,6.3,22 min,English,series,812
+TheLastEnemy,UK,"Drama, Romance, Thriller",05 Oct 2008,7.1,N/A,English,series,"1,656"
+CriminalMinds,"USA, Canada","Crime, Drama, Mystery",22 Sep 2005,8.2,42 min,English,series,"97,625"
+Leonardo,UK,Adventure,11 Apr 2011,6.8,N/A,English,series,141
+SaturdayNightLive,USA,"Comedy, Music",11 Oct 1975,8.2,90 min,English,series,"30,476"
+Blackout,USA,"Horror, Mystery, Thriller",29 May 2008,5.1,120 min,English,movie,"2,928"
+PitBullsAndParolees,USA,"Drama, Reality-TV",30 Oct 2009,8.2,N/A,English,series,528
+CatchPhrase,UK,Game-Show,12 Jan 1986,6.6,30 min,English,series,151
+Beetleborgs,"USA, Japan","Action, Adventure, Comedy",07 Sep 1996,6.7,23 min,English,series,674
+HeyDude,USA,"Adventure, Comedy, Family",14 Jul 1989,7.4,30 min,English,series,"1,588"
+PanAm,USA,"Drama, History",25 Sep 2011,6.9,42 min,English,series,"16,357"
+TheGoldenGirls,USA,"Comedy, Drama",14 Sep 1985,7.8,30 min,"English, Italian, Norwegian",series,"19,975"
+TheBradyBunch,USA,"Comedy, Family",26 Sep 1969,6.7,30 min,English,series,"7,924"
+YesMinister,UK,Comedy,25 Feb 1980,8.8,60 min,English,series,"4,880"
+Reba,USA,"Comedy, Drama",05 Oct 2001,6.4,30 min,English,series,"10,151"
+BuffyTheVampireSlayer,USA,"Action, Drama, Fantasy",10 Mar 1997,8.2,44 min,English,series,"94,239"
+BattlestarGalacticaClassic,USA,Sci-Fi,05 Oct 2007,7.6,20 min,English,series,869
+MelissaAndJoey,USA,Comedy,N/A,7.1,30 min,English,series,"12,978"
+Witchblade,USA,"Action, Fantasy, Mystery",27 Aug 2000,4.9,94 min,English,movie,"1,857"
+FreshMeat,UK,"Comedy, Drama",21 Sep 2011,8.0,50 min,English,series,"6,736"
+BarefootContessa,USA,Documentary,30 Nov 2002,6.7,30 min,English,series,380
+Rainbow,"UK, Canada","Comedy, Family, Fantasy",26 Jul 1996,4.2,98 min,English,movie,263
+MarriedWithChildren,USA,Comedy,05 Apr 1987,8.1,22 min,English,series,"72,062"
+SueThomasFBEye,"Canada, USA","Crime, Drama, Mystery",13 Oct 2002,7.1,60 min,"English, American Sign Language",series,"1,196"
+BetweenTheLions,USA,"Comedy, Family, Fantasy",03 May 2002,7.0,30 min,English,series,361
+HappyEndings,USA,Comedy,13 Apr 2011,7.7,30 min,English,series,"28,188"
+AmericanGuns,USA,Reality-TV,10 Oct 2011,6.7,42 min,English,series,407
+Millennium,USA,"Crime, Drama, Mystery",25 Oct 1996,8.1,45 min,English,series,"7,156"
+CornerGas,Canada,Comedy,19 Jun 2004,8.2,30 min,English,series,"3,812"
+WonderWoman,USA,"Animation, Action, Adventure",03 Mar 2009,7.4,74 min,English,movie,"9,164"
+ForeverKnight,"Canada, West Germany","Crime, Drama, Horror",05 May 1992,7.8,60 min,"English, French",series,"1,595"
+NoelsChristmasPresents,UK,Family,25 Dec 1991,N/A,N/A,English,movie,N/A
+AnimalFaceOff,N/A,N/A,01 Mar 2004,5.4,N/A,N/A,series,14
+TheSecretAdventuresOfJulesVerne,"UK, Canada","Horror, Sci-Fi, Adventure",05 Jan 2001,7.1,N/A,English,series,206
+DogTheBountyHunter,USA,"Adventure, Crime, Reality-TV",31 Aug 2004,5.2,30 min,English,series,"3,593"
+JustShootMe,Brazil,"Documentary, Action, Drama",08 Jul 2011,N/A,67 min,Portuguese,movie,N/A
+Amen,India,"Drama, Musical, Romance",22 Mar 2013,7.6,165 min,Malayalam,movie,"1,305"
+BestLove,USA,"Short, Romance",02 Apr 2009,N/A,N/A,English,movie,N/A
+TheXFactor,USA,"Music, Reality-TV",01 Sep 2011,5.2,N/A,English,series,"5,023"
+Kaamelott,France,"Comedy, Adventure, Fantasy",03 Jan 2005,8.7,N/A,French,series,"1,717"
+NameThatTune,USA,"Game-Show, Music",N/A,7.1,N/A,English,series,28
+DarkShadows,"USA, Australia","Comedy, Horror",11 May 2012,6.2,113 min,English,movie,"182,907"
+HerculesTheLegendaryJourneys,"USA, New Zealand","Action, Adventure, Drama",16 Jan 1995,6.5,60 min,English,series,"19,508"
+TheWayansBros,USA,Comedy,11 Jan 1995,7.3,30 min,English,series,"2,939"
+Luck,USA,"Drama, Sport",01 Feb 2012,7.6,52 min,English,series,"4,402"
+ItAintHalfHotMum,UK,"Comedy, War",03 Jan 1974,7.2,30 min,English,series,594
+GettingOn,USA,Comedy,24 Nov 2013,7.6,30 min,English,series,"1,747"
+LostGirl,Canada,"Drama, Fantasy",12 Sep 2010,7.8,60 min,English,series,"20,608"
+Charmed,USA,"Drama, Fantasy, Mystery",07 Oct 1998,7.0,42 min,English,series,"51,309"
+AForAndromeda,UK,"Drama, Sci-Fi, Thriller",27 Mar 2006,5.3,90 min,English,movie,421
+AlienNation,USA,"Action, Crime, Sci-Fi",07 Oct 1988,6.3,91 min,English,movie,"10,537"
+Veep,USA,Comedy,22 Apr 2012,8.0,28 min,English,series,"19,463"
+Coupling,UK,Comedy,01 Sep 2001,8.7,30 min,English,series,"31,004"
+LaskoDieFaustGottes,"Germany, Austria","Action, Adventure",18 Jun 2009,4.1,60 min,German,series,179
+DickAndDomsFunnyBusiness,UK,Comedy,08 Jan 2011,4.1,N/A,English,series,14
+Misfits,UK,"Comedy, Drama, Fantasy",19 Jul 2012,8.3,60 min,English,series,"67,613"
+HellsKitchen,N/A,"Documentary, Biography, News",16 Aug 2005,N/A,30 min,N/A,episode,N/A
+TheHoganFamily,USA,"Comedy, Family",01 Mar 1986,6.5,30 min,English,series,794
+BarneyAndFriends,USA,"Adventure, Comedy, Family",06 Apr 1992,3.5,30 min,English,series,"2,914"
+LifeOnMars2006,UK,"Crime, Drama, Mystery",24 Jul 2006,8.4,60 min,English,series,"21,602"
+Chespirito,Mexico,"Comedy, Romance",N/A,8.1,N/A,Spanish,series,272
+BetterWithYou,USA,Comedy,22 Sep 2010,6.9,30 min,English,series,"2,862"
+Tosh0,UK,"Animation, Short, Comedy",N/A,N/A,3 min,English,movie,N/A
+LifeOnMars2008,UK,"Crime, Drama, Mystery",24 Jul 2006,8.4,60 min,English,series,"21,602"
+TheInvaders,USA,"Drama, Sci-Fi, Thriller",10 Jan 1967,8.2,51 min,English,series,"1,394"
+TheFallGuy,USA,"Action, Adventure",04 Nov 1981,7.1,60 min,English,series,"3,355"
+Dollhouse,USA,"Drama, Mystery, Sci-Fi",13 Feb 2009,7.8,44 min,English,series,"37,753"
+TheTwilightZone,USA,"Fantasy, Horror, Mystery",02 Oct 1959,9.0,51 min,English,series,"38,151"
+TheWarAtHome,USA,Comedy,11 Sep 2005,7.5,30 min,English,series,"7,381"
+InsomniacWithDaveAttell,USA,Comedy,05 Aug 2001,8.1,30 min,English,series,669
+That70sShow,USA,Comedy,23 Aug 1998,8.1,22 min,English,series,"105,382"
+Sliders,USA,"Sci-Fi, Adventure, Fantasy",22 Mar 1995,7.4,60 min,English,series,"12,018"
+Camelot,"Ireland, USA, UK, Canada","Drama, Fantasy",25 Feb 2011,6.6,45 min,English,series,"18,913"
+House,USA,"Comedy, Fantasy, Horror",28 Feb 1986,6.2,93 min,English,movie,"15,956"
+Conquest,"Italy, Spain, Mexico","Action, Adventure, Fantasy",06 Apr 1984,5.2,88 min,"Italian, Spanish",movie,"1,115"
+MervGriffinsCrosswords,USA,Game-Show,13 Nov 2007,7.2,N/A,English,series,64
+SwitchedAtBirth,USA,"Drama, Family",06 Jun 2011,7.8,60 min,"English, American Sign Language, Spanish",series,"16,936"
+DinosaursDecoded,USA,Documentary,11 Oct 2009,6.5,N/A,English,movie,24
+TheBeverlyHillbillies,USA,"Comedy, Family",15 Oct 1993,4.8,92 min,English,movie,"13,697"
+LaPetiteVie,Canada,N/A,16 Oct 1993,8.6,23 min,French,series,524
+Jessie,USA,"Comedy, Family",30 Sep 2011,6.0,30 min,English,series,"6,927"
+SteptoeAndSon,UK,Comedy,05 Jun 1962,8.0,45 min,English,series,"1,449"
+StarskyAndHutch,USA,"Action, Crime, Drama",10 Sep 1975,7.1,60 min,English,series,"3,967"
+Insecurity,Canada,Comedy,04 Jan 2011,6.1,30 min,English,series,438
+TheRomanMysteries,UK,"Drama, Family, Fantasy",08 May 2007,7.6,60 min,English,series,110
+TheGoodLife,"Canada, USA","Comedy, Drama",20 Jan 2007,6.5,90 min,English,movie,"1,642"
+MurphyBrown,USA,Comedy,14 Nov 1988,7.0,30 min,English,series,"4,291"
+TheVampyrASoapOpera,UK,"Drama, Fantasy, Horror",N/A,7.7,N/A,English,movie,23
+Viper,"Canada, USA","Crime, Sci-Fi",23 Sep 1996,5.8,60 min,English,series,573
+Homeland,USA,"Drama, Mystery, Thriller",02 Oct 2011,8.5,55 min,English,series,"194,168"
+Lassie,USA,"Family, Adventure",22 Jul 1994,5.8,94 min,English,movie,"3,501"
+Justified,USA,"Action, Crime, Drama",16 Mar 2010,8.7,44 min,English,series,"56,967"
+DontTellMyMother,"USA, France",Documentary,N/A,7.7,N/A,"French, English",movie,23
+BreakoutKings,USA,"Crime, Drama, Thriller",06 Mar 2011,7.3,43 min,English,series,"12,069"
+SonDeFierro,Argentina,N/A,08 Jan 2007,4.4,N/A,Spanish,series,56
+FreddysNightmares,USA,"Horror, Thriller",09 Oct 1988,6.5,60 min,English,series,"1,808"
+MyNameIsEarl,USA,Comedy,20 Sep 2005,7.8,30 min,"English, Spanish",series,"78,362"
+TheBobNewhartShow,USA,Comedy,16 Sep 1972,8.2,30 min,English,series,"2,616"
+FatedToLoveYou,South Korea,"Comedy, Romance",02 Jul 2014,7.9,N/A,Korean,series,307
+TheChampions,UK,"Adventure, Sci-Fi, Thriller",10 Jun 1968,7.7,60 min,English,series,428
+AlarmFurCobra11,Germany,"Action, Crime, Drama",12 Mar 1996,6.3,90 min,German,series,"3,355"
+MySpyFamily,UK,Comedy,01 Sep 2007,6.8,N/A,English,series,80
+TheAdventuresOfSherlockHolmesAndDoctorWatson,Soviet Union,"Crime, Mystery",N/A,8.6,63 min,Russian,movie,"1,102"
+HowItsMade,Canada,Documentary,N/A,7.9,24 min,"English, French",series,"3,464"
+TheNanny,USA,Comedy,03 Nov 1993,6.8,30 min,"English, Yiddish",series,"26,185"
+FilthyRichAndCatflap,UK,Comedy,07 Jan 1987,7.3,204 min,English,series,800
+FirstWave,Canada,"Adventure, Drama, Sci-Fi",19 Mar 1999,7.2,43 min,English,series,"2,514"
+YoungDracula,UK,"Comedy, Family",21 Sep 2006,8.1,25 min,English,series,875
+SpecialUnit2,Germany,Action,07 Mar 2007,5.7,N/A,German,series,111
+AllTheSmallThings,UK,Drama,31 Mar 2009,7.5,60 min,English,series,287
+LastOfTheSummerWine,UK,Comedy,04 Jan 1973,7.0,30 min,English,series,"1,571"
+NYC22,USA,"Crime, Drama",15 Apr 2012,6.7,60 min,English,series,"1,309"
+Lost,USA,"Adventure, Drama, Fantasy",22 Sep 2004,8.5,44 min,"English, Portuguese, Spanish, Arabic, French, Korean, German, Latin, Russian, Japanese",series,"337,053"
+EureekasCastle,USA,"Musical, Family, Comedy",05 Sep 1989,7.8,22 min,English,series,716
+PeeWeesPlayhouse,USA,"Family, Comedy, Musical",13 Sep 1986,8.0,30 min,English,series,"2,548"
+RookieBlue,Canada,"Crime, Drama",24 Jun 2010,7.7,42 min,English,series,"13,019"
+MrBelvedere,USA,"Comedy, Family",15 Mar 1985,6.6,30 min,English,series,"2,154"
+Drive,USA,"Crime, Drama",16 Sep 2011,7.8,100 min,"English, Spanish",movie,"397,368"
+HangTime,USA,Comedy,09 Sep 1995,7.1,30 min,English,series,475
+BosomBuddies,USA,Comedy,27 Nov 1980,6.7,30 min,English,series,"1,852"
+TheTimeTunnel,USA,"Action, Sci-Fi",09 Sep 1966,7.7,60 min,English,series,"1,454"
+TheTrip,UK,"Comedy, Drama",24 Apr 2011,7.0,107 min,English,movie,"15,897"
+TheOneMillionChanceOfALifetime,Australia,Game-Show,N/A,N/A,60 min,English,series,N/A
+FaceTheMusic,"USA, France","Comedy, Drama",N/A,4.7,93 min,English,movie,241
+Manchild,UK,Comedy,18 Apr 2002,7.7,30 min,English,series,212
+Coach,USA,"Comedy, Sport",28 Feb 1989,7.0,30 min,English,series,"3,005"
+MadAboutYou,USA,"Comedy, Romance",23 Sep 1992,6.6,22 min,English,series,"14,072"
+KYTV,UK,Comedy,12 May 1989,8.1,30 min,English,series,66
+PatitoFeo,Argentina,"Comedy, Drama, Family",10 Apr 2007,3.5,60 min,Spanish,series,386
+AmericanRestoration,USA,Reality-TV,25 Oct 2010,6.8,N/A,English,series,"1,934"
+JeevesAndWooster,UK,Comedy,22 Apr 1990,8.6,55 min,English,series,"7,222"
+RelicHunter,"France, Germany, Canada, USA","Fantasy, Mystery, Adventure",20 Sep 1999,6.5,60 min,English,series,"3,920"
+FlashForward,"Canada, USA","Family, Comedy",N/A,8.2,30 min,English,series,"1,150"
+MenBehavingBadly,USA,Comedy,18 Sep 1996,6.6,30 min,English,series,607
+StateOfPlay,"USA, UK, France","Crime, Drama, Mystery",17 Apr 2009,7.1,127 min,"English, Cantonese",movie,"108,134"
+AustinAndAlly,USA,"Comedy, Music",02 Dec 2011,6.0,30 min,English,series,"5,379"
+Scandal,USA,"Drama, Thriller",05 Apr 2012,8.0,43 min,English,series,"42,594"
+Scrabble,USA,Game-Show,02 Jul 1984,7.3,22 min,English,series,74
