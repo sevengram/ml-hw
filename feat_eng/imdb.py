@@ -53,7 +53,7 @@ def fetch_imdb_info(movie_name):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', help='Output file',
-                        type=str, default='info.csv', required=False)
+                        type=str, default='meta_info.csv', required=False)
     parser.add_argument('--train', help='Training set file',
                         type=str, default='../data/spoilers/train.csv', required=False)
     parser.add_argument('--test', help='Test set file',
