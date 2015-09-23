@@ -1,34 +1,32 @@
 from random import randint, seed
-from collections import defaultdict
-from math import atan, sin, cos, pi
 
-from numpy import array
-from numpy.linalg import norm
-
-from bst import BST
+import numpy
 
 kSIMPLE_DATA = [(1., 1.), (2., 2.), (3., 0.), (4., 2.)]
 
 
 class Classifier:
+    def __init__(self):
+        pass
+
+    def classify(self, point):
+        raise NotImplementedError
+
     def correlation(self, data, labels):
         """
         Return the correlation between a label assignment and the predictions of
         the classifier
 
-        Args:
-          data: A list of datapoints
-          labels: The list of labels we correlate against (+1 / -1)
+        :param data: A list of datapoints
+        :param labels: The list of labels we correlate against (+1 / -1)
         """
 
-        assert len(data) == len(labels), \
-            "Data and labels must be the same size %i vs %i" % \
-            (len(data), len(labels))
-
+        m = len(data)
+        assert m == len(labels), "Data and labels must be the same size %i vs %i" % (m, len(labels))
         assert all(x == 1 or x == -1 for x in labels), "Labels must be binary"
 
-        # TODO: implement this function
-        return 0.0
+        predicts = [self.classify(point) for point in data]
+        return float(numpy.dot(labels, predicts)) / m
 
 
 class PlaneHypothesis(Classifier):
@@ -40,23 +38,22 @@ class PlaneHypothesis(Classifier):
         """
         Provide the definition of the decision boundary's normal vector
 
-        Args:
-          x: First dimension
-          y: Second dimension
-          b: Bias term
+        :param x: First dimension
+        :param y: Second dimension
+        :param b: Bias term
         """
-        self._vector = array([x, y])
+        Classifier.__init__(self)
+        self._vector = numpy.array([x, y])
         self._bias = b
 
     def __call__(self, point):
         return self._vector.dot(point) - self._bias
 
     def classify(self, point):
-        return self(point) >= 0
+        return 1 if self(point) >= 0 else -1
 
     def __str__(self):
-        return "x: x_0 * %0.2f + x_1 * %0.2f >= %f" % \
-            (self._vector[0], self._vector[1], self._bias)
+        return "x: x_0 * %0.2f + x_1 * %0.2f >= %f" % (self._vector[0], self._vector[1], self._bias)
 
 
 class OriginPlaneHypothesis(PlaneHypothesis):
@@ -64,14 +61,14 @@ class OriginPlaneHypothesis(PlaneHypothesis):
     A class that represents a decision boundary that must pass through the
     origin.
     """
+
     def __init__(self, x, y):
         """
         Create a decision boundary by specifying the normal vector to the
         decision plane.
 
-        Args:
-          x: First dimension
-          y: Second dimension
+        :param x: First dimension
+        :param y: Second dimension
         """
         PlaneHypothesis.__init__(self, x, y, 0)
 
@@ -80,25 +77,23 @@ class AxisAlignedRectangle(Classifier):
     """
     A class that represents a hypothesis where everything within a rectangle
     (inclusive of the boundary) is positive and everything else is negative.
-
     """
+
     def __init__(self, start_x, start_y, end_x, end_y):
         """
-
         Create an axis-aligned rectangle classifier.  Returns true for any
         points inside the rectangle (including the boundary)
 
-        Args:
-          start_x: Left position
-          start_y: Bottom position
-          end_x: Right position
-          end_y: Top position
+        :param start_x: Left position
+        :param start_y: Bottom position
+        :param end_x: Right position
+        :param end_y: Top position
         """
+        Classifier.__init__(self)
         assert end_x >= start_x, "Cannot have negative length (%f vs. %f)" % \
-            (end_x, start_x)
+                                 (end_x, start_x)
         assert end_y >= start_y, "Cannot have negative height (%f vs. %f)" % \
-            (end_y, start_y)
-
+                                 (end_y, start_y)
         self._x1 = start_x
         self._y1 = start_y
         self._x2 = end_x
@@ -108,15 +103,12 @@ class AxisAlignedRectangle(Classifier):
         """
         Classify a data point
 
-        Args:
-          point: The point to classify
+        :param point: The point to classify
         """
-        return (point[0] >= self._x1 and point[0] <= self._x2) and \
-            (point[1] >= self._y1 and point[1] <= self._y2)
+        return 1 if (self._x1 <= point[0] <= self._x2) and (self._y1 <= point[1] <= self._y2) else -1
 
     def __str__(self):
-        return "(%0.2f, %0.2f) -> (%0.2f, %0.2f)" % \
-            (self._x1, self._y1, self._x2, self._y2)
+        return "(%0.2f, %0.2f) -> (%0.2f, %0.2f)" % (self._x1, self._y1, self._x2, self._y2)
 
 
 class ConstantClassifier(Classifier):
@@ -125,7 +117,7 @@ class ConstantClassifier(Classifier):
     """
 
     def classify(self, point):
-        return True
+        return 1
 
 
 def constant_hypotheses(dataset):
@@ -133,9 +125,7 @@ def constant_hypotheses(dataset):
     Given a dataset in R2, return an iterator over the single constant
     hypothesis possible.
 
-    Args:
-      dataset: The dataset to use to generate hypotheses
-
+    :param dataset: The dataset to use to generate hypotheses
     """
     yield ConstantClassifier()
 
@@ -148,14 +138,12 @@ def origin_plane_hypotheses(dataset):
     Classifiers are represented as a vector.  The classification decision is
     the sign of the dot product between an input point and the classifier.
 
-    Args:
-      dataset: The dataset to use to generate hypotheses
-
+    :param dataset: The dataset to use to generate hypotheses
     """
 
     # TODO: Complete this function
-
     yield OriginPlaneHypothesis(1.0, 0.0)
+
 
 def plane_hypotheses(dataset):
     """
@@ -166,13 +154,11 @@ def plane_hypotheses(dataset):
     decision is the sign of the dot product between an input point and the
     classifier plus a bias.
 
-    Args:
-      dataset: The dataset to use to generate hypotheses
-
+    :param dataset: The dataset to use to generate hypotheses
     """
 
-    # Complete this for extra credit
-    return
+    # TODO: Complete this for extra credit
+    yield PlaneHypothesis(1.0, 0.0, 0.0)
 
 
 def axis_aligned_hypotheses(dataset):
@@ -182,8 +168,7 @@ def axis_aligned_hypotheses(dataset):
 
     Classifiers are axis-aligned rectangles
 
-    Args:
-      dataset: The dataset to use to generate hypotheses
+    :param dataset: The dataset to use to generate hypotheses
     """
 
     # TODO: complete this function
@@ -194,10 +179,8 @@ def coin_tosses(number, random_seed=0):
     """
     Generate a desired number of coin tosses with +1/-1 outcomes.
 
-    Args:
-      number: The number of coin tosses to perform
-
-      random_seed: The random seed to use
+    :param number: The number of coin tosses to perform
+    :param random_seed: The random seed to use
     """
     if random_seed != 0:
         seed(random_seed)
@@ -205,24 +188,19 @@ def coin_tosses(number, random_seed=0):
     return [randint(0, 1) * 2 - 1 for x in xrange(number)]
 
 
-def rademacher_estimate(dataset, hypothesis_generator, num_samples=500,
-                        random_seed=0):
+def rademacher_estimate(dataset, hypothesis_generator, num_samples=500, random_seed=0):
     """
     Given a dataset, estimate the rademacher complexity
 
-    Args:
-      dataset: a sequence of examples that can be handled by the hypotheses
-      generated by the hypothesis_generator
-
-      hypothesis_generator: a function that generates an iterator over
-      hypotheses given a dataset
-
-      num_samples: the number of samples to use in estimating the Rademacher
-      correlation
+    :param dataset: a sequence of examples that can be handled by the hypotheses generated by the hypothesis_generator
+    :param hypothesis_generator: a function that generates an iterator over hypotheses given a dataset
+    :param num_samples: the number of samples to use in estimating the Rademacher correlation
+    :param random_seed: The random seed to use
     """
 
     # TODO: complete this function
     return 0.0
+
 
 if __name__ == "__main__":
     print("Rademacher correlation of constant classifier %f" %

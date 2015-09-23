@@ -13,8 +13,7 @@ class SinClassifier:
         """
         Create a new classifier parameterized by frequency \omega
 
-        Args:
-          frequency: The frequency of the sin function (a real number)
+        :param frequency: The frequency of the sin function (a real number)
         """
         assert isinstance(frequency, float)
         self._frequency = frequency
@@ -24,19 +23,16 @@ class SinClassifier:
         Returns the raw output of the classifier.  The sign of this value is the
         final prediction.
 
-        Args:
-          x: The data point (an integer)
+        :param x: The data point (an integer)
         """
         return sin(self._frequency * 2 ** (-x))
 
     def classify(self, x):
         """
-
         Classifies an integer based on whether the sign of \sin(\omega * 2^{-x})
         is >= 0.  If it is, the classifier returns True.  Otherwise, false.
 
-        Args:
-          x: The data point (an integer)
+        :param x: The data point (an integer)
         """
         assert isinstance(x, int), "Object to be classified must be an integer"
 
@@ -51,8 +47,7 @@ def train_sin_classifier(data):
     Compute the correct frequency of a classifier to prefectly classify the
     data and return the corresponding classifier object
 
-    Args:
-      data: A list of tuples; first coordinate is x (integers), second is y (+1/-1)
+    :param data: A list of tuples; first coordinate is x (integers), second is y (+1/-1)
     """
 
     assert all(isinstance(x[0], int) and x >= 0 for x in data), \
@@ -63,6 +58,7 @@ def train_sin_classifier(data):
     # TODO: Compute a frequency that will correctly classify the dataset
     frequency = 1.0
     return SinClassifier(frequency * pi)
+
 
 if __name__ == "__main__":
     classifier = train_sin_classifier(kSIMPLE_TRAIN)
