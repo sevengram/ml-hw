@@ -165,8 +165,8 @@ if __name__ == '__main__':
                         type=float, default=0.25, required=False)
     parser.add_argument('--top', help='Number of top features to show',
                         type=int, default=50, required=False)
-    parser.add_argument('--feat', help='Features concat by \':\', default is \'word\', support feats: word:stem:1st:'
-                                       '3rd:length:tag:rating:votes:year:runtime:genre:country:lang:type',
+    parser.add_argument('--feat', help='Features concat by \':\', default is \'word\', feature list: word:stem:1st:'
+                                       '3rd:length:tag:genre:rating:votes:year:runtime:country:lang:type',
                         type=str, default='word', required=False)
     parser.add_argument('--ngmin', help='The lower boundary of the range of n-values for n-grams',
                         type=int, default=1, required=False)
@@ -176,6 +176,11 @@ if __name__ == '__main__':
     parser.add_argument("--stop", help="Use stop words", action='store_true')
     args = parser.parse_args()
 
+    print('Use --help to see details')
+    print('Features: %s' % args.feat)
+    print('Use tfidf: %s' % args.tfidf)
+    print('Use stop words: %s' % args.stop)
+    print('N-gram range: (%d, %d)' % (args.ngmin, args.ngmax))
     # Load meta data
     meta_info = load_meta_info(args.meta) if args.meta else None
     print('Meta info loaded!')
