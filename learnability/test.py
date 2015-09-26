@@ -3,7 +3,6 @@ import unittest
 from rademacher import origin_plane_hypotheses, axis_aligned_hypotheses, \
     rademacher_estimate, kSIMPLE_DATA as rad_data, PlaneHypothesis, \
     constant_hypotheses
-
 from vc_sin import train_sin_classifier
 
 
@@ -15,13 +14,13 @@ def assign_exists(data, classifiers, pattern):
 
     val = False
     assert len(data) == len(pattern), "Length mismatch between %s and %s" % \
-        (str(data), str(pattern))
+                                      (str(data), str(pattern))
     for hh in classifiers:
         present = all(hh.classify(data[x]) == pattern[x] for
                       x in xrange(len(data)))
         # Uncomment for additional debugging code
-        # if present:
-        #    print("%s matches %s" % (str(hh), str(pattern)))
+        if present:
+            print("%s matches %s" % (str(hh), str(pattern)))
         val = val or present
     if not val:
         print("%s not found in:" % str(pattern))
@@ -71,7 +70,6 @@ class TestLearnability(unittest.TestCase):
 
     def test_plane_four_points(self):
         hyps = list(origin_plane_hypotheses(self._2d[4]))
-
         for pp in [[True, True, True, True],
                    [False, False, True, True],
                    [False, False, True, False],
@@ -79,8 +77,112 @@ class TestLearnability(unittest.TestCase):
                    [True, True, False, False],
                    [False, False, False, False]]:
             self.assertTrue(assign_exists(self._2d[4], hyps, pp))
-
         self.assertEqual(6, len(hyps))
+        data = [(1, 1), (-1, 1), (-1, -1), (1, -1)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[1, 1, 0, 0],
+                   [0, 0, 1, 1],
+                   [1, 0, 0, 1],
+                   [0, 1, 1, 0],
+                   [1, 0, 1, 1],
+                   [1, 1, 1, 0],
+                   [1, 1, 0, 1],
+                   [0, 1, 1, 1]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(8, len(hyps))
+
+    def test_plane_one_points(self):
+        data = [[(1, 1)], [(1, 0)], [(0, -5)], [(-1, 0)], [(-2.3, -5.34)]]
+        for d in data:
+            hyps = list(origin_plane_hypotheses(d))
+            for pp in [[False], [True]]:
+                self.assertTrue(assign_exists(d, hyps, pp))
+            self.assertEqual(2, len(hyps))
+        d = [(0, 0)]
+        hyps = list(origin_plane_hypotheses(d))
+        for pp in [[True]]:
+            self.assertTrue(assign_exists(d, hyps, pp))
+        self.assertEqual(1, len(hyps))
+
+    def test_plane_tree_points(self):
+        data = [(-1, 0), (-1, 0), (-1, 0)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[False, False, False],
+                   [True, True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(2, len(hyps))
+        print
+        data = [(-1, 0), (-1, 0), (1, 0)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[False, False, True],
+                   [True, True, False],
+                   [True, True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(3, len(hyps))
+        print
+        data = [(1, 0), (-1, 0), (-4, -5)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[True, True, True],
+                   [True, True, False],
+                   [True, False, False],
+                   [False, True, True],
+                   [True, False, True],
+                   [False, True, False]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(6, len(hyps))
+        print
+        data = [(1, 0), (1, 0), (-4, -5)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[True, True, True],
+                   [True, True, False],
+                   [False, False, True],
+                   [False, False, False]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(4, len(hyps))
+        print
+        data = [(10, 1), (3, 3), (-1, -15)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[True, True, True],
+                   [False, False, False],
+                   [False, False, True],
+                   [True, True, False],
+                   [True, False, True],
+                   [False, True, False]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(6, len(hyps))
+
+    def test_plane_two_points(self):
+        data = [(-1, 0), (-1, 0)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[False, False],
+                   [True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(2, len(hyps))
+        print
+        data = [(1, 1), (-2, -2)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[False, True],
+                   [True, False],
+                   [True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(3, len(hyps))
+        print
+        data = [(-1, 0), (-3, -2)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[False, True],
+                   [True, False],
+                   [False, False],
+                   [True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(4, len(hyps))
+        print
+        data = [(-1, 0), (1, 0)]
+        hyps = list(origin_plane_hypotheses(data))
+        for pp in [[False, True],
+                   [True, False],
+                   [True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(3, len(hyps))
 
     def test_correlation(self):
         labels = [+1, +1, -1, +1]
@@ -106,7 +208,6 @@ class TestLearnability(unittest.TestCase):
                                                           num_samples=1000,
                                                           random_seed=3),
                                places=1)
-
 
     def test_vc_one_point_pos(self):
         data_pos = [(1, False)]
@@ -141,6 +242,7 @@ class TestLearnability(unittest.TestCase):
         for xx, yy in data:
             self.assertEqual(True if yy == +1 else False,
                              classifier.classify(xx))
+
 
 if __name__ == '__main__':
     unittest.main()

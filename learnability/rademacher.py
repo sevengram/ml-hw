@@ -1,8 +1,14 @@
 from random import randint, seed
 
-import numpy
+import numpy as np
 
 kSIMPLE_DATA = [(1., 1.), (2., 2.), (3., 0.), (4., 2.)]
+
+EPSILON = 1e-8
+
+
+def almost_equal(a, b):
+    return abs(a - b) <= EPSILON
 
 
 class Classifier:
@@ -25,8 +31,8 @@ class Classifier:
         assert m == len(labels), "Data and labels must be the same size %i vs %i" % (m, len(labels))
         assert all(x == 1 or x == -1 for x in labels), "Labels must be binary"
 
-        predicts = [self.classify(point) for point in data]
-        return float(numpy.dot(labels, predicts)) / m
+        predicts = [1 if self.classify(point) else -1 for point in data]
+        return float(np.dot(labels, predicts)) / m
 
 
 class PlaneHypothesis(Classifier):
@@ -43,14 +49,14 @@ class PlaneHypothesis(Classifier):
         :param b: Bias term
         """
         Classifier.__init__(self)
-        self._vector = numpy.array([x, y])
+        self._vector = np.asarray([x, y])
         self._bias = b
 
     def __call__(self, point):
         return self._vector.dot(point) - self._bias
 
     def classify(self, point):
-        return 1 if self(point) >= 0 else -1
+        return self(point) - 0 >= -EPSILON
 
     def __str__(self):
         return "x: x_0 * %0.2f + x_1 * %0.2f >= %f" % (self._vector[0], self._vector[1], self._bias)
@@ -105,7 +111,7 @@ class AxisAlignedRectangle(Classifier):
 
         :param point: The point to classify
         """
-        return 1 if (self._x1 <= point[0] <= self._x2) and (self._y1 <= point[1] <= self._y2) else -1
+        return (self._x1 <= point[0] <= self._x2) and (self._y1 <= point[1] <= self._y2)
 
     def __str__(self):
         return "(%0.2f, %0.2f) -> (%0.2f, %0.2f)" % (self._x1, self._y1, self._x2, self._y2)
@@ -117,7 +123,7 @@ class ConstantClassifier(Classifier):
     """
 
     def classify(self, point):
-        return 1
+        return True
 
 
 def constant_hypotheses(dataset):
@@ -140,9 +146,49 @@ def origin_plane_hypotheses(dataset):
 
     :param dataset: The dataset to use to generate hypotheses
     """
+    inter_vector = lambda v1, v2: (v1[0] + v2[0], v1[1] + v2[1])
 
-    # TODO: Complete this function
-    yield OriginPlaneHypothesis(1.0, 0.0)
+    if len(dataset) == 1 and almost_equal(dataset[0][0], 0) and almost_equal(dataset[0][1], 0):
+        yield OriginPlaneHypothesis(1., 1.)
+    else:
+        norm_vectors = np.asarray(
+            [np.asarray((v[0] if v[1] >= 0 else -v[0], v[1]) / np.linalg.norm(v)) for v in dataset])
+        norm_vectors = norm_vectors[norm_vectors[:, 0].argsort()][::-1]
+
+        uni_list, oppo_list = [], []
+        cv = None
+        for nv in norm_vectors:
+            if cv is not None and almost_equal(nv[0], cv[0]):
+                if not almost_equal(nv[1], cv[1]) and (not oppo_list or not almost_equal(oppo_list[-1][0], nv[0])):
+                    oppo_list.append((nv[0], abs(nv[1])))
+            else:
+                cv = nv
+                uni_list.append((nv[0], abs(nv[1])))
+        if almost_equal(uni_list[0][0], 1.) and almost_equal(uni_list[-1][0], -1.):
+            oppo_list.append((1., 0.))
+            uni_list.pop()
+
+        if len(uni_list) == 1:
+            if not almost_equal(uni_list[0][0], 0):
+                yield OriginPlaneHypothesis(1., 0)
+                yield OriginPlaneHypothesis(-1., 0)
+            else:
+                yield OriginPlaneHypothesis(0, 1.)
+                yield OriginPlaneHypothesis(0, -1.)
+        else:
+            tl = [(-uni_list[-1][0], -uni_list[-1][1])] + uni_list + [(-uni_list[0][0], -uni_list[0][1])]
+            for i in range(len(tl) - 1):
+                if i == 0 or i == len(tl) - 2:
+                    v = inter_vector(tl[i], tl[i + 1])
+                    yield OriginPlaneHypothesis(-v[1], v[0])
+                else:
+                    v = inter_vector(tl[i], tl[i + 1])
+                    yield OriginPlaneHypothesis(-v[1], v[0])
+                    yield OriginPlaneHypothesis(v[1], -v[0])
+        for v in oppo_list:
+            yield OriginPlaneHypothesis(-v[1], v[0])
+            if len(uni_list) != 1:
+                yield OriginPlaneHypothesis(v[1], -v[0])
 
 
 def plane_hypotheses(dataset):
