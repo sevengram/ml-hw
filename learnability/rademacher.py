@@ -1,14 +1,17 @@
 from random import randint, seed
+import time
 
 import numpy as np
 
 kSIMPLE_DATA = [(1., 1.), (2., 2.), (3., 0.), (4., 2.)]
 
-EPSILON = 1e-8
+
+def almost_eq(a, b):
+    return abs(a - b) <= 1e-8
 
 
-def almost_equal(a, b):
-    return abs(a - b) <= EPSILON
+def almost_geq(a, b):
+    return a - b >= -1e-8
 
 
 class Classifier:
@@ -56,7 +59,7 @@ class PlaneHypothesis(Classifier):
         return self._vector.dot(point) - self._bias
 
     def classify(self, point):
-        return self(point) - 0 >= -EPSILON
+        return almost_geq(self(point), 0.0)
 
     def __str__(self):
         return "x: x_0 * %0.2f + x_1 * %0.2f >= %f" % (self._vector[0], self._vector[1], self._bias)
@@ -148,28 +151,28 @@ def origin_plane_hypotheses(dataset):
     """
     inter_vector = lambda v1, v2: (v1[0] + v2[0], v1[1] + v2[1])
 
-    if len(dataset) == 1 and almost_equal(dataset[0][0], 0) and almost_equal(dataset[0][1], 0):
+    if len(dataset) == 1 and almost_eq(dataset[0][0], 0) and almost_eq(dataset[0][1], 0):
         yield OriginPlaneHypothesis(1., 1.)
     else:
         norm_vectors = np.asarray(
-            [np.asarray((v[0] if v[1] >= 0 else -v[0], v[1]) / np.linalg.norm(v)) for v in dataset])
+            [np.asarray((v[0] if almost_geq(v[1], 0) else -v[0], v[1]) / np.linalg.norm(v)) for v in dataset])
         norm_vectors = norm_vectors[norm_vectors[:, 0].argsort()][::-1]
 
         uni_list, oppo_list = [], []
         cv = None
         for nv in norm_vectors:
-            if cv is not None and almost_equal(nv[0], cv[0]):
-                if not almost_equal(nv[1], cv[1]) and (not oppo_list or not almost_equal(oppo_list[-1][0], nv[0])):
+            if cv is not None and almost_eq(nv[0], cv[0]):
+                if not almost_eq(nv[1], cv[1]) and (not oppo_list or not almost_eq(oppo_list[-1][0], nv[0])):
                     oppo_list.append((nv[0], abs(nv[1])))
             else:
                 cv = nv
                 uni_list.append((nv[0], abs(nv[1])))
-        if almost_equal(uni_list[0][0], 1.) and almost_equal(uni_list[-1][0], -1.):
+        if almost_eq(uni_list[0][0], 1.) and almost_eq(uni_list[-1][0], -1.):
             oppo_list.append((1., 0.))
             uni_list.pop()
 
         if len(uni_list) == 1:
-            if not almost_equal(uni_list[0][0], 0):
+            if not almost_eq(uni_list[0][0], 0):
                 yield OriginPlaneHypothesis(1., 0)
                 yield OriginPlaneHypothesis(-1., 0)
             else:
@@ -244,14 +247,19 @@ def rademacher_estimate(dataset, hypothesis_generator, num_samples=500, random_s
     :param random_seed: The random seed to use
     """
 
-    # TODO: complete this function
-    return 0.0
+    hyp_set = list(hypothesis_generator(dataset))
+    m = len(dataset)
+    max_correlations = []
+    for i in range(num_samples):
+        sigma = coin_tosses(m, random_seed if i == 0 else 0)
+        max_correlations.append(max(hyp.correlation(dataset, sigma) for hyp in hyp_set))
+    return np.mean(max_correlations)
 
 
 if __name__ == "__main__":
     print("Rademacher correlation of constant classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, constant_hypotheses))
+          rademacher_estimate(kSIMPLE_DATA, constant_hypotheses, num_samples=1000, random_seed=int(time.time())))
     print("Rademacher correlation of rectangle classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, axis_aligned_hypotheses))
+          rademacher_estimate(kSIMPLE_DATA, axis_aligned_hypotheses, num_samples=1000, random_seed=int(time.time())))
     print("Rademacher correlation of plane classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, origin_plane_hypotheses))
+          rademacher_estimate(kSIMPLE_DATA, origin_plane_hypotheses, num_samples=1000, random_seed=int(time.time())))
