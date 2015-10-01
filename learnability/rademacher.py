@@ -1,3 +1,4 @@
+import bisect
 from random import randint, seed
 import time
 
@@ -8,6 +9,18 @@ kSIMPLE_DATA = [(1., 1.), (2., 2.), (3., 0.), (4., 2.)]
 
 def almost_eq(a, b):
     return abs(a - b) <= 1e-8
+
+
+def almost_eq_point(a, b):
+    return a and b and almost_eq(a[0], b[0]) and almost_eq(a[1], b[1])
+
+
+def almost_eq_x(a, b):
+    return a and b and almost_eq(a[0], b[0])
+
+
+def almost_eq_y(a, b):
+    return a and b and almost_eq(a[1], b[1])
 
 
 def almost_geq(a, b):
@@ -139,6 +152,10 @@ def constant_hypotheses(dataset):
     yield ConstantClassifier()
 
 
+def is_original_point(p):
+    return almost_eq(p[0], 0) and almost_eq(p[1], 0)
+
+
 def origin_plane_hypotheses(dataset):
     """
     Given a dataset in R2, return an iterator over hypotheses that result in
@@ -151,11 +168,12 @@ def origin_plane_hypotheses(dataset):
     """
     inter_vector = lambda v1, v2: (v1[0] + v2[0], v1[1] + v2[1])
 
-    if len(dataset) == 1 and almost_eq(dataset[0][0], 0) and almost_eq(dataset[0][1], 0):
+    if len(dataset) == 1 and is_original_point(dataset[0]):
         yield OriginPlaneHypothesis(1., 1.)
     else:
         norm_vectors = np.asarray(
-            [np.asarray((v[0] if almost_geq(v[1], 0) else -v[0], v[1]) / np.linalg.norm(v)) for v in dataset])
+            [np.asarray((v[0] if almost_geq(v[1], 0) else -v[0], v[1]) / np.linalg.norm(v)) for v in dataset if
+             not is_original_point(v)])
         norm_vectors = norm_vectors[norm_vectors[:, 0].argsort()][::-1]
 
         uni_list, oppo_list = [], []
@@ -210,6 +228,32 @@ def plane_hypotheses(dataset):
     yield PlaneHypothesis(1.0, 0.0, 0.0)
 
 
+def _get_a_case(a0, a1, b):
+    if a0 is None or a0[0] != a1[0]:
+        return 0
+    if b[1] > a0[1]:
+        return 1
+    else:
+        return 2
+
+
+def _get_b_case(a, b0, b1, ys):
+    if b0 is None or b0[0] != b1[0]:
+        return 0
+    if a[1] >= b1[1]:
+        return 1
+    if b0[1] < a[1] < b1[1]:
+        if b1[1] not in ys:
+            return 2
+        if b1[1] in ys:
+            return 3
+    if a[1] <= b0[1]:
+        if b1[1] not in ys:
+            return 4
+        if b1[1] in ys:
+            return 5
+
+
 def axis_aligned_hypotheses(dataset):
     """
     Given a dataset in R2, return an iterator over hypotheses that result in
@@ -219,9 +263,53 @@ def axis_aligned_hypotheses(dataset):
 
     :param dataset: The dataset to use to generate hypotheses
     """
+    dataset.sort()
+    yield AxisAlignedRectangle(dataset[0][0] - 1, 0, dataset[0][0] - 1, 0)
+    m = len(dataset)
+    mid_pt_map, mid_pt_ys = {}, []
+    last_a = None
+    for i in range(m):
+        a = dataset[i]
+        if almost_eq_point(a, last_a):
+            continue
+        yield AxisAlignedRectangle(a[0], a[1], a[0], a[1])
+        mid_pt_map.clear()
+        del mid_pt_ys[:]
+        last_b = None
+        left = a[0]
+        for j in range(i + 1, m):
+            b = dataset[j]
+            if almost_eq_point(b, a) or almost_eq_point(b, last_b):
+                continue
+            right, top, bottom = b[0], max(a[1], b[1]), min(a[1], b[1])
+            a_case = _get_a_case(last_a, a, b)
+            b_case = _get_b_case(a, last_b, b, mid_pt_map)
+            if a_case != 2 and b_case != 5:
+                yield AxisAlignedRectangle(left, bottom, right, top)
 
-    # TODO: complete this function
-    yield AxisAlignedRectangle(0, 0, 0, 0)
+            ay = last_a[1] if a_case == 1 else None
+            bi = bisect.bisect_right(mid_pt_ys, last_b[1]) if last_b else 0
+            lo = bisect.bisect_right(mid_pt_ys, top)
+            hi = bisect.bisect_left(mid_pt_ys, bottom)
+            high_points = [mid_pt_map[i] for i in mid_pt_ys[lo:]]
+            if a_case != 2:
+                if b_case <= 4:
+                    li = 0 if b_case % 2 == 0 else bi
+                    for q in [mid_pt_map[i] for i in mid_pt_ys[li:hi]]:
+                        if q[1] > ay:
+                            yield AxisAlignedRectangle(left, q[1], right, top)
+                if b_case <= 3:
+                    li = 0 if b_case == 0 else bi
+                    for p in high_points:
+                        yield AxisAlignedRectangle(left, bottom, right, p[1])
+                        for q in [mid_pt_map[i] for i in mid_pt_ys[li:hi]]:
+                            if q[1] > ay:
+                                yield AxisAlignedRectangle(left, q[1], right, p[1])
+            if b[1] not in mid_pt_map:
+                mid_pt_map[b[1]] = b
+                bisect.insort(mid_pt_ys, b[1])
+            last_b = b
+        last_a = a
 
 
 def coin_tosses(number, random_seed=0):
@@ -256,10 +344,96 @@ def rademacher_estimate(dataset, hypothesis_generator, num_samples=500, random_s
     return np.mean(max_correlations)
 
 
+############
+# Brute force method for axis_aligned_hypotheses, kept for double check the result
+
+def _bit_assign(indices):
+    res = 0
+    for i in indices:
+        res |= (1 << i)
+    return res
+
+
+def _search_combines_recur(items, low, high, depth, start, result, seq):
+    for i in range(len(items) - 1, start - 1, -1):
+        seq[depth] = items[i]
+        if depth + 1 >= low:
+            result.append([n for n in seq if n is not None])
+        if depth + 1 < high:
+            _search_combines_recur(items, low, high, depth + 1, i + 1, result, seq)
+        seq[depth] = None
+
+
+def _range_combines(items, low, high):
+    if not items:
+        return []
+    low = max(low, 1)
+    high = max(min(high, len(items)), low)
+    result = []
+    _search_combines_recur(items, low, high, 0, 0, result, [None] * high)
+    return result
+
+
+def _is_boundary_point(point, left, right, low, high):
+    x0 = point[0]
+    x1 = point[1]
+    return ((x0 == left or x0 == right) and low <= x1 <= high) or ((x1 == low or x1 == high) and left <= x0 <= right)
+
+
+def _generate_rectangle(points, rect_indices):
+    l = len(rect_indices)
+    if l == 0:
+        return [], []
+    rect_points = list(np.asarray(points)[rect_indices])
+    left = rect_points[0][0]
+    right = rect_points[l - 1][0]
+    high = max(rect_points, key=lambda x: x[1])[1]
+    low = min(rect_points, key=lambda x: x[1])[1]
+
+    # scan the boundary points and coverd points
+    boundary_indices, cover_indices = [], []
+    i = rect_indices[0]
+    while i >= 0 and _is_boundary_point(points[i], left, right, low, high):
+        boundary_indices.append(i)
+        i -= 1
+    i = rect_indices[l - 1]
+    while i < len(points) and _is_boundary_point(points[i], left, right, low, high):
+        boundary_indices.append(i)
+        i += 1
+    for i in range(rect_indices[0] + 1, rect_indices[l - 1]):
+        if _is_boundary_point(points[i], left, right, low, high):
+            boundary_indices.append(i)
+        if l < 4 and i not in rect_indices and low <= points[i][1] <= high:
+            cover_indices.append(i)
+    return (left, low, right, high), boundary_indices, _range_combines(cover_indices, 1, 4 - l)
+
+
+def axis_aligned_hypotheses2(dataset):
+    dataset.sort()
+    yield AxisAlignedRectangle(dataset[0][0] - 1, 0, dataset[0][0] - 1, 0)
+    scaned_pairs, boundary_pairs = set(), set()
+    for rect_indices in _range_combines(range(len(dataset)), 1, 4):
+        n = _bit_assign(rect_indices)
+        if n not in scaned_pairs:
+            scaned_pairs.add(n)
+            boundary, boundary_indices, covered_pairs = _generate_rectangle(dataset, rect_indices)
+            b = _bit_assign(boundary_indices)
+            if b not in boundary_pairs:
+                boundary_pairs.add(b)
+                yield AxisAlignedRectangle(*boundary)
+            for covered_indices in covered_pairs:
+                scaned_pairs.add(_bit_assign(rect_indices + covered_indices))
+
+
+# End of brute force method
+############
+
 if __name__ == "__main__":
     print("Rademacher correlation of constant classifier %f" %
           rademacher_estimate(kSIMPLE_DATA, constant_hypotheses, num_samples=1000, random_seed=int(time.time())))
     print("Rademacher correlation of rectangle classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, axis_aligned_hypotheses, num_samples=1000, random_seed=int(time.time())))
+          rademacher_estimate(kSIMPLE_DATA, axis_aligned_hypotheses, num_samples=1000,
+                              random_seed=int(time.time())))
     print("Rademacher correlation of plane classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, origin_plane_hypotheses, num_samples=1000, random_seed=int(time.time())))
+          rademacher_estimate(kSIMPLE_DATA, origin_plane_hypotheses, num_samples=1000,
+                              random_seed=int(time.time())))
