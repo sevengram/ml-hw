@@ -68,6 +68,9 @@ class PlaneHypothesis(Classifier):
         self._vector = np.asarray([x, y])
         self._bias = b
 
+    def vector(self):
+        return self._vector
+
     def __call__(self, point):
         return self._vector.dot(point) - self._bias
 
@@ -152,8 +155,15 @@ def constant_hypotheses(dataset):
     yield ConstantClassifier()
 
 
-def is_original_point(p):
+def _is_original_point(p):
     return almost_eq(p[0], 0) and almost_eq(p[1], 0)
+
+
+def _all_original_point(data):
+    for d in data:
+        if not _is_original_point(d):
+            return False
+    return True
 
 
 def origin_plane_hypotheses(dataset):
@@ -168,12 +178,12 @@ def origin_plane_hypotheses(dataset):
     """
     inter_vector = lambda v1, v2: (v1[0] + v2[0], v1[1] + v2[1])
 
-    if len(dataset) == 1 and is_original_point(dataset[0]):
+    if _all_original_point(dataset):
         yield OriginPlaneHypothesis(1., 1.)
     else:
         norm_vectors = np.asarray(
             [np.asarray((v[0] if almost_geq(v[1], 0) else -v[0], v[1]) / np.linalg.norm(v)) for v in dataset if
-             not is_original_point(v)])
+             not _is_original_point(v)])
         norm_vectors = norm_vectors[norm_vectors[:, 0].argsort()][::-1]
 
         uni_list, oppo_list = [], []
@@ -212,6 +222,22 @@ def origin_plane_hypotheses(dataset):
                 yield OriginPlaneHypothesis(v[1], -v[0])
 
 
+def _classify_res_bits(h, dataset):
+    res = 0
+    for i in range(len(dataset)):
+        if h.classify(dataset[i]):
+            res |= (1 << i)
+    return res
+
+
+def _point_transform(old, new_origin):
+    return np.asarray(old) - np.asarray(new_origin)
+
+
+def _get_bias(vector, new_origin):
+    return np.dot(vector, new_origin)
+
+
 def plane_hypotheses(dataset):
     """
     Given a dataset in R2, return an iterator over hypotheses that result in
@@ -223,9 +249,16 @@ def plane_hypotheses(dataset):
 
     :param dataset: The dataset to use to generate hypotheses
     """
-
-    # TODO: Complete this for extra credit
-    yield PlaneHypothesis(1.0, 0.0, 0.0)
+    unique_res = set()
+    yield PlaneHypothesis(1, 0, max(dataset)[0] + 1)
+    for new_origin in dataset:
+        new_points = [_point_transform(p, new_origin) for p in dataset]
+        for oph in origin_plane_hypotheses(new_points):
+            res = _classify_res_bits(oph, new_points)
+            if res not in unique_res:
+                unique_res.add(res)
+                v = oph.vector()
+                yield PlaneHypothesis(v[0], v[1], _get_bias(v, new_origin))
 
 
 def _get_a_case(a0, a1, b):
@@ -345,7 +378,38 @@ def rademacher_estimate(dataset, hypothesis_generator, num_samples=500, random_s
 
 
 ############
-# Brute force method for axis_aligned_hypotheses, kept for double check the result
+# Brute force method for hypotheses, kept for double check the result
+
+def origin_plane_hypotheses2(dataset):
+    if _all_original_point(dataset):
+        yield OriginPlaneHypothesis(1., 1.)
+    else:
+        inter_vector = lambda v1, v2: (v1[0] + v2[0], v1[1] + v2[1])
+        norm_vectors = np.asarray(
+            [np.asarray((v[0] if almost_geq(v[1], 0) else -v[0], abs(v[1])) / np.linalg.norm(v)) for v in dataset if
+             not _is_original_point(v)])
+        norm_vectors = norm_vectors[norm_vectors[:, 0].argsort()][::-1]
+
+        inter_points = []
+        uniq_result = set()
+        for i in range(len(norm_vectors)):
+            iv = inter_vector(norm_vectors[i], norm_vectors[i - 1])
+            if almost_eq_point(iv, (0, 0)):
+                inter_points += [(1, 0), (0, 1)]
+            else:
+                inter_points.append(iv)
+        iv = inter_vector(norm_vectors[0], -np.asarray(norm_vectors[-1]))
+        if almost_eq_point(iv, (0, 0)):
+            inter_points += [(1, 0), (0, 1)]
+        else:
+            inter_points.append(iv)
+        for p in list(norm_vectors) + inter_points:
+            for h in [OriginPlaneHypothesis(-p[1], p[0]), OriginPlaneHypothesis(p[1], -p[0])]:
+                res = _classify_res_bits(h, dataset)
+                if res not in uniq_result:
+                    uniq_result.add(res)
+                    yield h
+
 
 def _bit_assign(indices):
     res = 0

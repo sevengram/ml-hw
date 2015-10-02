@@ -1,7 +1,9 @@
+from random import randint
 import unittest
+import time
 
-from rademacher import origin_plane_hypotheses, rademacher_estimate, PlaneHypothesis, \
-    constant_hypotheses, axis_aligned_hypotheses
+from rademacher import rademacher_estimate, PlaneHypothesis, constant_hypotheses, axis_aligned_hypotheses, \
+    axis_aligned_hypotheses2, origin_plane_hypotheses, origin_plane_hypotheses2
 from vc_sin import train_sin_classifier
 
 rand_data1 = [(-4, -8), (-4, -5), (1, 7), (0, 6), (-9, 0), (0, -2), (2, -4), (0, -3), (-7, 7), (-7, 5), (4, 1),
@@ -44,6 +46,8 @@ def assign_exists(data, classifiers, pattern):
 
 rect_hypo = axis_aligned_hypotheses
 
+origin_plane_hypo = origin_plane_hypotheses
+
 
 class TestLearnability(unittest.TestCase):
     def setUp(self):
@@ -63,30 +67,30 @@ class TestLearnability(unittest.TestCase):
         self._half_shatter = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
 
     def test_rec_random(self):
-        # data = []
-        #     for i in range(20):
-        #         data.append((0, randint(0, 40)))
-        #         data.append((randint(0, 10), randint(-30, 70)))
-        #         data.append((10, randint(0, 40)))
-        #     count1 = count2 = 0
-        #     for i in axis_aligned_hypotheses(data):
-        #         count1 += 1
-        #     print(count1)
-        #     for i in axis_aligned_hypotheses2(data):
-        #         count2 += 1
-        #     print(count2)
-        #     self.assertEqual(count2,count1)
-        #     data = []
-        #     for i in range(50):
-        #         data.append((randint(-40, 40), randint(-40, 40)))
-        #     count1 = count2 = 0
-        #     for i in axis_aligned_hypotheses(data):
-        #         count1 += 1
-        #     print(count1)
-        #     for i in axis_aligned_hypotheses2(data):
-        #         count2 += 1
-        #     print(count2)
-        #     self.assertEqual(count2,count1)
+        data = []
+        for i in range(20):
+            data.append((0, randint(0, 40)))
+            data.append((randint(0, 10), randint(-30, 70)))
+            data.append((10, randint(0, 40)))
+        count1 = count2 = 0
+        for i in axis_aligned_hypotheses(data):
+            count1 += 1
+        print(count1)
+        for i in axis_aligned_hypotheses2(data):
+            count2 += 1
+        print(count2)
+        self.assertEqual(count2, count1)
+        data = []
+        for i in range(50):
+            data.append((randint(-40, 40), randint(-40, 40)))
+        count1 = count2 = 0
+        for i in axis_aligned_hypotheses(data):
+            count1 += 1
+        print(count1)
+        for i in axis_aligned_hypotheses2(data):
+            count2 += 1
+        print(count2)
+        self.assertEqual(count2, count1)
         count1 = 0
         for i in axis_aligned_hypotheses(rand_data2):
             count1 += 1
@@ -199,28 +203,34 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(22, len(hyps))
 
     def test_plane_single_point(self):
-        data = [[(1, 1)], [(1, 0)], [(0, -5)], [(-1, 0)], [(-2.3, -5.34)]]
+        data = [[(1, 0)], [(1, 1)], [(0, -5)], [(-1, 0)], [(-2.3, -5.34)]]
         for d in data:
-            hyps = list(origin_plane_hypotheses(d))
+            hyps = list(origin_plane_hypo(d))
             for pp in [[False], [True]]:
                 self.assertTrue(assign_exists(d, hyps, pp))
             self.assertEqual(2, len(hyps))
         d = [(0, 0)]
-        hyps = list(origin_plane_hypotheses(d))
+        hyps = list(origin_plane_hypo(d))
         for pp in [[True]]:
             self.assertTrue(assign_exists(d, hyps, pp))
         self.assertEqual(1, len(hyps))
 
     def test_plane_two_points(self):
+        data = [(0, 0), (0, 0)]
+        hyps = list(origin_plane_hypo(data))
+        for pp in [[True, True]]:
+            self.assertTrue(assign_exists(data, hyps, pp))
+        self.assertEqual(1, len(hyps))
+        print
         data = [(-1, 0), (-1, 0)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[False, False],
                    [True, True]]:
             self.assertTrue(assign_exists(data, hyps, pp))
         self.assertEqual(2, len(hyps))
         print
         data = [(1, 1), (-2, -2)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[False, True],
                    [True, False],
                    [True, True]]:
@@ -228,7 +238,7 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(3, len(hyps))
         print
         data = [(-1, 0), (-3, -2)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[False, True],
                    [True, False],
                    [False, False],
@@ -237,7 +247,7 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(4, len(hyps))
         print
         data = [(-1, 0), (1, 0)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[False, True],
                    [True, False],
                    [True, True]]:
@@ -246,14 +256,14 @@ class TestLearnability(unittest.TestCase):
 
     def test_plane_three_points(self):
         data = [(-1, 0), (-1, 0), (-1, 0)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[False, False, False],
                    [True, True, True]]:
             self.assertTrue(assign_exists(data, hyps, pp))
         self.assertEqual(2, len(hyps))
         print
         data = [(-1, 0), (-1, 0), (1, 0)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[False, False, True],
                    [True, True, False],
                    [True, True, True]]:
@@ -261,7 +271,7 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(3, len(hyps))
         print
         data = [(1, 0), (-1, 0), (-4, -5)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[True, True, True],
                    [True, True, False],
                    [True, False, False],
@@ -272,7 +282,7 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(6, len(hyps))
         print
         data = [(1, 0), (1, 0), (-4, -5)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[True, True, True],
                    [True, True, False],
                    [False, False, True],
@@ -281,7 +291,7 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(4, len(hyps))
         print
         data = [(10, 1), (3, 3), (-1, -15)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[True, True, True],
                    [False, False, False],
                    [False, False, True],
@@ -292,7 +302,7 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(6, len(hyps))
 
     def test_plane_four_points(self):
-        hyps = list(origin_plane_hypotheses(self._2d[4]))
+        hyps = list(origin_plane_hypo(self._2d[4]))
         for pp in [[True, True, True, True],
                    [False, False, True, True],
                    [False, False, True, False],
@@ -302,7 +312,7 @@ class TestLearnability(unittest.TestCase):
             self.assertTrue(assign_exists(self._2d[4], hyps, pp))
         self.assertEqual(6, len(hyps))
         data = [(1, 1), (-1, 1), (-1, -1), (1, -1)]
-        hyps = list(origin_plane_hypotheses(data))
+        hyps = list(origin_plane_hypo(data))
         for pp in [[True, True, False, False],
                    [False, False, True, True],
                    [True, False, False, True],
@@ -374,8 +384,21 @@ class TestLearnability(unittest.TestCase):
                              classifier.classify(xx))
 
     def test_plane_random(self):
-        hyps = list(origin_plane_hypotheses(rand_data1))
+        hyps = list(origin_plane_hypo(rand_data1))
         self.assertEqual(134, len(hyps))
+        data = [(randint(-40, 40), randint(-40, 40)) for i in range(100)]
+        count1 = count2 = 0
+        t1 = time.time()
+        for i in origin_plane_hypotheses(data):
+            count1 += 1
+        print(time.time() - t1)
+        print(count1)
+        t2 = time.time()
+        for i in origin_plane_hypotheses2(data):
+            count2 += 1
+        print(time.time() - t2)
+        print(count2)
+        self.assertEqual(count2, count1)
 
 
 def suite_rad():
@@ -386,13 +409,13 @@ def suite_rad():
              'test_plane_three_points',
              'test_plane_four_points',
              'test_plane_random',
+             'test_rec_random',
              'test_rec_single_point',
              'test_rec_two_points',
              'test_rec_three_points',
              'test_rec_four_points',
              'test_rec_five_points',
-             'test_rec_six_points',
-             'test_rec_random']
+             'test_rec_six_points']
     return unittest.TestSuite(map(TestLearnability, tests))
 
 

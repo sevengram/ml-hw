@@ -17,7 +17,7 @@ def assign_exists(data, classifiers, pattern):
 
     val = False
     assert len(data) == len(pattern), "Length mismatch between %s and %s" % \
-        (str(data), str(pattern))
+                                      (str(data), str(pattern))
     for hh in classifiers:
         present = all(hh.classify(data[x]) == pattern[x] for
                       x in xrange(len(data)))
@@ -109,7 +109,6 @@ class TestLearnability(unittest.TestCase):
                                                           random_seed=3),
                                places=1)
 
-
     def test_vc_one_point_pos(self):
         data_pos = [(1, False)]
 
@@ -143,6 +142,7 @@ class TestLearnability(unittest.TestCase):
         for xx, yy in data:
             self.assertEqual(True if yy == +1 else False,
                              classifier.classify(xx))
+
 
 if __name__ == '__main__':
     unittest.main()
