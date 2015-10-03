@@ -401,23 +401,5 @@ class TestLearnability(unittest.TestCase):
         self.assertEqual(count2, count1)
 
 
-def suite_rad():
-    tests = ['test_correlation',
-             'test_rad_estimate',
-             'test_plane_single_point',
-             'test_plane_two_points',
-             'test_plane_three_points',
-             'test_plane_four_points',
-             'test_plane_random',
-             'test_rec_random',
-             'test_rec_single_point',
-             'test_rec_two_points',
-             'test_rec_three_points',
-             'test_rec_four_points',
-             'test_rec_five_points',
-             'test_rec_six_points']
-    return unittest.TestSuite(map(TestLearnability, tests))
-
-
 if __name__ == '__main__':
-    unittest.main(defaultTest='suite_rad')
+    unittest.main()

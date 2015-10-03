@@ -354,7 +354,6 @@ def coin_tosses(number, random_seed=0):
     """
     if random_seed != 0:
         seed(random_seed)
-
     return [randint(0, 1) * 2 - 1 for x in xrange(number)]
 
 
@@ -496,8 +495,8 @@ if __name__ == "__main__":
     print("Rademacher correlation of constant classifier %f" %
           rademacher_estimate(kSIMPLE_DATA, constant_hypotheses, num_samples=1000, random_seed=int(time.time())))
     print("Rademacher correlation of rectangle classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, axis_aligned_hypotheses, num_samples=1000,
-                              random_seed=int(time.time())))
+          rademacher_estimate(kSIMPLE_DATA, axis_aligned_hypotheses, num_samples=1000, random_seed=int(time.time())))
+    print("Rademacher correlation of origin plane classifier %f" %
+          rademacher_estimate(kSIMPLE_DATA, origin_plane_hypotheses, num_samples=1000, random_seed=int(time.time())))
     print("Rademacher correlation of plane classifier %f" %
-          rademacher_estimate(kSIMPLE_DATA, origin_plane_hypotheses, num_samples=1000,
-                              random_seed=int(time.time())))
+          rademacher_estimate(kSIMPLE_DATA, plane_hypotheses, num_samples=1000, random_seed=int(time.time())))
