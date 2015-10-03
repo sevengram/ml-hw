@@ -1,3 +1,6 @@
+__author__ = "Jianxiang Fan"
+__email__ = "jianxiang.fan@colorado.edu"
+
 import bisect
 from random import randint, seed
 import time

@@ -1,3 +1,6 @@
+__author__ = "Jianxiang Fan"
+__email__ = "jianxiang.fan@colorado.edu"
+
 from math import pi, sin
 
 import numpy
