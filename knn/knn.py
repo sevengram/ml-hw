@@ -62,8 +62,8 @@ class Knearest:
         # http://docs.scipy.org/doc/numpy/reference/generated/numpy.median.html
 
         count = {}
-        for ii in item_indices:
-            y = self._y[ii]
+        for i in item_indices:
+            y = self._y[i]
             count[y] = count.get(y, 0) + 1
 
         major_labels, m = [], 0
@@ -128,9 +128,9 @@ class Knearest:
 
         total = 0
         correct = 0
-        for ii in confusion_matrix:
-            total += sum(confusion_matrix[ii].values())
-            correct += confusion_matrix[ii].get(ii, 0)
+        for i in confusion_matrix:
+            total += sum(confusion_matrix[i].values())
+            correct += confusion_matrix[i].get(i, 0)
 
         if total:
             return float(correct) / float(total)
