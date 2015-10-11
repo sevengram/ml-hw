@@ -1,5 +1,6 @@
 import argparse
 from collections import defaultdict
+from random import shuffle
 
 import numpy as np
 from sklearn import svm
@@ -87,8 +88,8 @@ def confusion_matrix(classifier, test_x, test_y):
         label = classifier.predict(example)[0]
         d[answer][label] = d[answer].get(label, 0) + 1
         data_index += 1
-        if data_index % 100 == 0:
-            print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+        # if data_index % 100 == 0:
+        #     print("%i/%i for confusion matrix" % (data_index, len(test_x)))
     return d
 
 
@@ -111,19 +112,21 @@ def accuracy(conf_matrix):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='SVM classifier options')
-    parser.add_argument('--limit', type=int, default=-1,
+    parser.add_argument('--limit', type=int, default=1000,
                         help="Restrict training to this many examples")
     parser.add_argument('--kernel', type=str, default='rbf',
                         help="Specifies the kernel type to be used in the algorithm. It must be one of "
                              "'linear', 'poly', 'rbf', 'sigmoid', 'precomputed'. Default is 'rbf'.")
+    parser.add_argument('--penalty', type=float, default=1.0,
+                        help="Penalty parameter C of the error term.")
     args = parser.parse_args()
 
     data = Numbers("../data/mnist.pkl.gz")
-    train_set_x, train_set_y = [], []
-    for ii in range(len(data.train_y)):
-        if data.train_y[ii] in (3, 8):
-            train_set_x.append(data.train_x[ii])
-            train_set_y.append(data.train_y[ii])
+    train_set = [(data.train_x[ii], data.train_y[ii]) for ii in range(len(data.train_y)) if data.train_y[ii] in (3, 8)]
+    shuffle(train_set)
+    train_set_x = [d[0] for d in train_set]
+    train_set_y = [d[1] for d in train_set]
+
     test_set_x, test_set_y = [], []
     for ii in range(len(data.test_y)):
         if data.test_y[ii] in (3, 8):
@@ -131,12 +134,15 @@ if __name__ == "__main__":
             test_set_y.append(data.test_y[ii])
     print("Done loading data")
 
-    clf = svm.SVC(kernel=args.kernel)
+    clf = svm.SVC(kernel=args.kernel, C=args.penalty)
     if args.limit > 0:
-        print("Data limit: %i" % args.limit)
-        clf.fit(train_set_x[:args.limit], train_set_y[:args.limit])
+        print("C=%.3f, Data limit: %i" % (args.penalty, args.limit))
+        clf.fit(train_set_x[: args.limit], train_set_y[: args.limit])
     else:
         clf.fit(train_set_x, train_set_y)
+
+    for i in clf.support_:
+        print(i, train_set_y[i])
 
     confusion = confusion_matrix(clf, test_set_x, test_set_y)
     print("\t" + "\t".join(str(x) for x in [3, 8]))
