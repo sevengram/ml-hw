@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+\usepackage{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
+\begin{document}
+    \begin{center}
+        \Large\textbf{Homework - Boosting}\\*
+        \large\textbf{Jianxiang Fan}\\*
+        \large\textbf{jianxiang.fan@colorado.edu}
+    \end{center}
+    \paragraph{1.}
+            \begin{enumerate}[{(a)}]
+            \item
+                Final distribution $$D_{T+1}(i) = \frac{1}{m} \frac{\exp(-y_{i}f(x_{i}))}{\prod\limits_{t}Z_{t}}$$
+                where $f(x)=\sum\limits_{t}\alpha_{t} h_{t}(x)$\\                
+                Compute empirical error $\hat{R}(h)$:
+                \begin{equation} \label{eq1}
+                    \begin{split}
+                        \hat{R}(h) & = \frac{1}{m} \sum_{i} \bm{1}(y_{i} \neq f(x_{i})) \\
+                                   & = \frac{1}{m} \sum_{i} \bm{1}(y_{i} f(x_{i}) < 0) \\
+                                   & \leq \frac{1}{m} \sum_{i} \exp(-y_{i} f(x_{i})) \\
+                                   & = \sum_{i}D_{T+1}(i) \prod_{t}Z_{t} \\
+                                   & = \prod_{t} ((1-\epsilon_{t})e^{-\alpha} + \epsilon_{t}e^{\alpha}) \\
+                                   & = \prod_{t} (\epsilon_{t}(e^{\alpha} - e^{-\alpha}) + e^{-\alpha}) \\
+                                   & \leq ((\frac{1}{2} - \gamma)(e^{\alpha} - e^{-\alpha}) + e^{-\alpha})^{T} \\
+                                   & = ((\frac{1}{2} - \gamma)e^{\alpha} + (\frac{1}{2} + \gamma)e^{-\alpha})^{T}
+                    \end{split}
+                \end{equation}
+                Define $g(\alpha) = (1/2 - \gamma)e^{\alpha} + (1/2 + \gamma)e^{-\alpha}$, then $g'(\alpha) = (1/2 - \gamma)e^{\alpha} - (1/2 + \gamma)e^{-\alpha}$. Let it equal to 0, then
+                $$(\frac{1}{2} - \gamma)e^{\alpha} = (\frac{1}{2} + \gamma)e^{-\alpha}$$
+                $$\alpha = \frac{1}{2}\ln\frac{1 + 2\gamma}{1 - 2\gamma}$$
+            \item
+                At round t,
+                \begin{equation} \label{eq2}
+                    \begin{split}
+                        p(wrong) - p(right) & = \epsilon_{t}e^{\alpha} - (1-\epsilon_{t})e^{-\alpha} \\
+                                            & \leq (\frac{1}{2} - \gamma) \sqrt{\frac{1 + 2\gamma}{1 - 2\gamma}} - (\frac{1}{2} + \gamma) \sqrt{\frac{1 - 2\gamma}{1 + 2\gamma}} \\
+                                            & = 0
+                    \end{split}
+                \end{equation}
+                That is $p(right) \geq p(wrong)$.
+             \item
+                From question (a), we have already got:
+                \begin{equation} \label{eq3}
+                    \begin{split}
+                        \hat{R}(h) & \leq ((\frac{1}{2} - \gamma)e^{\alpha} + (\frac{1}{2} + \gamma)e^{-\alpha})^{T} \\
+                                   & = ((\frac{1}{2} - \gamma) \sqrt{\frac{1 + 2\gamma}{1 - 2\gamma}} + (\frac{1}{2} + \gamma) \sqrt{\frac{1 - 2\gamma}{1 + 2\gamma}})^{T} \\
+                                   & = (1-4\gamma^{2})^{T/2} \\
+                                   & \leq \exp(-2\gamma^{2}T)
+                    \end{split}
+                \end{equation}
+             \end{enumerate}
+    \paragraph{2.}
+        Suppose we select $h_{t}$ for the distribution $D_{t+1}$, let's compute its empirical error:
+            \begin{equation} \label{eq4}
+                \begin{split}
+                    \hat{R}_{D_{t+1}}(h_t) &= \frac{\sum\limits_{i:y_i h_t(x_i)<0}D_t(i)e^{\alpha_t}}{Z_t} \\
+                                           &= \frac{\epsilon_{t}e^{\alpha_t}}{Z_t} \\
+                                           &= \frac{\epsilon_{t} \sqrt{\frac{1-\epsilon_t}{\epsilon_t}}}{2\sqrt{(1-\epsilon_t)\epsilon_t}} = \frac{1}{2}
+                \end{split}
+            \end{equation}
+        This contradict with the weak learning assumption, so $h_{t+1}$ must must be different from $h_t$. 
+    \paragraph{3.}
+        In each round, we can use x-axis or y-axis as our weak classifier. For example, in the first round, we can choose the hypothesis that label all the points left to the y-axis as postive, right ones as negative, then the training error $\epsilon_1=1/4+(1-\epsilon)/4=1/2-\epsilon/4$. After making new distriduton, in the second round, we will choose label all the points above the x-axis as postive, beneath ones as negative.\\
+        As we show in last problem, in consecutive rounds, we cannot choose same hypothesis $h_t$. In fact, we cannot choose the opposite hypothesis $-h_t$ either, because:
+            \begin{equation} \label{eq4}
+                \begin{split}
+                    \hat{R}_{D_{t+1}}(-h_t) &= \frac{\sum\limits_{i:y_i h_t(x_i)>0}D_t(i)e^{-\alpha_t}}{Z_t} \\                                           
+                                           &= \frac{(1-\epsilon_{t})e^{-\alpha_t}}{Z_t} \\
+                                           &= \frac{(1-\epsilon_{t}) \sqrt{\frac{\epsilon_t}{1-\epsilon_t}}}{2\sqrt{(1-\epsilon_t)\epsilon_t}} = \frac{1}{2}
+                \end{split}
+            \end{equation}
+        So at each round, we will alternately choose x-axis and y-axis as our classifier. Using these hypotheses, the points at $(1,-1)$ are always misclassified, so $\hat{R}(H_{final})=(1-\epsilon)/4$
+\end{document}
