@@ -1,7 +1,9 @@
 """
 VariationalBayes for Vanilla LDA
-@author: Ke Zhai (zhaike@cs.umd.edu)
 """
+
+__author__ = "Jianxiang Fan"
+__email__ = "jianxiang.fan@colorado.edu"
 
 import time
 from collections import defaultdict
@@ -85,7 +87,7 @@ class VariationalBayes:
         given count
         """
         phi = beta[:, word] * exp(digam(gamma))
-        return phi * count / sum(phi)
+        return phi * count / numpy.sum(phi)
 
     def e_step(self, local_parameter_iteration=50):
         """
@@ -197,11 +199,11 @@ if __name__ == "__main__":
 
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--documents", help="Raw documents",
-                           type=str, default="toy/toy.txt", required=False)
+                           type=str, default="../data/ap/train.dat", required=False)
     argparser.add_argument("--num_topics", help="Number of topics",
-                           type=int, default=3, required=False)
+                           type=int, default=10, required=False)
     argparser.add_argument("--vocab", help="Vocabulary",
-                           type=str, default="toy/toy.voc", required=False)
+                           type=str, default="../data/ap/voc.dat", required=False)
     argparser.add_argument("--alpha", help="Alpha hyperparameter",
                            type=float, default=0.1, required=False)
     argparser.add_argument("--iterations", help="Number of outer iterations",
