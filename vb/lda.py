@@ -159,7 +159,7 @@ class VariationalBayes:
         self._beta = topic_counts / numpy.sum(topic_counts, axis=1)[:, numpy.newaxis]
         return self._beta
 
-    def update_alpha(self, current_alpha=None, gamma=None, update=False):
+    def update_alpha(self, current_alpha=None, gamma=None):
         """
         Update the scalar parameter alpha based on a gamma matrix.  If
         no gamma argument is supplied, use the current setting of
@@ -167,23 +167,20 @@ class VariationalBayes:
         """
         if current_alpha is None:
             current_alpha = self._alpha
-        if update:
-            if gamma is None:
-                gamma = self._gamma
-            n, k = gamma.shape
-            alpha_vec = numpy.zeros(k)
-            alpha_vec.fill(current_alpha)
-            logphat = numpy.sum(dirichlet_expectation(g) for g in gamma) / n
-            gradf = n * (digam(numpy.sum(alpha_vec)) - digam(alpha_vec) + logphat)
-            c = n * polygamma(1, numpy.sum(alpha_vec))
-            q = -n * polygamma(1, alpha_vec)
-            b = numpy.sum(gradf / q) / (1. / c + numpy.sum(1. / q))
-            dalpha = numpy.mean(-(gradf - b) / q)
-            return dalpha + current_alpha if dalpha + current_alpha > 0 else current_alpha
-        else:
-            return current_alpha
+        if gamma is None:
+            gamma = self._gamma
+        n, k = gamma.shape
+        alpha_vec = numpy.zeros(k)
+        alpha_vec.fill(current_alpha)
+        logphat = numpy.sum(dirichlet_expectation(g) for g in gamma) / n
+        gradf = n * (digam(numpy.sum(alpha_vec)) - digam(alpha_vec) + logphat)
+        c = n * polygamma(1, numpy.sum(alpha_vec))
+        q = -n * polygamma(1, alpha_vec)
+        b = numpy.sum(gradf / q) / (1. / c + numpy.sum(1. / q))
+        dalpha = numpy.mean(-(gradf - b) / q)
+        return dalpha + current_alpha if dalpha + current_alpha > 0 else current_alpha
 
-    def run_iteration(self, local_iter):
+    def run_iteration(self, local_iter, update_alpha=False):
         """
         Run a complete iteration of an e step and an m step of variational
         inference.
@@ -194,7 +191,8 @@ class VariationalBayes:
         clock_e_step = time.time() - clock_e_step
         clock_m_step = time.time()
         self._beta = self.m_step(topic_counts)
-        self._alpha = self.update_alpha()
+        if update_alpha:
+            self._alpha = self.update_alpha()
         clock_m_step = time.time() - clock_m_step
         print "Iteration %i\te_step %d sec, mstep %d sec" % (self._iteration, clock_e_step, clock_m_step)
 
@@ -233,6 +231,8 @@ if __name__ == "__main__":
                            type=int, default=5, required=False)
     argparser.add_argument("--topics_out", help="Where we write topics",
                            type=str, default="topics.txt", required=False)
+    argparser.add_argument('--update_alpha', action='store_true',
+                           help="Update alpha (only available if you implement EC)")
 
     flags = argparser.parse_args()
 
@@ -241,6 +241,6 @@ if __name__ == "__main__":
             flags.num_topics, flags.alpha)
 
     for ii in xrange(flags.iterations):
-        vb.run_iteration(flags.inner_iter)
+        vb.run_iteration(flags.inner_iter, flags.update_alpha)
 
     vb.export_beta(flags.topics_out)
