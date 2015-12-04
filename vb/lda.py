@@ -10,7 +10,7 @@ from collections import defaultdict
 
 import numpy
 from numpy import exp, ones
-from scipy.special import psi as digam
+from scipy.special import psi as digam, polygamma
 
 
 def parse_vocabulary(vocab):
@@ -51,6 +51,17 @@ def parse_data(corpus, vocab):
     print("Successfully imported %i documents with %i tokens." %
           (doc_count, token_count))
     return word_ids, word_cts
+
+
+def dirichlet_expectation(alpha):
+    """
+    For a vector `theta~Dir(alpha)`, compute `E[log(theta)]`.
+    """
+    if len(alpha.shape) == 1:
+        result = digam(alpha) - digam(numpy.sum(alpha))
+    else:
+        result = digam(alpha) - digam(numpy.sum(alpha, 1))[:, numpy.newaxis]
+    return result.astype(alpha.dtype)
 
 
 class VariationalBayes:
@@ -148,7 +159,7 @@ class VariationalBayes:
         self._beta = topic_counts / numpy.sum(topic_counts, axis=1)[:, numpy.newaxis]
         return self._beta
 
-    def update_alpha(self, current_alpha=None, gamma=None):
+    def update_alpha(self, current_alpha=None, gamma=None, update=False):
         """
         Update the scalar parameter alpha based on a gamma matrix.  If
         no gamma argument is supplied, use the current setting of
@@ -156,11 +167,21 @@ class VariationalBayes:
         """
         if current_alpha is None:
             current_alpha = self._alpha
-        if gamma is None:
-            gamma = self._gamma
-        # Update below line
-        new_alpha = current_alpha
-        return new_alpha
+        if update:
+            if gamma is None:
+                gamma = self._gamma
+            n, k = gamma.shape
+            alpha_vec = numpy.zeros(k)
+            alpha_vec.fill(current_alpha)
+            logphat = numpy.sum(dirichlet_expectation(g) for g in gamma) / n
+            gradf = n * (digam(numpy.sum(alpha_vec)) - digam(alpha_vec) + logphat)
+            c = n * polygamma(1, numpy.sum(alpha_vec))
+            q = -n * polygamma(1, alpha_vec)
+            b = numpy.sum(gradf / q) / (1. / c + numpy.sum(1. / q))
+            dalpha = numpy.mean(-(gradf - b) / q)
+            return dalpha + current_alpha if dalpha + current_alpha > 0 else current_alpha
+        else:
+            return current_alpha
 
     def run_iteration(self, local_iter):
         """

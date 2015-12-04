@@ -1,3 +1,4 @@
 dog cat cat pig
 hamburger dog hamburger
 iron iron pig iron
+iron cat pig pig
