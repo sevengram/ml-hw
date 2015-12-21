@@ -53,15 +53,11 @@ def parse_data(corpus, vocab):
     return word_ids, word_cts
 
 
-def dirichlet_expectation(alpha):
+def dirichlet_log_expectation(alpha):
     """
     For a vector `theta~Dir(alpha)`, compute `E[log(theta)]`.
     """
-    if len(alpha.shape) == 1:
-        result = digam(alpha) - digam(numpy.sum(alpha))
-    else:
-        result = digam(alpha) - digam(numpy.sum(alpha, 1))[:, numpy.newaxis]
-    return result.astype(alpha.dtype)
+    return digam(alpha) - digam(numpy.sum(alpha))
 
 
 class VariationalBayes:
@@ -156,14 +152,15 @@ class VariationalBayes:
         the expected counts from the e step in the form of a matrix where each
         topic is a row.
         """
-        self._beta = topic_counts / numpy.sum(topic_counts, axis=1)[:, numpy.newaxis]
-        return self._beta
+        return topic_counts / numpy.sum(topic_counts, axis=1)[:, numpy.newaxis]
 
     def update_alpha(self, current_alpha=None, gamma=None):
         """
         Update the scalar parameter alpha based on a gamma matrix.  If
         no gamma argument is supplied, use the current setting of
         gamma.
+        Refer to http://jonathan-huang.org/research/dirichlet/dirichlet.pdf
+        & https://github.com/piskvorky/gensim/blob/master/gensim/models/ldamodel.py
         """
         if current_alpha is None:
             current_alpha = self._alpha
@@ -172,7 +169,7 @@ class VariationalBayes:
         n, k = gamma.shape
         alpha_vec = numpy.zeros(k)
         alpha_vec.fill(current_alpha)
-        logphat = numpy.sum(dirichlet_expectation(g) for g in gamma) / n
+        logphat = numpy.sum(dirichlet_log_expectation(g) for g in gamma) / n
         gradf = n * (digam(numpy.sum(alpha_vec)) - digam(alpha_vec) + logphat)
         c = n * polygamma(1, numpy.sum(alpha_vec))
         q = -n * polygamma(1, alpha_vec)
